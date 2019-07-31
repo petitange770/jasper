@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio -->
 <jasperTemplate xmlns="http://jasperreports.sourceforge.net/jasperreports/template" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/template http://jasperreports.sourceforge.net/xsd/jaspertemplate.xsd">
-	<template><![CDATA[ASSL-Report-Style.jrtx]]></template>
-	<style name="SimpleStyle" isDefault="true" vTextAlign="Top" fontName="Arial" fontSize="10"/>
-	<style name="Titre 1" hTextAlign="Center" fontName="arial&#xD;&#xA;ari " fontSize="22" isBold="true"/>
-	<style name="Titre2" fontName="arial" fontSize="16"/>
+	<style name="NormalText" isDefault="true" fontName="arial" fontSize="10"/>
+	<style name="TextCoverTitle" mode="Opaque" forecolor="#FFFFFF" fontName="Arial" fontSize="36" isBold="true"/>
 </jasperTemplate>

@@ -3,8 +3,10 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportCoverTemplate" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="46a3caf7-2821-4a54-a400-0ee9ac3664de">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PostGreSql business_tables"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<template><![CDATA["Styles/Assl-Style-Template.jrtx"]]></template>
 	<parameter name="coverTitle" class="java.lang.String">
-		<defaultValueExpression><![CDATA["COVER TEMPLATE"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["Newsletter template"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select 1]]>
@@ -14,8 +16,9 @@
 	</background>
 	<detail>
 		<band height="802" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
-				<reportElement x="0" y="0" width="555" height="802" uuid="88edb17f-6815-4a96-bb92-5e3a1918450e">
+				<reportElement style="NormalText" stretchType="ContainerBottom" x="0" y="0" width="555" height="802" uuid="88edb17f-6815-4a96-bb92-5e3a1918450e">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -29,7 +32,7 @@
 				<imageExpression><![CDATA["Images/CoverTitleBackgoundv3.png"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="31" y="135" width="420" height="30" uuid="c375b7b0-6d38-406f-b9b3-117ce0baf1a6"/>
+				<reportElement style="coverTitleStyle" x="40" y="120" width="420" height="57" forecolor="#FFFCFC" uuid="c375b7b0-6d38-406f-b9b3-117ce0baf1a6"/>
 				<textFieldExpression><![CDATA[$P{coverTitle}]]></textFieldExpression>
 			</textField>
 		</band>

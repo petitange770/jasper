@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.1.0.final using JasperReports Library version 6.4.3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportCoverTemplate" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="46a3caf7-2821-4a54-a400-0ee9ac3664de">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Domain JRS"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PostGreSql business_tables"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="coverTitle" class="java.lang.String">
+		<defaultValueExpression><![CDATA["COVER TEMPLATE"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select 1]]>
 	</queryString>
@@ -11,12 +15,23 @@
 	<detail>
 		<band height="802" splitType="Stretch">
 			<image>
-				<reportElement x="0" y="0" width="500" height="790" uuid="88edb17f-6815-4a96-bb92-5e3a1918450e">
+				<reportElement x="0" y="0" width="555" height="802" uuid="88edb17f-6815-4a96-bb92-5e3a1918450e">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<imageExpression><![CDATA["Images/Client-Security-Report_CG.jpg"]]></imageExpression>
 			</image>
+			<image>
+				<reportElement x="30" y="108" width="465" height="72" uuid="20aa50e9-eda7-4648-bc7c-922d3e079813">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["Images/CoverTitleBackgoundv3.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="31" y="135" width="420" height="30" uuid="c375b7b0-6d38-406f-b9b3-117ce0baf1a6"/>
+				<textFieldExpression><![CDATA[$P{coverTitle}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>

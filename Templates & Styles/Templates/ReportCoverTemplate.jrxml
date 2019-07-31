@@ -35,6 +35,10 @@
 				<reportElement style="coverTitleStyle" x="40" y="120" width="420" height="57" forecolor="#FFFCFC" uuid="c375b7b0-6d38-406f-b9b3-117ce0baf1a6"/>
 				<textFieldExpression><![CDATA[$P{coverTitle}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="6" y="634" width="540" height="149" uuid="38b8055f-2fc1-4df6-b899-b0351a1c8460"/>
+				<imageExpression><![CDATA["Images/CoverTitleFooter.png"]]></imageExpression>
+			</image>
 		</band>
 	</detail>
 </jasperReport>

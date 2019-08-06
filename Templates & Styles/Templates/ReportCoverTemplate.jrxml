@@ -21,14 +21,14 @@
 		<band height="802" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image scaleImage="FillFrame">
-				<reportElement style="NormalText" stretchType="ContainerBottom" x="0" y="0" width="555" height="802" uuid="88edb17f-6815-4a96-bb92-5e3a1918450e">
+				<reportElement style="NormalText" stretchType="ContainerBottom" x="-1" y="0" width="555" height="802" uuid="88edb17f-6815-4a96-bb92-5e3a1918450e">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<imageExpression><![CDATA["Images/Client-Security-Report_CG.jpg"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="30" y="108" width="465" height="72" uuid="20aa50e9-eda7-4648-bc7c-922d3e079813">
+				<reportElement x="29" y="108" width="465" height="72" uuid="20aa50e9-eda7-4648-bc7c-922d3e079813">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -39,15 +39,15 @@
 				<textFieldExpression><![CDATA[$P{coverTitle}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="6" y="634" width="540" height="149" uuid="38b8055f-2fc1-4df6-b899-b0351a1c8460"/>
+				<reportElement x="31" y="639" width="490" height="135" uuid="38b8055f-2fc1-4df6-b899-b0351a1c8460"/>
 				<imageExpression><![CDATA["Images/CoverTitleFooter.png"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement style="coverPrintingDate" x="20" y="650" width="493" height="20" uuid="9ab53f02-e9d0-4fd3-8e4b-009b4d81f154"/>
+				<reportElement style="coverPrintingDate" x="40" y="650" width="473" height="20" uuid="9ab53f02-e9d0-4fd3-8e4b-009b4d81f154"/>
 				<textFieldExpression><![CDATA["Printed on " + DATEFORMAT(TODAY( ), "E MMM d, yyyy")]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="coverCustomer" x="20" y="674" width="493" height="26" uuid="c05e6f6a-a878-4902-b44a-dba4602d8507"/>
+				<reportElement style="coverCustomer" x="40" y="674" width="474" height="26" uuid="c05e6f6a-a878-4902-b44a-dba4602d8507"/>
 				<textFieldExpression><![CDATA[$P{customer}]]></textFieldExpression>
 			</textField>
 		</band>

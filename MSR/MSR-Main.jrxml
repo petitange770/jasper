@@ -6,6 +6,10 @@
 	<property name="com.jaspersoft.studio.book.group.cover.header" value="Cover and Table of Contents"/>
 	<property name="com.jaspersoft.studio.book.group.cover.footer" value="Backcover"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8080/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="palg"/>
+	<property name="ireport.jasperserver.report.resource" value="/reports/MSR_Main_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/reports/MSR_Main"/>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Monthly Security Report"]]></defaultValueExpression>
 	</parameter>

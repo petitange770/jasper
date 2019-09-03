@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Welcome" pageWidth="595" pageHeight="842" columnWidth="455" leftMargin="70" rightMargin="70" topMargin="70" bottomMargin="70" isSummaryWithPageHeaderAndFooter="true" uuid="b68e4251-4e98-4ffa-99cc-646e75dcfaf5">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PostGreSql business_tables"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank-page" pageWidth="595" pageHeight="842" columnWidth="455" leftMargin="70" rightMargin="70" topMargin="70" bottomMargin="70" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" uuid="b68e4251-4e98-4ffa-99cc-646e75dcfaf5">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
@@ -12,9 +11,19 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Data Adapter\jasper-msr.xml"/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["NEWSLETTER TITLE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="subsection" class="java.lang.String">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="section" class="java.lang.Integer">
+		<parameterDescription><![CDATA[1]]></parameterDescription>
+	</parameter>
+	<parameter name="chapter" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select 1]]>
@@ -39,9 +48,9 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="376" splitType="Stretch">
+		<band height="119" splitType="Stretch">
 			<staticText>
-				<reportElement style="NormalText" positionType="Float" x="0" y="20" width="455" height="100" uuid="37b23a45-e9f2-4c67-8bca-bcdc2dca711b"/>
+				<reportElement style="NormalText" positionType="Float" x="0" y="20" width="455" height="90" uuid="37b23a45-e9f2-4c67-8bca-bcdc2dca711b"/>
 				<text><![CDATA[Welcome to the July 2018 edition of the Bank Environment Change Monitoring (BECM) Newsletter. The editorial deadline of this issue was the end of June 2018.
 This newsletter details all the latest changes in the banking regulatory environment, including new or changed industry standards and third-party systems. The newsletter includes Avaloq’s impact assessment on the Avaloq Banking Suite caused by these changes.
 Your regulatory change-monitoring team should read this document to help plan and execute any required changes to your Avaloq Banking Suite installation.
@@ -51,16 +60,6 @@ Your regulatory change-monitoring team should read this document to help plan an
 			<staticText>
 				<reportElement style="TitleBlue" x="0" y="2" width="455" height="18" uuid="7fe3f729-8975-46ce-8104-5fd539e6fb3d"/>
 				<text><![CDATA[Welcome!]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="disclaimer" positionType="Float" isPrintRepeatedValues="false" x="0" y="260" width="455" height="107" uuid="eb5e59ef-8d07-47fc-be9b-8c5a656db66b">
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<text><![CDATA[Copyright Avaloq Licence AG. All rights reserved.
-Avaloq Licence AG may change, amend or delete information contained in its documents at any time and without formal arrangement. Documents and other informational items concerning a release of the Avaloq Banking Suite that has not yet been officially released by Avaloq Licence AG are nonbinding and may be incomplete or contain errors. Avaloq strives to provide complete and exact information in its documents. If permitted by applicable law, Avaloq takes no responsibility for the accuracy of the issued informational items and documentation and does not provide any warranty for their content. Avaloq assumes no liability for any direct, indirect or incidental damages incurred by the use of its documents and informational items. Documents or informational items do not change or amend the contractual terms and conditions regarding the Avaloq Banking Suite. Information provided in this document is for internal use only and may not be released to any outside parties.
-Avaloq Licence AG
-Schwerzistrasse 6 I CH-8807 Freienbach I Switzerland
-]]></text>
 			</staticText>
 		</band>
 	</detail>

@@ -3,7 +3,10 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportCoverTemplate" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="46a3caf7-2821-4a54-a400-0ee9ac3664de">
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="jasper-msr.xml"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Data Adapter\jasper-msr.xml"/>
+	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="palg"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Templates/Cover/ReportCoverTemplate"/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Newsletter template"]]></defaultValueExpression>
@@ -21,11 +24,11 @@
 		<band height="802" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image scaleImage="FillFrame">
-				<reportElement style="NormalText" stretchType="ContainerBottom" x="0" y="0" width="555" height="802" uuid="88edb17f-6815-4a96-bb92-5e3a1918450e">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<reportElement stretchType="ElementGroupHeight" x="0" y="0" width="555" height="802" uuid="33e4dafd-c309-4548-a9f0-48e3400bdaa9">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["Images/Client-Security-Report_CG.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["repo:/Templates/Images/Client_Security_Report_CG.jpg"]]></imageExpression>
 			</image>
 			<rectangle radius="15">
 				<reportElement mode="Opaque" x="30" y="100" width="491" height="61" forecolor="#3DE6F5" backcolor="rgba(7, 204, 230, 0.6862745)" uuid="f412760f-9cf5-4360-ba1c-64c4c17f4939"/>

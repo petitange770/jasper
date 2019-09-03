@@ -40,8 +40,8 @@
 		<variableExpression><![CDATA[$P{chapter}]]></variableExpression>
 		<initialValueExpression><![CDATA[$P{chapter}]]></initialValueExpression>
 	</variable>
-	<variable name="x.y.Introduction" class="java.lang.String">
-		<variableExpression><![CDATA[$P{chapter}+"." + ($P{section}) +   "     Introduction"]]></variableExpression>
+	<variable name="x.Introduction" class="java.lang.String">
+		<variableExpression><![CDATA[$P{chapter}+   "     Introduction"]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -73,9 +73,9 @@ The scope is extended to all information security perimeter as agreed and define
 			</staticText>
 			<textField hyperlinkType="LocalAnchor" bookmarkLevel="1">
 				<reportElement style="Header-2" x="0" y="2" width="453" height="18" uuid="9ec11c44-0b91-45bc-8154-0049d3f065ce"/>
-				<textFieldExpression><![CDATA[$V{x.y.Introduction}]]></textFieldExpression>
-				<anchorNameExpression><![CDATA[$V{x.y.Introduction}]]></anchorNameExpression>
-				<hyperlinkAnchorExpression><![CDATA[$V{x.y.Introduction}]]></hyperlinkAnchorExpression>
+				<textFieldExpression><![CDATA[$V{x.Introduction}]]></textFieldExpression>
+				<anchorNameExpression><![CDATA[$V{x.Introduction}]]></anchorNameExpression>
+				<hyperlinkAnchorExpression><![CDATA[$V{x.Introduction}]]></hyperlinkAnchorExpression>
 			</textField>
 			<staticText>
 				<reportElement style="NormalText" positionType="Float" x="0" y="109" width="455" height="30" uuid="83f61fa7-f83b-4105-a4e2-0573ef3c6a30"/>

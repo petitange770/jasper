@@ -44,7 +44,7 @@
 		<variableExpression><![CDATA[$P{chapter}+"."+($P{section}+1)+"     Access Control"]]></variableExpression>
 	</variable>
 	<variable name="x.Management_Summary" class="java.lang.String">
-		<variableExpression><![CDATA[$P{chapter}+"."+"     Management Summary"]]></variableExpression>
+		<variableExpression><![CDATA[$P{chapter}+"."+"    Management Summary"]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -78,7 +78,7 @@
 				<hyperlinkAnchorExpression><![CDATA[$V{x.Management_Summary}]]></hyperlinkAnchorExpression>
 			</textField>
 			<textField hyperlinkType="LocalAnchor" bookmarkLevel="2">
-				<reportElement style="Header-3" x="-1" y="70" width="455" height="20" uuid="dbe59c5f-ff6d-40dd-8a32-88a55c7f969e"/>
+				<reportElement style="Header-3" x="0" y="70" width="455" height="20" uuid="dbe59c5f-ff6d-40dd-8a32-88a55c7f969e"/>
 				<textFieldExpression><![CDATA[$V{x.y+1_access_control}]]></textFieldExpression>
 				<anchorNameExpression><![CDATA[$V{x.y+1_access_control}]]></anchorNameExpression>
 				<hyperlinkAnchorExpression><![CDATA[$V{x.y+1_access_control}]]></hyperlinkAnchorExpression>

@@ -22,7 +22,7 @@
 		<paragraph leftIndent="2"/>
 	</style>
 	<style name="TOC-Title-Table-Of-Content" forecolor="#00B0F0" fontName="Arial" fontSize="16" isBold="true"/>
-	<style name="TOC-Title1" forecolor="#5C5A5A" fontName="Arial" fontSize="11" isBold="true"/>
+	<style name="TOC-Title1" forecolor="#000000" fontName="Arial" fontSize="11" isBold="true"/>
 	<style name="Header-1" forecolor="#00B0F0" fontName="Arial" fontSize="24" isBold="true"/>
 	<style name="Header-2" forecolor="#004893" fontName="Arial" fontSize="14" isBold="true"/>
 	<style name="Header-3" forecolor="#000000" fontName="Arial" fontSize="12" isBold="true" isItalic="false"/>

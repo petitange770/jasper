@@ -7,6 +7,7 @@
 	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="palg"/>
 	<property name="ireport.jasperserver.reportUnit" value="/Templates/Cover/ReportCoverTemplate"/>
+	<property name="ireport.jasperserver.report.resource" value="/Templates/Cover/ReportCoverTemplate_files/main_jrxml"/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Newsletter template"]]></defaultValueExpression>
@@ -28,7 +29,7 @@
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["repo:/Templates/Images/Client_Security_Report_CG.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["/Images/Client-Security-Report_CG.jpg"]]></imageExpression>
 			</image>
 			<rectangle radius="15">
 				<reportElement mode="Opaque" x="30" y="100" width="491" height="61" forecolor="#3DE6F5" backcolor="rgba(7, 204, 230, 0.6862745)" uuid="f412760f-9cf5-4360-ba1c-64c4c17f4939"/>

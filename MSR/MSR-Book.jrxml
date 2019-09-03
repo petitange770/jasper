@@ -42,6 +42,28 @@
 					<subreportExpression><![CDATA["C:\\Users\\Gabriel\\jasper\\Templates & Styles\\Templates\\ReportCoverTemplate.jasper"]]></subreportExpression>
 				</p:subreportPart>
 			</part>
+			<part uuid="f440513d-1a12-4f77-8fc4-7337e358c616">
+				<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+					<subreportParameter name="REPORT_CONNECTION">
+						<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="coverTitle">
+						<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportExpression><![CDATA["C:\\Users\\Gabriel\\jasper\\Templates & Styles\\Templates\\Standard-TOC-Page.jasper"]]></subreportExpression>
+				</p:subreportPart>
+			</part>
+			<part uuid="675d9e0e-c008-48db-bf9d-9bdda5d08d25">
+				<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+					<subreportParameter name="REPORT_CONNECTION">
+						<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="coverTitle">
+						<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportExpression><![CDATA["C:\\Users\\Gabriel\\jasper\\Templates & Styles\\Templates\\Welcome.jasper"]]></subreportExpression>
+				</p:subreportPart>
+			</part>
 		</groupHeader>
 	</group>
 </jasperReport>

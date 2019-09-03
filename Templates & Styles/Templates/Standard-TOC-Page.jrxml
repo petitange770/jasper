@@ -82,7 +82,7 @@
 	<detail>
 		<band height="40">
 			<staticText>
-				<reportElement style="TOC-Title-Table-Of-Content" x="0" y="10" width="483" height="30" uuid="ed90ca86-3f41-4a89-9628-1f05b3b0ec5d"/>
+				<reportElement style="TOC-Title-Table-Of-Content" x="0" y="10" width="483" height="30" forecolor="#00B0F0" uuid="ed90ca86-3f41-4a89-9628-1f05b3b0ec5d"/>
 				<text><![CDATA[Table of Contents]]></text>
 			</staticText>
 		</band>

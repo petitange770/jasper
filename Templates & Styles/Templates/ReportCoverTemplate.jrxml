@@ -7,6 +7,7 @@
 	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="palg"/>
 	<property name="ireport.jasperserver.reportUnit" value="/Templates/Cover/ReportCoverTemplate"/>
+	<property name="ireport.jasperserver.report.resource" value="/Templates/Cover/ReportCoverTemplate_files/main_jrxml"/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Newsletter template"]]></defaultValueExpression>

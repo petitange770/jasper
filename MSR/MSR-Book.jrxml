@@ -23,7 +23,7 @@
 	<variable name="section" class="java.lang.Integer">
 		<initialValueExpression><![CDATA[0]]></initialValueExpression>
 	</variable>
-	<variable name="subsection" class="java.lang.String">
+	<variable name="subsection" class="java.lang.Integer">
 		<initialValueExpression><![CDATA[0]]></initialValueExpression>
 	</variable>
 	<group name="cover">
@@ -42,7 +42,7 @@
 					<subreportExpression><![CDATA["C:\\Users\\Gabriel\\jasper\\Templates & Styles\\Templates\\ReportCoverTemplate.jasper"]]></subreportExpression>
 				</p:subreportPart>
 			</part>
-			<part uuid="f440513d-1a12-4f77-8fc4-7337e358c616">
+			<part uuid="144ce4a0-8ccc-4d01-8f0a-997655ff9eed">
 				<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
 					<subreportParameter name="REPORT_CONNECTION">
 						<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
@@ -54,6 +54,7 @@
 				</p:subreportPart>
 			</part>
 			<part uuid="675d9e0e-c008-48db-bf9d-9bdda5d08d25">
+				<property name="net.sf.jasperreports.bookmarks.data.source.parameter" value="REPORT_DATA_SOURCE"/>
 				<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
 					<subreportParameter name="REPORT_CONNECTION">
 						<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
@@ -66,4 +67,52 @@
 			</part>
 		</groupHeader>
 	</group>
+	<detail>
+		<part uuid="7d36440d-e3e0-4862-b29f-40367fdbc40d">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="REPORT_CONNECTION">
+					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="coverTitle">
+					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="chapter">
+					<subreportParameterExpression><![CDATA[$V{chapter}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="section">
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subsection">
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<returnValue subreportVariable="newChapter" toVariable="chapter"/>
+				<returnValue subreportVariable="newSection" toVariable="section"/>
+				<returnValue subreportVariable="newSubsection" toVariable="subsection"/>
+				<subreportExpression><![CDATA["MSR-Introduction.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="dfd4b9ee-a549-4c3d-b545-e687dbbcf29c">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="REPORT_CONNECTION">
+					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="chapter">
+					<subreportParameterExpression><![CDATA[$V{chapter} + 1]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="coverTitle">
+					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="section">
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subsection">
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<returnValue subreportVariable="newChapter" toVariable="chapter"/>
+				<returnValue subreportVariable="newSection" toVariable="section"/>
+				<returnValue subreportVariable="newSubsection" toVariable="subsection"/>
+				<subreportExpression><![CDATA["MSR-2-Management-Summary.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+	</detail>
 </jasperReport>

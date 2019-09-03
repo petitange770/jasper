@@ -14,7 +14,6 @@
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="palg"/>
-	<property name="ireport.jasperserver.report.resource" value="/Templates/Summary/Welcome_files/main_jrxml"/>
 	<property name="ireport.jasperserver.reportUnit" value="/Templates/Summary/Welcome"/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<parameter name="coverTitle" class="java.lang.String">

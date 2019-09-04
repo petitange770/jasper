@@ -15,6 +15,7 @@
 	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="palg"/>
 	<property name="ireport.jasperserver.reportUnit" value="/Templates/Summary/Welcome"/>
+	<property name="ireport.jasperserver.report.resource" value="/Templates/Summary/Welcome_files/main_jrxml"/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["NEWSLETTER TITLE"]]></defaultValueExpression>
@@ -34,10 +35,10 @@
 			<line>
 				<reportElement x="0" y="32" width="455" height="1" uuid="d09819fc-4982-4636-b9e9-e96aaa844363"/>
 			</line>
-			<textField>
+			<textField evaluationTime="Master">
 				<reportElement style="headerPageNumbers" x="253" y="3" width="200" height="30" uuid="9544801a-8579-487a-b2e9-d2d7613b3ae0"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[DATEFORMAT(TODAY(),"dd MMM yyyy")+ " | Page " + $V{PAGE_NUMBER} + " of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[DATEFORMAT(TODAY(),"dd MMM yyyy")+ " | Page " + $V{MASTER_CURRENT_PAGE}+ " of " + $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>

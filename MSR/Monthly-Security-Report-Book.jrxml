@@ -13,13 +13,19 @@
 	<parameter name="customer" class="java.lang.String">
 		<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="Month" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[01]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Year" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[2019]]></defaultValueExpression>
+	</parameter>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Monthly Security Report"]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[select bank_id, company, company_mesi, company_parent, company_tag, siem_client
 from msr.banks
-where company_tag =  $P{customer} ]]>
+where company_tag =  $P{customer}]]>
 	</queryString>
 	<field name="bank_id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="bank_id"/>
@@ -51,6 +57,10 @@ where company_tag =  $P{customer} ]]>
 	</variable>
 	<variable name="subsection" class="java.lang.Integer">
 		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="selectedDate" class="java.lang.String">
+		<variableExpression><![CDATA[$P{Year}+String.format("%02d", $P{Month})+"01"]]></variableExpression>
+		<initialValueExpression><![CDATA[$P{Year}+String.format("%02d", $P{Month})+"01"]]></initialValueExpression>
 	</variable>
 	<group name="cover">
 		<groupHeader>
@@ -130,6 +140,12 @@ where company_tag =  $P{customer} ]]>
 				</subreportParameter>
 				<subreportParameter name="coverTitle">
 					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="customer">
+					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="selectedDate">
+					<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
 				</subreportParameter>
 				<returnValue subreportVariable="newChapter" toVariable="chapter"/>
 				<returnValue subreportVariable="newSection" toVariable="section"/>

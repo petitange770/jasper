@@ -130,27 +130,25 @@ SELECT customer,
               FROM msr.unix_dba_users US2
 	          WHERE US2.export_date = US1.export_date
 	          AND US2.customer = US1.customer
-		      AND US2.group_id != 'dba'
+		      AND lower(US2.group_id) != 'dba'
 		      AND US2.user_id NOT IN (SELECT US3.user_id
 	                                         FROM msr.unix_dba_users US3 
 				        					  WHERE	US3.export_date = US1.export_date - interval '1 month'
-	                                          AND US3.customer = US1.customer
-											  AND US3.group_id != 'dba')) AS USERS_ADDED,
+	                                          AND US3.customer = US1.customer)) AS USERS_ADDED,
        (SELECT COUNT(US2.user_id) 
         	           FROM msr.unix_dba_users US2
 	               WHERE US2.export_date = US1.export_date - interval '1 month'
 	                    AND US2.customer = US1.customer
-						AND US2.group_id != 'dba'
+						AND lower(US2.group_id) != 'dba'
 	                	AND US2.user_id NOT IN (SELECT US3.user_id 
 	                		                      FROM msr.unix_dba_users US3 
 												  WHERE	US3.export_date = US1.export_date
-	                    						  AND US3.customer = US1.customer
-											      AND US3.group_id != 'dba')) AS USERS_REMOVED
+	                    						  AND US3.customer = US1.customer)) AS USERS_REMOVED
 
 FROM msr.unix_dba_users  US1
 WHERE US1.export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
 AND US1.customer =  $P{customer} 
-and US1.group_id != 'dba'
+and lower(US1.group_id) != 'dba'
 GROUP BY customer, export_date
 union all
 SELECT customer,
@@ -161,32 +159,26 @@ SELECT customer,
               FROM msr.unix_dba_users US2
 	          WHERE US2.export_date = US1.export_date
 	          AND US2.customer = US1.customer
-		      AND US2.group_id = 'dba'
+		      AND lower(US2.group_id) = 'dba'
 		      AND US2.user_id NOT IN (SELECT US3.user_id
 	                                         FROM msr.unix_dba_users US3 
 				        					  WHERE	US3.export_date = US1.export_date - interval '1 month'
-	                                          AND US3.customer = US1.customer
-											  AND US3.group_id = 'dba')) AS USERS_ADDED,
+	                                          AND US3.customer = US1.customer)) AS USERS_ADDED,
        (SELECT COUNT(US2.user_id) 
         	           FROM msr.unix_dba_users US2
 	               WHERE US2.export_date = US1.export_date - interval '1 month'
 	                    AND US2.customer = US1.customer
-						AND US2.group_id = 'dba'
+						AND lower(US2.group_id) = 'dba'
 	                	AND US2.user_id NOT IN (SELECT US3.user_id 
 	                		                      FROM msr.unix_dba_users US3 
 												  WHERE	US3.export_date = US1.export_date
-	                    						  AND US3.customer = US1.customer
-											      AND US3.group_id = 'dba')) AS USERS_REMOVED
+	                    						  AND US3.customer = US1.customer)) AS USERS_REMOVED
 
 FROM msr.unix_dba_users  US1
 WHERE US1.export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
 AND US1.customer =  $P{customer} 
-and US1.group_id = 'dba'
-GROUP BY customer, export_date
-
-
-
-]]>
+and lower(US1.group_id) = 'dba'
+GROUP BY customer, export_date]]>
 		</queryString>
 		<field name="customer" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="customer"/>

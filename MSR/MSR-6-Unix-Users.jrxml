@@ -48,7 +48,7 @@
   FROM msr.unix_dba_users 
   WHERE customer =  $P{customer} 
   AND export_date = to_date( $P{selectedDate}  , 'YYYYMMDD')
-  AND group_id != 'DBA']]>
+  AND lower(group_id) != 'dba']]>
 		</queryString>
 		<field name="rownum" class="java.lang.Long">
 			<property name="com.jaspersoft.studio.field.label" value="rownum"/>
@@ -83,11 +83,10 @@
   FROM msr.unix_dba_users ac 
   WHERE ac.customer =  $P{customer} 
   AND ac.export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
-  AND ac.group_id != 'DBA'
+  AND lower(ac.group_id) != 'dba'
   AND ac.user_id NOT IN (SELECT ac2.user_id  
 						 FROM msr.unix_dba_users ac2 
 						 WHERE ac2.customer = ac.customer 
- 						 AND ac2.group_id != 'DBA'
 						 AND ac2.export_date = ac.export_date - interval '1 month' )]]>
 		</queryString>
 		<field name="rownum" class="java.lang.Long">
@@ -123,11 +122,10 @@
   FROM msr.unix_dba_users ac 
   WHERE ac.customer = $P{customer} 
   AND ac.export_date = to_date( $P{selectedDate} , 'YYYYMMDD') - interval '1 month'
-  AND ac.group_id != 'DBA'
+  AND lower(ac.group_id) != 'dba'
   AND ac.user_id NOT IN (SELECT ac2.user_id  
 						 FROM msr.unix_dba_users ac2 
 						 WHERE ac2.customer = ac.customer 
- 						 AND ac2.group_id != 'DBA'
 						 AND ac2.export_date = ac.export_date + interval '1 month' )]]>
 		</queryString>
 		<field name="rownum" class="java.lang.Long">
@@ -269,7 +267,7 @@
 							<datasetParameter name="selectedDate">
 								<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
 							</datasetParameter>
-							<connectionExpression><![CDATA[$P{REPORT_CONNECTION} ]]></connectionExpression>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 						</datasetRun>
 						<jr:column width="40" uuid="b8885c5f-dbd5-47b9-b734-c49251202da1">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
@@ -369,7 +367,7 @@
 							<datasetParameter name="selectedDate">
 								<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
 							</datasetParameter>
-							<connectionExpression><![CDATA[$P{REPORT_CONNECTION} ]]></connectionExpression>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 						</datasetRun>
 						<jr:column width="40" uuid="ff2d00cc-10ad-42fc-b3d1-80ff92389695">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
@@ -469,7 +467,7 @@
 							<datasetParameter name="selectedDate">
 								<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
 							</datasetParameter>
-							<connectionExpression><![CDATA[$P{REPORT_CONNECTION} ]]></connectionExpression>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 						</datasetRun>
 						<jr:column width="40" uuid="0c17c95e-e3c6-4d8b-9c73-c6e54107b999">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>

@@ -224,15 +224,12 @@ GROUP BY customer, export_date]]>
 	</queryString>
 	<variable name="newSubsection" class="java.lang.Integer">
 		<variableExpression><![CDATA[$P{subsection}]]></variableExpression>
-		<initialValueExpression><![CDATA[$P{subsection}]]></initialValueExpression>
 	</variable>
 	<variable name="newSection" class="java.lang.Integer">
 		<variableExpression><![CDATA[$P{section} + 1]]></variableExpression>
-		<initialValueExpression><![CDATA[$P{section}]]></initialValueExpression>
 	</variable>
 	<variable name="newChapter" class="java.lang.Integer">
 		<variableExpression><![CDATA[$P{chapter}]]></variableExpression>
-		<initialValueExpression><![CDATA[$P{chapter}]]></initialValueExpression>
 	</variable>
 	<variable name="x.y+1_access_control" class="java.lang.String">
 		<variableExpression><![CDATA[$P{chapter}+"."+($P{section}+1)+"     Access Control"]]></variableExpression>

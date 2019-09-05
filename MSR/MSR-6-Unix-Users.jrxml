@@ -147,7 +147,9 @@
 	<parameter name="chapter" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
-	<parameter name="subsection" class="java.lang.String"/>
+	<parameter name="subsection" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
 	<parameter name="section" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
 	</parameter>
@@ -163,12 +165,6 @@
 	<queryString language="SQL">
 		<![CDATA[select 1]]>
 	</queryString>
-	<variable name="NewLevel1Index" class="java.lang.Integer">
-		<variableExpression><![CDATA[$P{chapter}]]></variableExpression>
-	</variable>
-	<variable name="NewLevel2Index" class="java.lang.Integer">
-		<variableExpression><![CDATA[$P{section}]]></variableExpression>
-	</variable>
 	<variable name="x.SystemAccounts" class="java.lang.String">
 		<variableExpression><![CDATA[$P{chapter} + "       Sytem Accounts"]]></variableExpression>
 	</variable>
@@ -176,13 +172,22 @@
 		<variableExpression><![CDATA[$P{chapter}+"." + ($P{section}+1) +   "     Unix Accounts"]]></variableExpression>
 	</variable>
 	<variable name="x.y+1.1.UnixAccountsExisting" class="java.lang.String">
-		<variableExpression><![CDATA[$P{chapter}+"." + ($P{section}+1) +   ".1   Current Users Defined"]]></variableExpression>
+		<variableExpression><![CDATA[$P{chapter}+"." + ($P{section}+1) +   ".1   Current Unix Users Defined"]]></variableExpression>
 	</variable>
 	<variable name="x.y+1.2.UnixAccountsCreated" class="java.lang.String">
-		<variableExpression><![CDATA[$P{chapter}+"." + ($P{section}+1) +   ".2   Users Added"]]></variableExpression>
+		<variableExpression><![CDATA[$P{chapter}+"." + ($P{section}+1) +   ".2   Unix Users Added"]]></variableExpression>
 	</variable>
 	<variable name="x.y+1.3.UnixAccountsDeleted" class="java.lang.String">
-		<variableExpression><![CDATA[$P{chapter}+"." + ($P{section}+1) +   ".3   Users Disabled"]]></variableExpression>
+		<variableExpression><![CDATA[$P{chapter}+"." + ($P{section}+1) +   ".3   Unix Users Disabled"]]></variableExpression>
+	</variable>
+	<variable name="newSubsection" class="java.lang.Integer">
+		<variableExpression><![CDATA[$P{subsection}]]></variableExpression>
+	</variable>
+	<variable name="newSection" class="java.lang.Integer">
+		<variableExpression><![CDATA[$P{section} + 1]]></variableExpression>
+	</variable>
+	<variable name="newChapter" class="java.lang.Integer">
+		<variableExpression><![CDATA[$P{chapter}]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -296,7 +301,8 @@
 							<jr:columnHeader style="Table_CH" height="20">
 								<staticText>
 									<reportElement style="Table-Column-Header" x="0" y="0" width="170" height="20" uuid="e291d58b-2406-4c9b-a1fa-aa60b8a7c9d3"/>
-									<text><![CDATA[user_name]]></text>
+									<textElement textAlignment="Center"/>
+									<text><![CDATA[Name]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="20">
@@ -311,7 +317,8 @@
 							<jr:columnHeader style="Table_CH" height="20">
 								<staticText>
 									<reportElement style="Table-Column-Header" x="0" y="0" width="100" height="20" uuid="e02aaffb-24bd-47c7-a375-f52760ec325e"/>
-									<text><![CDATA[user_id]]></text>
+									<textElement textAlignment="Center"/>
+									<text><![CDATA[User ID]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="20">
@@ -326,7 +333,8 @@
 							<jr:columnHeader style="Table_CH" height="20">
 								<staticText>
 									<reportElement style="Table-Column-Header" x="0" y="0" width="173" height="20" uuid="03a3df6f-e3a6-47b4-bec5-5579815d7567"/>
-									<text><![CDATA[unit]]></text>
+									<textElement textAlignment="Center"/>
+									<text><![CDATA[Unit]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="20">
@@ -396,7 +404,8 @@
 							<jr:columnHeader style="Table_CH" height="20">
 								<staticText>
 									<reportElement style="Table-Column-Header" x="0" y="0" width="170" height="20" uuid="e8e8f655-ddba-4e54-90cb-c341c2dcbf09"/>
-									<text><![CDATA[user_name]]></text>
+									<textElement textAlignment="Center"/>
+									<text><![CDATA[Name]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="20">
@@ -411,7 +420,8 @@
 							<jr:columnHeader style="Table_CH" height="20">
 								<staticText>
 									<reportElement style="Table-Column-Header" x="0" y="0" width="100" height="20" uuid="2d43443b-52b0-41d7-98b2-e0638133f55b"/>
-									<text><![CDATA[user_id]]></text>
+									<textElement textAlignment="Center"/>
+									<text><![CDATA[User ID]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="20">
@@ -426,7 +436,8 @@
 							<jr:columnHeader style="Table_CH" height="20">
 								<staticText>
 									<reportElement style="Table-Column-Header" x="0" y="0" width="173" height="20" uuid="7d677288-43b9-474c-b9db-107e88d5eb95"/>
-									<text><![CDATA[unit]]></text>
+									<textElement textAlignment="Center"/>
+									<text><![CDATA[Unit]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="20">
@@ -496,7 +507,8 @@
 							<jr:columnHeader style="Table_CH" height="20">
 								<staticText>
 									<reportElement style="Table-Column-Header" x="0" y="0" width="170" height="20" uuid="ee38099d-c589-4a46-933a-d54de0e77e90"/>
-									<text><![CDATA[user_name]]></text>
+									<textElement textAlignment="Center"/>
+									<text><![CDATA[Name]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="20">
@@ -511,7 +523,8 @@
 							<jr:columnHeader style="Table_CH" height="20">
 								<staticText>
 									<reportElement style="Table-Column-Header" x="0" y="0" width="100" height="20" uuid="e3e74710-859d-4225-b8db-2cd18adc6718"/>
-									<text><![CDATA[user_id]]></text>
+									<textElement textAlignment="Center"/>
+									<text><![CDATA[User ID]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="20">
@@ -526,7 +539,8 @@
 							<jr:columnHeader style="Table_CH" height="20">
 								<staticText>
 									<reportElement style="Table-Column-Header" x="0" y="0" width="173" height="20" uuid="b69311f5-4de2-4c2b-9bf3-54355f7df1c1"/>
-									<text><![CDATA[unit]]></text>
+									<textElement textAlignment="Center"/>
+									<text><![CDATA[Unit]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="Table_TD" height="20">

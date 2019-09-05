@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Welcome" pageWidth="595" pageHeight="842" columnWidth="455" leftMargin="70" rightMargin="70" topMargin="70" bottomMargin="70" isSummaryWithPageHeaderAndFooter="true" uuid="b68e4251-4e98-4ffa-99cc-646e75dcfaf5">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Welcome" pageWidth="595" pageHeight="842" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" isSummaryWithPageHeaderAndFooter="true" uuid="b68e4251-4e98-4ffa-99cc-646e75dcfaf5">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Data Adapter\jasper-msr.xml"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.unit." value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
-	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
-	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
-	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
-	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="palg"/>
 	<property name="ireport.jasperserver.reportUnit" value="/Templates/Summary/Welcome"/>
@@ -33,10 +24,10 @@
 				<textFieldExpression><![CDATA[$P{coverTitle}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="32" width="455" height="1" uuid="d09819fc-4982-4636-b9e9-e96aaa844363"/>
+				<reportElement x="0" y="32" width="483" height="1" uuid="d09819fc-4982-4636-b9e9-e96aaa844363"/>
 			</line>
 			<textField evaluationTime="Master">
-				<reportElement style="headerPageNumbers" x="253" y="3" width="200" height="30" uuid="9544801a-8579-487a-b2e9-d2d7613b3ae0"/>
+				<reportElement style="headerPageNumbers" x="283" y="0" width="200" height="30" uuid="9544801a-8579-487a-b2e9-d2d7613b3ae0"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[DATEFORMAT(TODAY(),"dd MMM yyyy")+ " | Page " + $V{MASTER_CURRENT_PAGE}+ " of " + $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
 			</textField>
@@ -45,7 +36,7 @@
 	<detail>
 		<band height="376" splitType="Stretch">
 			<staticText>
-				<reportElement style="NormalText" positionType="Float" x="0" y="20" width="455" height="100" uuid="37b23a45-e9f2-4c67-8bca-bcdc2dca711b"/>
+				<reportElement style="NormalText" positionType="Float" x="0" y="20" width="483" height="100" uuid="37b23a45-e9f2-4c67-8bca-bcdc2dca711b"/>
 				<text><![CDATA[Welcome to the July 2018 edition of the Bank Environment Change Monitoring (BECM) Newsletter. The editorial deadline of this issue was the end of June 2018.
 This newsletter details all the latest changes in the banking regulatory environment, including new or changed industry standards and third-party systems. The newsletter includes Avaloq’s impact assessment on the Avaloq Banking Suite caused by these changes.
 Your regulatory change-monitoring team should read this document to help plan and execute any required changes to your Avaloq Banking Suite installation.
@@ -53,11 +44,11 @@ Your regulatory change-monitoring team should read this document to help plan an
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="TitleBlue" x="0" y="2" width="455" height="18" uuid="7fe3f729-8975-46ce-8104-5fd539e6fb3d"/>
+				<reportElement style="TitleBlue" x="0" y="2" width="483" height="18" uuid="7fe3f729-8975-46ce-8104-5fd539e6fb3d"/>
 				<text><![CDATA[Welcome!]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="disclaimer" positionType="Float" isPrintRepeatedValues="false" x="0" y="260" width="455" height="107" uuid="eb5e59ef-8d07-47fc-be9b-8c5a656db66b">
+				<reportElement style="disclaimer" positionType="Float" isPrintRepeatedValues="false" x="0" y="260" width="483" height="107" uuid="eb5e59ef-8d07-47fc-be9b-8c5a656db66b">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<text><![CDATA[Copyright Avaloq Licence AG. All rights reserved.
@@ -75,7 +66,7 @@ Schwerzistrasse 6 I CH-8807 Freienbach I Switzerland
 				<imageExpression><![CDATA["Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="385" y="0" width="70" height="51" uuid="0e9cfb83-cd7f-448d-b90d-98ed7c55829a"/>
+				<reportElement x="420" y="0" width="70" height="51" uuid="0e9cfb83-cd7f-448d-b90d-98ed7c55829a"/>
 				<imageExpression><![CDATA["Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
 			</image>
 		</band>

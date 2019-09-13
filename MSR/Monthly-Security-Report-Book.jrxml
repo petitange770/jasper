@@ -151,10 +151,10 @@ where company_tag =  $P{customer}]]>
 		<part uuid="a8b48502-a018-4ab3-a478-233c6d0deb18">
 			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
 				<subreportParameter name="REPORT_CONNECTION">
-					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION} ]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="chapter">
-					<subreportParameterExpression><![CDATA[$V{chapter} +1 ]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$V{chapter} +1]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="customer">
 					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
@@ -163,13 +163,13 @@ where company_tag =  $P{customer}]]>
 					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="section">
-					<subreportParameterExpression><![CDATA[$V{section}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="selectedDate">
 					<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="subsection">
-					<subreportParameterExpression><![CDATA[$V{subsection}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
 				</subreportParameter>
 				<returnValue subreportVariable="newChapter" toVariable="chapter"/>
 				<returnValue subreportVariable="newSection" toVariable="section"/>
@@ -177,10 +177,36 @@ where company_tag =  $P{customer}]]>
 				<subreportExpression><![CDATA["MSR-6-Unix-Users.jasper"]]></subreportExpression>
 			</p:subreportPart>
 		</part>
-		<part uuid="c25c71c0-99e7-4ae5-8c08-9f12e9c483da">
+		<part uuid="11ddbeca-af60-4e96-9d57-e866183ea865">
 			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
 				<subreportParameter name="REPORT_CONNECTION">
 					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION} ]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="chapter">
+					<subreportParameterExpression><![CDATA[$V{chapter}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="covertTitle">
+					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="customer">
+					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="section">
+					<subreportParameterExpression><![CDATA[$V{section}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="selectedDate">
+					<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subsection">
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["MSR-6.2-DBA-Users.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="c25c71c0-99e7-4ae5-8c08-9f12e9c483da">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="REPORT_CONNECTION">
+					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="chapter">
 					<subreportParameterExpression><![CDATA[$V{chapter} + 1]]></subreportParameterExpression>
@@ -192,13 +218,13 @@ where company_tag =  $P{customer}]]>
 					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="section">
-					<subreportParameterExpression><![CDATA[$V{section}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="selectedDate">
 					<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="subsection">
-					<subreportParameterExpression><![CDATA[$V{subsection}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportExpression><![CDATA["MSR-7-Windows-Users.jasper"]]></subreportExpression>
 			</p:subreportPart>

@@ -30,6 +30,10 @@
 			<bottomPen lineWidth="0.5" lineColor="#000000"/>
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EBF6FD"/>
+		</conditionalStyle>
 	</style>
 	<subDataset name="WindowsCurrentUsers" uuid="cb3a19c3-835f-4892-8c72-397021b5cb95">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>

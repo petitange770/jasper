@@ -375,7 +375,7 @@
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="AvaloqCountUsers" uuid="79ecd522-b7cd-4421-8dd0-c795b9afb170">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION} ]]></connectionExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="100" uuid="1e66e7dc-31e5-41d4-bf18-e41637993d04">
 						<jr:detailCell style="Table 1_TD" height="20">
@@ -431,8 +431,12 @@
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
-								<reportElement style="Table-Detail-line" x="0" y="0" width="35" height="20" uuid="89c9d4ef-fd4d-4b9e-9d94-e96d6ee0fc18"/>
-								<textElement textAlignment="Center"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="35" height="20" uuid="89c9d4ef-fd4d-4b9e-9d94-e96d6ee0fc18">
+									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+								</reportElement>
+								<textElement textAlignment="Right" markup="styled">
+									<paragraph rightIndent="2"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{rownum}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -601,8 +605,12 @@
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
-								<reportElement style="Table-Detail-line" x="0" y="0" width="35" height="20" uuid="3d72ce96-4bcc-44fe-9837-1d3589dea102"/>
-								<textElement textAlignment="Center"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="35" height="20" uuid="3d72ce96-4bcc-44fe-9837-1d3589dea102">
+									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+								</reportElement>
+								<textElement textAlignment="Right">
+									<paragraph rightIndent="2"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{rownum}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -787,8 +795,12 @@
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
-								<reportElement style="Table-Detail-line" x="0" y="0" width="35" height="20" uuid="3b99fd8e-04f3-4852-8c0d-90864fea5379"/>
-								<textElement textAlignment="Center"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="35" height="20" uuid="3b99fd8e-04f3-4852-8c0d-90864fea5379">
+									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+								</reportElement>
+								<textElement textAlignment="Right">
+									<paragraph rightIndent="2"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{rownum}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>

@@ -380,7 +380,7 @@ GROUP BY customer, export_date]]>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="UsersByType" uuid="509fdb48-f1ec-40fb-9773-7e0ae148bca8">
+					<datasetRun subDataset="UsersByType" uuid="1461990b-b410-4ad5-a99e-8e3d54520426">
 						<datasetParameter name="customer">
 							<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
 						</datasetParameter>
@@ -481,7 +481,7 @@ GROUP BY customer, export_date]]>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<stackedBar3DChart>
 				<chart evaluationTime="Report" theme="eye.candy.sixties">
-					<reportElement key="" x="0" y="0" width="483" height="260" isRemoveLineWhenBlank="true" uuid="81f752aa-87d4-4057-b549-75ab03916aa7">
+					<reportElement key="" x="0" y="0" width="483" height="260" isRemoveLineWhenBlank="true" uuid="3104dc01-766d-43d5-9007-a32d32df2a91">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<chartTitle>
@@ -495,7 +495,14 @@ GROUP BY customer, export_date]]>
 				</chart>
 				<categoryDataset>
 					<dataset>
-						<datasetRun subDataset="EmployeeByType" uuid="b4fb23b7-5a92-4bfb-8c01-a7bb0bb3f727"/>
+						<datasetRun subDataset="EmployeeByType" uuid="30cb35c9-dcfd-4e6f-9059-37cf60208a68">
+							<datasetParameter name="customer">
+								<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="periodSelected">
+								<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
+							</datasetParameter>
+						</datasetRun>
 					</dataset>
 					<categorySeries>
 						<seriesExpression><![CDATA[$F{user_type}]]></seriesExpression>

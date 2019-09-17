@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Critical and Sensitive Assets" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="730" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" uuid="b68e4251-4e98-4ffa-99cc-646e75dcfaf5">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Avaloq" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="730" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" uuid="b68e4251-4e98-4ffa-99cc-646e75dcfaf5">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -125,12 +125,12 @@ where company_tag =  $P{customer}]]>
 		<band height="152">
 			<image>
 				<reportElement x="270" y="0" width="140" height="150" uuid="acaef370-142a-44e0-addc-74265a9b747a">
-					<printWhenExpression><![CDATA[MID($F{company_mesi},1, 2 ) != "SB"]]></printWhenExpression>
+					<printWhenExpression><![CDATA[MID($F{company_mesi},1, 2 ) != "SG"]]></printWhenExpression>
 				</reportElement>
 				<imageExpression><![CDATA["/Images/AvaloqSourceMaster.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="410" y="0" width="170" height="150" isRemoveLineWhenBlank="true" uuid="454a8564-54a0-48e0-908c-60e8e020939d">
+				<reportElement style="coverCustomer" x="410" y="0" width="170" height="150" isRemoveLineWhenBlank="true" uuid="454a8564-54a0-48e0-908c-60e8e020939d">
 					<printWhenExpression><![CDATA[MID($F{company_mesi},1, 2 ) == "SB"]]></printWhenExpression>
 				</reportElement>
 				<imageExpression><![CDATA["C:\\Users\\Gabriel\\jasper\\FirstProject\\Images\\Avaloq\\AVA_claim_100_rgb_black.png"]]></imageExpression>

@@ -417,7 +417,13 @@
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="AvaloqUsers" uuid="3a6c6ae9-578f-4617-8e86-d72beec7b9df">
+					<datasetRun subDataset="AvaloqUsers" uuid="13566f2c-3b18-4ff0-9ef6-59f46a6f40d9">
+						<datasetParameter name="customer">
+							<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="selected_date">
+							<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="35" uuid="bb38063d-2473-4784-b3cc-59b6cc356ded">
@@ -590,7 +596,13 @@
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="AvaloqAddedUsers" uuid="3aa29f09-b3ee-4aa9-b083-5042cdaeb6d1">
+					<datasetRun subDataset="AvaloqAddedUsers" uuid="f0852f04-aa09-4286-a888-cc0187e4fb0c">
+						<datasetParameter name="customer">
+							<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="selected_date">
+							<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="35" uuid="c31f3fab-bc79-4421-b75a-b4f64980965a">
@@ -780,7 +792,13 @@
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="AvaloqRemovedUsers" uuid="1ad346b4-c730-462b-9e30-f99bdfbd87a7">
+					<datasetRun subDataset="AvaloqRemovedUsers" uuid="77acd458-4a52-4820-9cc1-d2937b721db5">
+						<datasetParameter name="customer">
+							<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="selected_date">
+							<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="35" uuid="480b4fd5-134b-4202-a269-a8fc6d90ea91">

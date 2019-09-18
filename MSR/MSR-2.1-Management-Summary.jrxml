@@ -120,7 +120,7 @@
 						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<staticText>
-						<reportElement style="Table-Detail-line" x="0" y="0" width="149" height="34" uuid="e0f2d98a-c206-4be1-b8d4-e5c66833629a"/>
+						<reportElement style="Table-Detail-line" x="0" y="0" width="150" height="34" uuid="e0f2d98a-c206-4be1-b8d4-e5c66833629a"/>
 						<box>
 							<topPen lineWidth="1.0"/>
 							<leftPen lineWidth="1.0"/>
@@ -320,7 +320,7 @@
 		<band height="230">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<stackedBar3DChart>
-				<chart evaluationTime="Report" theme="eye.candy.sixties">
+				<chart evaluationTime="Report" theme="generic">
 					<reportElement key="" x="0" y="0" width="483" height="230" uuid="620db260-61ba-488a-bc24-8f7869c4a827">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>

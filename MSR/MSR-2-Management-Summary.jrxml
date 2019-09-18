@@ -480,7 +480,7 @@ GROUP BY customer, export_date]]>
 		<band height="260">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<stackedBar3DChart>
-				<chart evaluationTime="Report" theme="eye.candy.sixties">
+				<chart evaluationTime="Report" theme="generic">
 					<reportElement key="" x="0" y="0" width="483" height="260" isRemoveLineWhenBlank="true" uuid="3104dc01-766d-43d5-9007-a32d32df2a91">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>

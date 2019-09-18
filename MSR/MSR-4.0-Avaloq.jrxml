@@ -11,6 +11,8 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="636"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="354"/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<style name="Table_TH" mode="Opaque" backcolor="#004893">
 		<box>
@@ -61,14 +63,12 @@
 	<parameter name="selectedDate" class="java.lang.String">
 		<defaultValueExpression><![CDATA["20190601"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="company_mesi" class="java.lang.String">
+		<defaultValueExpression><![CDATA["SB4"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[select company_mesi from msr.banks
-where company_tag =  $P{customer}]]>
+		<![CDATA[select 1]]>
 	</queryString>
-	<field name="company_mesi" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="company_mesi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="banks"/>
-	</field>
 	<variable name="newSubsection" class="java.lang.Integer">
 		<variableExpression><![CDATA[$P{subsection}]]></variableExpression>
 	</variable>
@@ -103,37 +103,38 @@ where company_tag =  $P{customer}]]>
 	<detail>
 		<band height="60" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
-			<frame>
-				<reportElement positionType="Float" x="0" y="0" width="730" height="40" uuid="f9d4fc46-adc0-4ad1-9b2a-acd97a57a8fe"/>
-				<textField bookmarkLevel="1">
-					<reportElement style="Header-3" positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="730" height="20" uuid="65be17bb-0e98-46bb-ac98-5b1715efeb73"/>
-					<textElement>
-						<font fontName="Arial" size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{x. Avaloq}]]></textFieldExpression>
-					<anchorNameExpression><![CDATA[$V{x. Avaloq}]]></anchorNameExpression>
-				</textField>
-				<staticText>
-					<reportElement style="NormalText" positionType="Float" x="-1" y="22" width="730" height="38" isPrintWhenDetailOverflows="true" uuid="2f238b33-f12f-4d53-a611-b8ed526115db"/>
-					<textElement>
-						<font fontName="Arial" size="11"/>
-					</textElement>
-					<text><![CDATA[Avaloq core banking solution is based on an Avaloq customization named Avaloq Source Master (ASM) that enables multiple Business Units (BU) on a single Avaloq instance.]]></text>
-				</staticText>
-			</frame>
+			<textField bookmarkLevel="1">
+				<reportElement style="Header-3" positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="730" height="20" uuid="65be17bb-0e98-46bb-ac98-5b1715efeb73"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{x. Avaloq}]]></textFieldExpression>
+				<anchorNameExpression><![CDATA[$V{x. Avaloq}]]></anchorNameExpression>
+			</textField>
+			<staticText>
+				<reportElement style="NormalText" positionType="Float" x="-1" y="22" width="730" height="38" isPrintWhenDetailOverflows="true" uuid="2f238b33-f12f-4d53-a611-b8ed526115db"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Avaloq core banking solution is based on an Avaloq customization named Avaloq Source Master (ASM) that enables multiple Business Units (BU) on a single Avaloq instance.]]></text>
+			</staticText>
 		</band>
-		<band height="152">
-			<image>
-				<reportElement x="270" y="0" width="140" height="150" uuid="acaef370-142a-44e0-addc-74265a9b747a">
-					<printWhenExpression><![CDATA[MID($F{company_mesi},1, 2 ) != "SG"]]></printWhenExpression>
+		<band height="155">
+			<image onErrorType="Blank">
+				<reportElement style="TOC-Title-Table-Of-Content" x="260" y="0" width="170" height="150" isRemoveLineWhenBlank="true" uuid="454a8564-54a0-48e0-908c-60e8e020939d">
+					<printWhenExpression><![CDATA[($P{company_mesi}=="SB4")]]></printWhenExpression>
 				</reportElement>
-				<imageExpression><![CDATA["/Images/AvaloqSourceMaster.png"]]></imageExpression>
+				<imageExpression><![CDATA["\\Images\\AvaloqSourceMaster.png"]]></imageExpression>
 			</image>
-			<image>
-				<reportElement style="coverCustomer" x="410" y="0" width="170" height="150" isRemoveLineWhenBlank="true" uuid="454a8564-54a0-48e0-908c-60e8e020939d">
-					<printWhenExpression><![CDATA[MID($F{company_mesi},1, 2 ) == "SB"]]></printWhenExpression>
+			<textField>
+				<reportElement x="70" y="70" width="100" height="30" uuid="0f047a5c-6a66-4f8c-be77-4f73ea3d1db9"/>
+				<textFieldExpression><![CDATA[$P{company_mesi}]]></textFieldExpression>
+			</textField>
+			<image onErrorType="Blank">
+				<reportElement style="headerDocumentTitle" isPrintRepeatedValues="false" x="440" y="0" width="170" height="150" isRemoveLineWhenBlank="true" uuid="a06cfcd1-7a76-4e09-811d-474af0f506b6">
+					<printWhenExpression><![CDATA[($P{company_mesi}!="SB4")]]></printWhenExpression>
 				</reportElement>
-				<imageExpression><![CDATA["C:\\Users\\Gabriel\\jasper\\FirstProject\\Images\\Avaloq\\AVA_claim_100_rgb_black.png"]]></imageExpression>
+				<imageExpression><![CDATA["\\Images\\Avaloq_Source_Master_1.png"]]></imageExpression>
 			</image>
 		</band>
 		<band height="123">

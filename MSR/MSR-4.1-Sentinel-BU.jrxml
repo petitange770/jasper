@@ -341,31 +341,6 @@
 	<detail>
 		<band height="60" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
-			<frame>
-				<reportElement positionType="Float" x="0" y="0" width="730" height="40" uuid="f9d4fc46-adc0-4ad1-9b2a-acd97a57a8fe"/>
-				<textField bookmarkLevel="1">
-					<reportElement style="Header-3" positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="730" height="20" uuid="65be17bb-0e98-46bb-ac98-5b1715efeb73"/>
-					<textElement>
-						<font fontName="Arial" size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{x.y_SentinelBuAccounts}]]></textFieldExpression>
-					<anchorNameExpression><![CDATA[$V{x.y_SentinelBuAccounts}]]></anchorNameExpression>
-				</textField>
-				<staticText>
-					<reportElement style="NormalText" positionType="Float" x="-1" y="22" width="730" height="15" isPrintWhenDetailOverflows="true" uuid="2f238b33-f12f-4d53-a611-b8ed526115db"/>
-					<textElement>
-						<font fontName="Arial" size="11"/>
-					</textElement>
-					<text><![CDATA[The number of all Avaloq Sourcing (Switzerland & Liechtenstein) SA user accounts on Sentinel BU with potential access to the system (incl. LOCKED]]></text>
-				</staticText>
-				<staticText>
-					<reportElement style="NormalText" positionType="Float" x="-2" y="37" width="72" height="18" isPrintWhenDetailOverflows="true" uuid="c15c8561-b5cb-4df3-939a-ed54d8680c54"/>
-					<textElement>
-						<font fontName="Arial" size="11"/>
-					</textElement>
-					<text><![CDATA[accounts) is ]]></text>
-				</staticText>
-			</frame>
 			<componentElement>
 				<reportElement positionType="Float" x="71" y="37" width="70" height="16" uuid="17faf07d-b51b-4329-adba-8424c2e2aec5">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
@@ -374,7 +349,13 @@
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="AvaloqCountUsers" uuid="79ecd522-b7cd-4421-8dd0-c795b9afb170">
+					<datasetRun subDataset="AvaloqCountUsers" uuid="6425c4eb-46d8-459b-b242-2e3b7c5cd3fe">
+						<datasetParameter name="customer">
+							<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="selected_date">
+							<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="100" uuid="1e66e7dc-31e5-41d4-bf18-e41637993d04">
@@ -406,6 +387,28 @@
 					</jr:column>
 				</jr:table>
 			</componentElement>
+			<textField bookmarkLevel="1">
+				<reportElement style="Header-3" positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="730" height="20" uuid="65be17bb-0e98-46bb-ac98-5b1715efeb73"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{x.y_SentinelBuAccounts}]]></textFieldExpression>
+				<anchorNameExpression><![CDATA[$V{x.y_SentinelBuAccounts}]]></anchorNameExpression>
+			</textField>
+			<staticText>
+				<reportElement style="NormalText" positionType="Float" x="-1" y="22" width="730" height="15" isPrintWhenDetailOverflows="true" uuid="2f238b33-f12f-4d53-a611-b8ed526115db"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[The number of all Avaloq Sourcing (Switzerland & Liechtenstein) SA user accounts on Sentinel BU with potential access to the system (incl. LOCKED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="NormalText" positionType="Float" x="-2" y="37" width="72" height="18" isPrintWhenDetailOverflows="true" uuid="c15c8561-b5cb-4df3-939a-ed54d8680c54"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[accounts) is ]]></text>
+			</staticText>
 		</band>
 		<band height="88">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>

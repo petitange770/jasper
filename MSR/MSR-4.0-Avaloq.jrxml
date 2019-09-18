@@ -121,20 +121,8 @@
 		</band>
 		<band height="155">
 			<image onErrorType="Blank">
-				<reportElement style="TOC-Title-Table-Of-Content" x="260" y="0" width="170" height="150" isRemoveLineWhenBlank="true" uuid="454a8564-54a0-48e0-908c-60e8e020939d">
-					<printWhenExpression><![CDATA[($P{company_mesi}=="SB4")]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA["\\Images\\AvaloqSourceMaster.png"]]></imageExpression>
-			</image>
-			<textField>
-				<reportElement x="70" y="70" width="100" height="30" uuid="0f047a5c-6a66-4f8c-be77-4f73ea3d1db9"/>
-				<textFieldExpression><![CDATA[$P{company_mesi}]]></textFieldExpression>
-			</textField>
-			<image onErrorType="Blank">
-				<reportElement style="headerDocumentTitle" isPrintRepeatedValues="false" x="440" y="0" width="170" height="150" isRemoveLineWhenBlank="true" uuid="a06cfcd1-7a76-4e09-811d-474af0f506b6">
-					<printWhenExpression><![CDATA[($P{company_mesi}!="SB4")]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA["\\Images\\Avaloq_Source_Master_1.png"]]></imageExpression>
+				<reportElement style="TOC-Title1" x="260" y="0" width="170" height="150" isRemoveLineWhenBlank="true" uuid="454a8564-54a0-48e0-908c-60e8e020939d"/>
+				<imageExpression><![CDATA[$P{company_mesi}.equals("SB4")?"\\Images\\AvaloqSourceMaster.png":"\\Images\\Avaloq_Source_Master_1.png"]]></imageExpression>
 			</image>
 		</band>
 		<band height="123">

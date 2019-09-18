@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Conditional_image" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9e220005-705e-4ba0-aa4d-dd500a04bac2">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+	<parameter name="imageName" class="java.lang.String">
+		<defaultValueExpression><![CDATA["tree1"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[select 1]]>
+	</queryString>
+	<variable name="selectedImage" class="java.lang.String">
+		<variableExpression><![CDATA[$P{imageName}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="7" width="555" height="30" uuid="72f89cf1-b273-4c21-9756-a0b5def04357"/>
+				<textElement textAlignment="Center">
+					<font size="21"/>
+				</textElement>
+				<text><![CDATA[Trees]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="172" splitType="Stretch">
+			<image>
+				<reportElement x="220" y="20" width="130" height="125" uuid="d395ca8e-bf2f-40de-94aa-3fed68f3ea70"/>
+				<imageExpression><![CDATA[$P{imageName}=="tree1"?"\\Images\\tree1.png":"\\Images\\tree2.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="20" y="70" width="100" height="19" uuid="cd2de853-ee14-485c-bae3-dd7846c1fdcc"/>
+				<textFieldExpression><![CDATA[$P{imageName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="100" width="100" height="20" uuid="87c88a63-a04f-4566-93e5-d799d55243ef"/>
+				<textFieldExpression><![CDATA[$V{selectedImage}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

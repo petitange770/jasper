@@ -367,6 +367,7 @@ where company_tag =  $P{customer}]]>
 			</p:subreportPart>
 		</part>
 		<part uuid="c25c71c0-99e7-4ae5-8c08-9f12e9c483da">
+			<printWhenExpression><![CDATA[$F{nb_win_users}>0]]></printWhenExpression>
 			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
 				<subreportParameter name="REPORT_CONNECTION">
 					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>

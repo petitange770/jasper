@@ -238,13 +238,14 @@
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="55" splitType="Stretch">
+		<band height="30" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
-				<reportElement x="0" y="41" width="153" height="10" uuid="0e03300e-547b-49bc-8fba-b3589a5c6e51"/>
+				<reportElement x="0" y="19" width="153" height="10" uuid="77e3d1cc-ad87-4aa5-ab0f-bb56639e322e"/>
 				<imageExpression><![CDATA["Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="660" y="0" width="70" height="51" uuid="0e9cfb83-cd7f-448d-b90d-98ed7c55829a"/>
+				<reportElement x="650" y="8" width="80" height="21" uuid="5bb9bbd0-77da-46c6-a177-aab67a119238"/>
 				<imageExpression><![CDATA["Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
 			</image>
 		</band>

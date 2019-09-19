@@ -387,13 +387,14 @@
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="55" splitType="Stretch">
+		<band height="30" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
-				<reportElement x="0" y="41" width="153" height="10" uuid="0e03300e-547b-49bc-8fba-b3589a5c6e51"/>
+				<reportElement x="0" y="19" width="153" height="10" uuid="256c99c8-bb71-4c80-969f-59100f263bf9"/>
 				<imageExpression><![CDATA["Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="413" y="0" width="70" height="51" uuid="0e9cfb83-cd7f-448d-b90d-98ed7c55829a"/>
+				<reportElement x="403" y="9" width="80" height="21" uuid="6e0eda3e-3fa6-4f1f-88b7-3a99cd1be625"/>
 				<imageExpression><![CDATA["Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
 			</image>
 		</band>

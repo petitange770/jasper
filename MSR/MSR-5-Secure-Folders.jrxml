@@ -195,14 +195,15 @@
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch">
+		<band height="30" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
-				<reportElement x="0" y="43" width="153" height="10" uuid="b49f92cd-0dd9-403d-8b1e-c08075799b5a"/>
-				<imageExpression><![CDATA["Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
+				<reportElement x="403" y="9" width="80" height="21" uuid="bd485fe0-3881-4a41-afe7-7505ccfa632b"/>
+				<imageExpression><![CDATA["Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="412" y="2" width="70" height="51" uuid="5457757c-dfab-41cc-8eb3-5131b219b2c9"/>
-				<imageExpression><![CDATA["Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
+				<reportElement x="0" y="19" width="153" height="10" uuid="fc1cc8de-1cf6-4889-99a6-27f8a9ecc257"/>
+				<imageExpression><![CDATA["Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageFooter>

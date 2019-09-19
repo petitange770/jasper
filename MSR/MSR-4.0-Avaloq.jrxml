@@ -13,6 +13,8 @@
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="636"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="354"/>
+	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="palg"/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<style name="Table_TH" mode="Opaque" backcolor="#004893">
 		<box>
@@ -122,10 +124,10 @@
 				<text><![CDATA[Avaloq core banking solution is based on an Avaloq customization named Avaloq Source Master (ASM) that enables multiple Business Units (BU) on a single Avaloq instance.]]></text>
 			</staticText>
 		</band>
-		<band height="164">
+		<band height="170">
 			<image hAlign="Center" vAlign="Middle">
 				<reportElement x="269" y="0" width="190" height="164" uuid="f7946bd9-5931-4109-a8f6-c6495d5d094d"/>
-				<imageExpression><![CDATA[$P{is_mesi}?"/Images/AvaloqSourceMaster.png":"/Images/Avaloq_Source_Master_1.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{is_mesi}?"repo:/reports/Monthly_Security_Report_Book_files/AvaloqSourceMaster.png":"repo:/reports/Monthly_Security_Report_Book_files/Avaloq_Source_Master_1.png"]]></imageExpression>
 			</image>
 		</band>
 		<band height="123">

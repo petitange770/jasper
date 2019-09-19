@@ -84,13 +84,14 @@ The scope is extended to all information security perimeter as agreed and define
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="51" splitType="Stretch">
+		<band height="30" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
-				<reportElement x="0" y="41" width="153" height="10" uuid="0e03300e-547b-49bc-8fba-b3589a5c6e51"/>
+				<reportElement x="0" y="20" width="153" height="10" uuid="5f2a216c-7839-44be-aef1-78aae9032088"/>
 				<imageExpression><![CDATA["Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="413" y="0" width="70" height="51" uuid="0e9cfb83-cd7f-448d-b90d-98ed7c55829a"/>
+				<reportElement x="403" y="9" width="80" height="21" uuid="85bbc65a-576d-44b6-a50e-a53ddcfe320e"/>
 				<imageExpression><![CDATA["Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
 			</image>
 		</band>

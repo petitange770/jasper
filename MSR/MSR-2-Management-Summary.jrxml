@@ -547,13 +547,14 @@ GROUP BY customer, export_date]]>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="55" splitType="Stretch">
+		<band height="30" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
-				<reportElement x="0" y="41" width="153" height="10" uuid="0e03300e-547b-49bc-8fba-b3589a5c6e51"/>
+				<reportElement x="0" y="19" width="153" height="10" uuid="2343a315-2127-4321-a613-e4386f18c4e7"/>
 				<imageExpression><![CDATA["Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="413" y="0" width="70" height="51" uuid="0e9cfb83-cd7f-448d-b90d-98ed7c55829a"/>
+				<reportElement x="403" y="9" width="80" height="21" uuid="6531c64a-2533-4b0f-8992-acfdb449b74e"/>
 				<imageExpression><![CDATA["Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
 			</image>
 		</band>

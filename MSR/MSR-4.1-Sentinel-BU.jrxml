@@ -410,10 +410,10 @@
 				<text><![CDATA[accounts) is ]]></text>
 			</staticText>
 		</band>
-		<band height="88">
+		<band height="86">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<componentElement>
-				<reportElement x="0" y="30" width="730" height="50" uuid="d64cf5ee-6edc-491a-8141-041c02756a58">
+				<reportElement style="Table_TD" x="0" y="30" width="730" height="50" uuid="d64cf5ee-6edc-491a-8141-041c02756a58">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -590,7 +590,7 @@
 				<anchorNameExpression><![CDATA[$V{x.y.z_currentSentinelBuAccounts}]]></anchorNameExpression>
 			</textField>
 		</band>
-		<band height="86">
+		<band height="84">
 			<componentElement>
 				<reportElement x="0" y="30" width="730" height="50" uuid="f29b4cd7-8a85-46f1-ba74-6cbd1ff21aff">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
@@ -778,7 +778,7 @@
 				<anchorNameExpression><![CDATA[$V{x.y.z_SentinelBuAccountsAdded}]]></anchorNameExpression>
 			</textField>
 		</band>
-		<band height="90">
+		<band height="87">
 			<textField bookmarkLevel="1">
 				<reportElement style="Header-4" positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="730" height="20" uuid="55682856-8d9a-46be-b039-b1df4a55533e"/>
 				<textElement>

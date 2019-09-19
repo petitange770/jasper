@@ -13,26 +13,24 @@
 	<parameter name="customer" class="java.lang.String">
 		<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="Month" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[6]]></defaultValueExpression>
-	</parameter>
-	<parameter name="Year" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[2019]]></defaultValueExpression>
-	</parameter>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Monthly Security Report"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="reportDate" class="java.util.Date">
+		<defaultValueExpression><![CDATA[DATE(2019,06,02)]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[select bank_id, 
 company, 
-company_mesi, 
+company_mesi,
 company_parent, 
 company_tag, 
 siem_client, 
 (select count(WU.user_id) 
 	 from msr.windows_users AS WU 
-	 where WU.customer= $P{customer} 
-	 and WU.export_date = to_date(concat(to_char( $P{Year}  , '0000'), to_char( $P{Month} , '00'), to_char( 1, '00')), 'YYYYMMDD')) as nb_win_users
+	 where WU.customer=  $P{customer} 
+         and concat(extract(year from WU.export_date)             , extract(month from WU.export_date)) = 
+         concat(extract(year from  $P{reportDate}::date ), extract(month from  $P{reportDate}::date )))  as nb_win_users
 from msr.banks
 where company_tag =  $P{customer}]]>
 	</queryString>
@@ -67,7 +65,7 @@ where company_tag =  $P{customer}]]>
 	<variable name="section" class="java.lang.Integer"/>
 	<variable name="subsection" class="java.lang.Integer"/>
 	<variable name="selectedDate" class="java.lang.String">
-		<variableExpression><![CDATA[$P{Year}+String.format("%02d", $P{Month})+"01"]]></variableExpression>
+		<variableExpression><![CDATA[String.format("%04d", YEAR($P{reportDate}))+String.format("%02d", MONTH($P{reportDate}) )+"01"]]></variableExpression>
 	</variable>
 	<group name="cover">
 		<groupHeader>
@@ -218,13 +216,16 @@ where company_tag =  $P{customer}]]>
 				<subreportExpression><![CDATA["MSR-3-Critical-Sensitive.jasper"]]></subreportExpression>
 			</p:subreportPart>
 		</part>
-		<part uuid="a27d8749-0c6b-437e-aeaf-6c6e387cc31d">
+		<part uuid="1b18a4a4-c327-4922-8110-ec507ad8f118">
 			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
 				<subreportParameter name="REPORT_CONNECTION">
-					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION} ]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="chapter">
 					<subreportParameterExpression><![CDATA[$V{chapter} + 1]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="is_mesi">
+					<subreportParameterExpression><![CDATA[$F{company_mesi}.equals("SB4")?true:false]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="coverTitle">
 					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
@@ -241,13 +242,10 @@ where company_tag =  $P{customer}]]>
 				<subreportParameter name="subsection">
 					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
 				</subreportParameter>
-				<subreportParameter name="company_mesi">
-					<subreportParameterExpression><![CDATA[$F{company_mesi}]]></subreportParameterExpression>
-				</subreportParameter>
 				<returnValue subreportVariable="newChapter" toVariable="chapter"/>
 				<returnValue subreportVariable="newSection" toVariable="section"/>
 				<returnValue subreportVariable="newSubsection" toVariable="subsection"/>
-				<subreportExpression><![CDATA["C:\\Users\\Gabriel\\Jasper\\MSR\\MSR-4.0-Avaloq.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["MSR-4.0-Avaloq.jasper"]]></subreportExpression>
 			</p:subreportPart>
 		</part>
 		<part uuid="c6fb4765-fe51-41f2-abe0-11d22f47c3df">

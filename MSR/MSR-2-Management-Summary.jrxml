@@ -470,7 +470,7 @@ GROUP BY customer, export_date]]>
 		<band height="55">
 			<staticText>
 				<reportElement style="Header-3" x="0" y="35" width="483" height="20" uuid="7e5b1d11-f067-40d7-9022-358d46cf3c8b"/>
-				<text><![CDATA[Business]]></text>
+				<text><![CDATA[Business Access]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="0" width="483" height="30" uuid="593fbb00-7416-40ff-98c0-9973e36799d2"/>
@@ -486,7 +486,7 @@ GROUP BY customer, export_date]]>
 					</reportElement>
 					<chartTitle>
 						<font fontName="Arial" size="16"/>
-						<titleExpression><![CDATA["Unix Accounts by Type"]]></titleExpression>
+						<titleExpression><![CDATA["Busines Acces by Type"]]></titleExpression>
 					</chartTitle>
 					<chartSubtitle/>
 					<chartLegend position="Bottom">

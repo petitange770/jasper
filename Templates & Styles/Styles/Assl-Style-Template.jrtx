@@ -4,7 +4,7 @@
 	<style name="NormalText" isDefault="true" fontName="Arial" fontSize="10">
 		<paragraph lineSpacing="Single" leftIndent="2"/>
 	</style>
-	<style name="coverTitleStyle" vTextAlign="Middle" fontName="Arial" fontSize="30" isBold="true">
+	<style name="coverTitleStyle" vTextAlign="Middle" fontName="Arial" fontSize="32" isBold="true">
 		<paragraph leftIndent="2"/>
 	</style>
 	<style name="coverCustomer" fontName="Arial" fontSize="16" isBold="true"/>

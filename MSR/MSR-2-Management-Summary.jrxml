@@ -477,7 +477,7 @@ GROUP BY customer, export_date]]>
 				<text><![CDATA[From a risk perspective, the changes introduced during current month did not modify the security exposure of the Client.]]></text>
 			</staticText>
 		</band>
-		<band height="260">
+		<band height="266">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<stackedBar3DChart>
 				<chart evaluationTime="Report" theme="generic">

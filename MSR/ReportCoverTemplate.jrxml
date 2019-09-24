@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportCoverTemplate" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="46a3caf7-2821-4a54-a400-0ee9ac3664de">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportCoverTemplate" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isFloatColumnFooter="true" uuid="46a3caf7-2821-4a54-a400-0ee9ac3664de">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Data Adapter\jasper-msr.xml"/>
-	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
-	<property name="ireport.jasperserver.user" value="palg"/>
-	<property name="ireport.jasperserver.reportUnit" value="/Templates/Cover/ReportCoverTemplate"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+	<property name="ireport.jasperserver.url" value="https://jasper.mgt.ac.avaloqsourcing.net:8443/jasperserver-pro/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.reportUnit" value="/templates/Cover/ReportCoverTemplate"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
@@ -14,13 +14,13 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<property name="ireport.jasperserver.report.resource" value="/Templates/Cover/ReportCoverTemplate_files/main_jrxml"/>
+	<property name="ireport.jasperserver.report.resource" value="/templates/Cover/ReportCoverTemplate_files/main_jrxml"/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Newsletter template"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="customer" class="java.lang.String">
-		<defaultValueExpression><![CDATA["Arab Bank"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["IWM"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
 		<defaultValueExpression><![CDATA["20190601"]]></defaultValueExpression>
@@ -42,19 +42,19 @@
 				<imageExpression><![CDATA["/Images/Client-Security-Report_CG.jpg"]]></imageExpression>
 			</image>
 			<rectangle radius="15">
-				<reportElement mode="Opaque" x="30" y="100" width="510" height="61" forecolor="#3DE6F5" backcolor="rgba(7, 204, 230, 0.6862745)" uuid="f412760f-9cf5-4360-ba1c-64c4c17f4939"/>
+				<reportElement mode="Opaque" x="30" y="100" width="510" height="61" forecolor="#0097DB" backcolor="rgba(0, 151, 219, 0.6862745)" uuid="f412760f-9cf5-4360-ba1c-64c4c17f4939"/>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle radius="15">
-				<reportElement mode="Opaque" x="30" y="110" width="491" height="61" forecolor="#3DE6F5" backcolor="rgba(48, 198, 252, 0.7058824)" uuid="acca72f4-8757-4fe3-8561-961fd9f7a68e"/>
+				<reportElement mode="Opaque" x="30" y="106" width="491" height="61" forecolor="#0097DB" backcolor="rgba(0, 151, 219, 0.7058824)" uuid="acca72f4-8757-4fe3-8561-961fd9f7a68e"/>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle radius="15">
-				<reportElement mode="Opaque" x="35" y="110" width="465" height="61" forecolor="#3DE6F5" backcolor="rgba(48, 232, 252, 0.64705884)" uuid="168ac3e7-82b0-4c94-bd2f-6e4bddd2ada3"/>
+				<reportElement mode="Opaque" x="35" y="110" width="465" height="61" forecolor="#9ED6FF" backcolor="rgba(158, 214, 255, 0.64705884)" uuid="168ac3e7-82b0-4c94-bd2f-6e4bddd2ada3"/>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
@@ -79,7 +79,7 @@
 			</textField>
 			<textField>
 				<reportElement style="coverPrintingDate" x="45" y="650" width="505" height="20" uuid="c05cdfbc-cd24-40db-92c1-c5f2ff9c3671"/>
-				<textFieldExpression><![CDATA["Reporting period " + DATEFORMAT(DATE(INTEGER_VALUE(MID($P{selectedDate}, 1, 4)), INTEGER_VALUE(MID($P{selectedDate}, 5, 2)), 1), "MMM yyyy")]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Reporting period " + DATEFORMAT(DATE(INTEGER_VALUE(MID($P{selectedDate}, 1, 4)), INTEGER_VALUE(MID($P{selectedDate}, 5, 2)), 1), "MMMM yyyy")]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

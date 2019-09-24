@@ -19,6 +19,9 @@
 	<queryString>
 		<![CDATA[select 1]]>
 	</queryString>
+	<field name="?column?" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="?column?"/>
+	</field>
 	<variable name="newSubsection" class="java.lang.Integer">
 		<variableExpression><![CDATA[$P{subsection}]]></variableExpression>
 		<initialValueExpression><![CDATA[$P{subsection}]]></initialValueExpression>

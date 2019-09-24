@@ -13,7 +13,7 @@
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<style name="Table_CH" mode="Opaque" backcolor="#8DB4E2">
+	<style name="Table_CH" mode="Opaque" backcolor="#9ED6FD">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -39,10 +39,10 @@
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
 		<parameter name="selectedDate" class="java.lang.String">
-			<defaultValueExpression><![CDATA[20190501]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA[20190801]]></defaultValueExpression>
 		</parameter>
 		<parameter name="customer" class="java.lang.String">
-			<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["sb2"]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[SELECT ROW_NUMBER() OVER (ORDER BY user_id) AS rownum, 
@@ -50,7 +50,7 @@
        user_id AS user_id,
        unit AS unit
   FROM msr.unix_dba_users 
-  WHERE customer =  $P{customer} 
+  WHERE LOWER(customer) =  $P{customer} 
   AND export_date = to_date( $P{selectedDate}  , 'YYYYMMDD')
   AND lower(group_id) != 'dba']]>
 		</queryString>
@@ -74,10 +74,10 @@
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
 		<parameter name="selectedDate" class="java.lang.String">
-			<defaultValueExpression><![CDATA[20190501]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA[20190801]]></defaultValueExpression>
 		</parameter>
 		<parameter name="customer" class="java.lang.String">
-			<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["sb2"]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[SELECT ROW_NUMBER() OVER (ORDER BY ac.user_id) AS rownum, 
@@ -85,12 +85,12 @@
        ac.user_id AS user_id,
        ac.unit AS unit
   FROM msr.unix_dba_users ac 
-  WHERE ac.customer =  $P{customer} 
+  WHERE lower(ac.customer) =  $P{customer} 
   AND ac.export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
   AND lower(ac.group_id) != 'dba'
   AND ac.user_id NOT IN (SELECT ac2.user_id  
 						 FROM msr.unix_dba_users ac2 
-						 WHERE ac2.customer = ac.customer 
+						 WHERE lower(ac2.customer) = lower(ac.customer) 
 						 AND ac2.export_date = ac.export_date - interval '1 month' )]]>
 		</queryString>
 		<field name="rownum" class="java.lang.Long">
@@ -113,10 +113,10 @@
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
 		<parameter name="selectedDate" class="java.lang.String">
-			<defaultValueExpression><![CDATA[20190501]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA[20190801]]></defaultValueExpression>
 		</parameter>
 		<parameter name="customer" class="java.lang.String">
-			<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["sb2"]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[SELECT ROW_NUMBER() OVER (ORDER BY ac.user_id) AS rownum, 
@@ -124,12 +124,12 @@
        ac.user_id AS user_id,
        ac.unit AS unit
   FROM msr.unix_dba_users ac 
-  WHERE ac.customer = $P{customer} 
+  WHERE lower(ac.customer) = $P{customer} 
   AND ac.export_date = to_date( $P{selectedDate} , 'YYYYMMDD') - interval '1 month'
   AND lower(ac.group_id) != 'dba'
   AND ac.user_id NOT IN (SELECT ac2.user_id  
 						 FROM msr.unix_dba_users ac2 
-						 WHERE ac2.customer = ac.customer 
+						 WHERE lower(ac2.customer) = lower(ac.customer) 
 						 AND ac2.export_date = ac.export_date + interval '1 month' )]]>
 		</queryString>
 		<field name="rownum" class="java.lang.Long">
@@ -158,17 +158,20 @@
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
 	</parameter>
 	<parameter name="customer" class="java.lang.String">
-		<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["sb4"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="covertTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Monthly Security Report"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
-		<defaultValueExpression><![CDATA["20190601"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[select 1]]>
 	</queryString>
+	<field name="?column?" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="?column?"/>
+	</field>
 	<variable name="x.SystemAccounts" class="java.lang.String">
 		<variableExpression><![CDATA[$P{chapter} + "       Sytem Accounts"]]></variableExpression>
 	</variable>

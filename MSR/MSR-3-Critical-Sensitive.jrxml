@@ -22,7 +22,7 @@
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<style name="Table_CH" mode="Opaque" backcolor="#8DB4E2">
+	<style name="Table_CH" mode="Opaque" backcolor="#9ED6F5">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -48,19 +48,20 @@
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
 		<parameter name="customer" class="java.lang.String">
-			<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["arab"]]></defaultValueExpression>
 		</parameter>
 		<parameter name="selected_date" class="java.lang.String">
-			<defaultValueExpression><![CDATA["20190501"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[SELECT customer, 
 	   service, 
 	   hostname, 
 	   confidentiality, 
-       server_room
+       server_room,
+       export_date
   FROM msr.assets
-  WHERE customer =  $P{customer} 
+  WHERE lower(customer) = lower($P{customer}) 
   and export_date = to_date( $P{selected_date} , 'YYYYMMDD')]]>
 		</queryString>
 		<field name="customer" class="java.lang.String">
@@ -83,12 +84,16 @@
 			<property name="com.jaspersoft.studio.field.label" value="server_room"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="assets"/>
 		</field>
+		<field name="export_date" class="java.sql.Date">
+			<property name="com.jaspersoft.studio.field.label" value="export_date"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="assets"/>
+		</field>
 	</subDataset>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["NEWSLETTER TITLE"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="customer" class="java.lang.String">
-		<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["EDR"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="subsection" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
@@ -100,7 +105,7 @@
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
-		<defaultValueExpression><![CDATA["20190601"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select 1]]>
@@ -168,7 +173,7 @@
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="AssetsList" uuid="2bd651c1-e73f-4d8a-b5ba-d0ca2b7cdc20">
+					<datasetRun subDataset="AssetsList" uuid="fb01e4ff-d1e4-4ec8-842d-b28850b497bc">
 						<datasetParameter name="customer">
 							<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
 						</datasetParameter>

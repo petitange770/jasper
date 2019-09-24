@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Critical and Sensitive Assets" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="730" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" uuid="b68e4251-4e98-4ffa-99cc-646e75dcfaf5">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Sentinel-BU" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="730" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" uuid="b68e4251-4e98-4ffa-99cc-646e75dcfaf5">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -34,7 +34,7 @@
 			<style backcolor="#EBF6FD"/>
 		</conditionalStyle>
 	</style>
-	<style name="Table_CH" mode="Opaque" backcolor="#8DB4E2">
+	<style name="Table_CH" mode="Opaque" backcolor="#9ED6FD">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -52,7 +52,7 @@
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<style name="Table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+	<style name="Table 1_CH" mode="Opaque" backcolor="#9ED6FD">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -74,10 +74,10 @@
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
 		<parameter name="customer" class="java.lang.String">
-			<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["sb2"]]></defaultValueExpression>
 		</parameter>
 		<parameter name="selected_date" class="java.lang.String">
-			<defaultValueExpression><![CDATA["20190601"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[SELECT ROW_NUMBER() OVER (ORDER BY win_user) AS rownum, 
@@ -90,7 +90,7 @@
        is_external,
        nda
   FROM msr.avq_users 
-  WHERE customer = $P{customer} 
+  WHERE LOWER(customer) = $P{customer} 
   AND export_date = to_date(  $P{selected_date}  , 'YYYYMMDD')]]>
 		</queryString>
 		<field name="rownum" class="java.lang.Long">
@@ -133,10 +133,10 @@
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
 		<parameter name="customer" class="java.lang.String">
-			<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["sb2"]]></defaultValueExpression>
 		</parameter>
 		<parameter name="selected_date" class="java.lang.String">
-			<defaultValueExpression><![CDATA["20190601"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[SELECT ROW_NUMBER() OVER (ORDER BY win_user) AS rownum, 
@@ -149,11 +149,11 @@
        is_external,
        nda
   FROM msr.avq_users 
-  WHERE customer = $P{customer} 
+  WHERE LOWER(customer) = $P{customer} 
   AND export_date = to_date( $P{selected_date} , 'YYYYMMDD')
   AND user_name NOT IN (SELECT AC2.user_name 
   						FROM msr.avq_users AC2 
-  						WHERE AC2.customer = $P{customer} 
+  						WHERE LOWER(AC2.customer) = $P{customer} 
   						AND AC2.export_date =  to_date($P{selected_date}, 'YYYYMMDD') - interval '1 month')]]>
 		</queryString>
 		<field name="rownum" class="java.lang.Long">
@@ -196,10 +196,10 @@
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
 		<parameter name="customer" class="java.lang.String">
-			<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["sb2"]]></defaultValueExpression>
 		</parameter>
 		<parameter name="selected_date" class="java.lang.String">
-			<defaultValueExpression><![CDATA["20190601"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[SELECT ROW_NUMBER() OVER (ORDER BY win_user) AS rownum, 
@@ -212,11 +212,11 @@
        is_external,
        nda
   FROM msr.avq_users 
-  WHERE customer =  $P{customer} 
+  WHERE LOWER(customer) =  $P{customer} 
   AND export_date = to_date($P{selected_date} , 'YYYYMMDD') - interval '1 month'
   AND user_name NOT IN (SELECT AC2.user_name 
   						FROM msr.avq_users AC2 
-  						WHERE AC2.customer = 'ARAB' 
+  						WHERE LOWER(AC2.customer) =  $P{customer} 
   						AND AC2.export_date  =  to_date( $P{selected_date} , 'YYYYMMDD') )]]>
 		</queryString>
 		<field name="rownum" class="java.lang.Long">
@@ -259,15 +259,15 @@
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
 		<parameter name="customer" class="java.lang.String">
-			<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["sb2"]]></defaultValueExpression>
 		</parameter>
 		<parameter name="selected_date" class="java.lang.String">
-			<defaultValueExpression><![CDATA["20190601"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[SELECT count(user_name) as nb_users
   FROM msr.avq_users 
-  WHERE customer = $P{customer} 
+  WHERE LOWER(customer) = $P{customer} 
   AND export_date = to_date(  $P{selected_date}  , 'YYYYMMDD')]]>
 		</queryString>
 		<field name="nb_users" class="java.lang.Long">
@@ -281,7 +281,7 @@
 		<defaultValueExpression><![CDATA["NEWSLETTER TITLE"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="customer" class="java.lang.String">
-		<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["sb4"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="subsection" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
@@ -293,11 +293,14 @@
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
-		<defaultValueExpression><![CDATA["20190601"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select 1]]>
 	</queryString>
+	<field name="?column?" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="?column?"/>
+	</field>
 	<variable name="newSubsection" class="java.lang.Integer">
 		<variableExpression><![CDATA[$P{subsection}]]></variableExpression>
 	</variable>
@@ -459,7 +462,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="80" height="20" uuid="e3d74bde-1b82-4944-81fb-087d5dec24fe"/>
 								<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
 							</textField>
@@ -474,23 +477,23 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="165" height="20" uuid="6e0c84d9-dfbe-427a-bbd2-1ed8b53e48f3"/>
 								<textFieldExpression><![CDATA[$F{user_full_name}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="165" uuid="6e88f444-7d44-44bd-a023-dea6eb59b68e">
+					<jr:column width="160" uuid="6e88f444-7d44-44bd-a023-dea6eb59b68e">
 						<jr:columnHeader style="Table_CH" height="20">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="165" height="20" uuid="06efe370-21c5-4745-97db-e0d2900a4b0a"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="160" height="20" uuid="06efe370-21c5-4745-97db-e0d2900a4b0a"/>
 								<text><![CDATA[Unit]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
-							<textField>
-								<reportElement style="Table-Detail-line" x="0" y="0" width="165" height="20" uuid="1438c12e-640f-4431-bc5a-96f30d554dec"/>
+							<textField isStretchWithOverflow="true">
+								<reportElement style="Table-Detail-line" x="0" y="0" width="160" height="20" uuid="1438c12e-640f-4431-bc5a-96f30d554dec"/>
 								<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -508,72 +511,73 @@
 							<textField>
 								<reportElement style="Table-Detail-line" x="0" y="0" width="65" height="20" uuid="b8018ab3-e4e8-4f2d-8f51-1f166922ba71"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[DATEFORMAT($F{last_login},"yyyy/mm/dd")]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF(DATEFORMAT($F{last_login},"yyyy/mm/dd")==null, "", DATEFORMAT($F{last_login},"yyyy/mm/dd"))]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="55" uuid="88eeae80-c7cf-42b3-8d5b-98011e28b342">
+					<jr:column width="57" uuid="88eeae80-c7cf-42b3-8d5b-98011e28b342">
 						<jr:columnHeader style="Table_CH" height="20">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="55" height="20" uuid="092fea0b-b5ea-4080-8900-5f8d23920a50"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="57" height="20" uuid="092fea0b-b5ea-4080-8900-5f8d23920a50"/>
 								<textElement textAlignment="Center"/>
 								<text><![CDATA[Exporting]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
-								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="20" uuid="fac692aa-08b7-4a5b-88a8-8052ed79439c"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="57" height="20" uuid="fac692aa-08b7-4a5b-88a8-8052ed79439c"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[$F{is_export}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{is_export}.equals("1"),"Yes", "No")]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="55" uuid="205ace28-a548-4524-a11e-3e3cbe0f840e">
+					<jr:column width="56" uuid="205ace28-a548-4524-a11e-3e3cbe0f840e">
 						<jr:columnHeader style="Table_CH" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="55" height="20" uuid="195e97aa-eaa0-4ea1-80c8-21c556ec908c"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="56" height="20" uuid="195e97aa-eaa0-4ea1-80c8-21c556ec908c"/>
 								<textElement textAlignment="Center"/>
 								<text><![CDATA[Sensitive]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
-								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="20" uuid="e3896b83-cb81-479a-9a03-4a3524d4bfc2"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="56" height="20" uuid="e3896b83-cb81-479a-9a03-4a3524d4bfc2"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[$F{is_sensitive}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{is_sensitive}.equals("1"),"Yes", "No")]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="55" uuid="35d63579-6e81-4335-9ef6-3f7564dff4f3">
+					<jr:column width="56" uuid="35d63579-6e81-4335-9ef6-3f7564dff4f3">
 						<jr:columnHeader style="Table_CH" height="20">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="55" height="20" uuid="ef1fd646-3bd7-42f8-b036-6522eb105166"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="56" height="20" uuid="ef1fd646-3bd7-42f8-b036-6522eb105166"/>
 								<textElement textAlignment="Center"/>
 								<text><![CDATA[External]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
-								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="20" uuid="e1adbb30-727b-476d-b4f6-b14c0f863cf0"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="56" height="20" uuid="e1adbb30-727b-476d-b4f6-b14c0f863cf0"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[$F{is_external}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{is_external}.equals("1"),"Yes","No")]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="55" uuid="77028747-b3e5-47fd-9d23-532cd7f98e73">
+					<jr:column width="56" uuid="77028747-b3e5-47fd-9d23-532cd7f98e73">
 						<jr:columnHeader style="Table_CH" height="20">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="55" height="20" uuid="d10e3e43-aca4-4aab-bb83-edf08ea91a6a"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="56" height="20" uuid="d10e3e43-aca4-4aab-bb83-edf08ea91a6a"/>
 								<textElement textAlignment="Center"/>
 								<text><![CDATA[NDA]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
-								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="20" uuid="c293becf-5bd2-46c7-a833-26fa703173a0"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="56" height="20" uuid="c293becf-5bd2-46c7-a833-26fa703173a0"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{nda}]]></textFieldExpression>
 							</textField>
@@ -710,7 +714,7 @@
 							<textField>
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="20" uuid="cb30468d-cc05-4127-9aef-92dc5fb8c05a"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[$F{is_export}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{is_export}.equals("1"), "Yes", "No")]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -727,7 +731,7 @@
 							<textField>
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="20" uuid="9f22d027-db92-453b-b832-4fbac6b65c38"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[$F{is_sensitive}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{is_sensitive}.equals("1"), "Yes", "No")]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -745,7 +749,7 @@
 							<textField>
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="20" uuid="e106e3c0-77b7-4559-b69c-8c5d7e8a3bf6"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[$F{is_external}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{is_external}.equals("1"), "Yes", "No")]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -906,7 +910,7 @@
 							<textField>
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="20" uuid="961dda94-91c6-48ac-8111-b858b3574d06"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[$F{is_export}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{is_export}.equals("1"), "Yes", "No")]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -923,7 +927,7 @@
 							<textField>
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="20" uuid="6057be2d-e8a2-4bbe-bedf-06823fac910a"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[$F{is_sensitive}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{is_sensitive}.equals("1"), "Yes", "No")]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -941,7 +945,7 @@
 							<textField>
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="20" uuid="c1f714ad-87f0-4a3a-b7d6-643c78b0bc42"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[$F{is_external}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{is_external}.equals("1"), "Yes", "No")]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

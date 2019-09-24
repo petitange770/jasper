@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Welcome" pageWidth="595" pageHeight="842" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" isSummaryWithPageHeaderAndFooter="true" uuid="b68e4251-4e98-4ffa-99cc-646e75dcfaf5">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Data Adapter\jasper-msr.xml"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
-	<property name="ireport.jasperserver.user" value="palg"/>
-	<property name="ireport.jasperserver.reportUnit" value="/Templates/Summary/Welcome"/>
+	<property name="ireport.jasperserver.url" value="https://jasper.mgt.ac.avaloqsourcing.net:8443/jasperserver-pro/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.reportUnit" value="/templates/Welcome/Welcome"/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["NEWSLETTER TITLE"]]></defaultValueExpression>
@@ -43,7 +43,7 @@ Your regulatory change-monitoring team should read this document to help plan an
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="TitleBlue" x="0" y="2" width="483" height="18" uuid="7fe3f729-8975-46ce-8104-5fd539e6fb3d"/>
+				<reportElement style="TitleBlue" x="0" y="2" width="483" height="18" forecolor="#004893" uuid="7fe3f729-8975-46ce-8104-5fd539e6fb3d"/>
 				<text><![CDATA[Welcome!]]></text>
 			</staticText>
 			<staticText>

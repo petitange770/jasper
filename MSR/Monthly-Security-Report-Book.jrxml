@@ -11,27 +11,31 @@
 	<property name="ireport.jasperserver.report.resource" value="/reports/Monthly_Security_Report_Book_files/main_jrxml"/>
 	<property name="ireport.jasperserver.reportUnit" value="/reports/Monthly_Security_Report_Book"/>
 	<parameter name="customer" class="java.lang.String">
-		<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["BSCT"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Monthly Security Report"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="reportDate" class="java.util.Date">
-		<defaultValueExpression><![CDATA[DATE(2019,06,02)]]></defaultValueExpression>
-	</parameter>
+	<parameter name="reportDate" class="java.sql.Date"/>
 	<queryString language="SQL">
-		<![CDATA[select bank_id, 
-company, 
-company_mesi,
-company_parent, 
-company_tag, 
-siem_client, 
+		<![CDATA[select bk.bank_id, 
+bk.company, 
+bk.company_mesi,
+bk.company_parent, 
+bk.company_tag,
+bk.siem_client, 
+case
+   WHEN lower(company_tag) = 'bsct' THEN 'bsct'
+   WHEN lower(company_tag) = 'axion' THEN 'bsct'
+   WHEN lower(company_tag) = lower(company_mesi) THEN lower(company_mesi)
+   ELSE lower(company_mesi)
+END as customer,
 (select count(WU.user_id) 
 	 from msr.windows_users AS WU 
-	 where WU.customer=  $P{customer} 
+	 where  lower(WU.customer) = lower(bk.company_tag)
          and concat(extract(year from WU.export_date)             , extract(month from WU.export_date)) = 
          concat(extract(year from  $P{reportDate}::date ), extract(month from  $P{reportDate}::date )))  as nb_win_users
-from msr.banks
+from msr.banks AS bk
 where company_tag =  $P{customer}]]>
 	</queryString>
 	<field name="bank_id" class="java.lang.Integer">
@@ -58,6 +62,9 @@ where company_tag =  $P{customer}]]>
 		<property name="com.jaspersoft.studio.field.label" value="siem_client"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="banks"/>
 	</field>
+	<field name="customer" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="customer"/>
+	</field>
 	<field name="nb_win_users" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="nb_win_users"/>
 	</field>
@@ -69,18 +76,21 @@ where company_tag =  $P{customer}]]>
 	</variable>
 	<group name="cover">
 		<groupHeader>
-			<part uuid="72fc1d7a-3fe2-442f-88ac-b8d9dd0b9e96">
+			<part uuid="cf2f181e-bede-4bc1-9b23-e689009e9239">
 				<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
 					<subreportParameter name="REPORT_CONNECTION">
 						<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
 					</subreportParameter>
-					<subreportParameter name="customer">
-						<subreportParameterExpression><![CDATA[$F{company}]]></subreportParameterExpression>
-					</subreportParameter>
 					<subreportParameter name="coverTitle">
 						<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
 					</subreportParameter>
-					<subreportExpression><![CDATA["C:\\Users\\Gabriel\\jasper\\Templates & Styles\\Templates\\ReportCoverTemplate.jasper"]]></subreportExpression>
+					<subreportParameter name="customer">
+						<subreportParameterExpression><![CDATA[$F{company}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="selectedDate">
+						<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportExpression><![CDATA["ReportCoverTemplate.jasper"]]></subreportExpression>
 				</p:subreportPart>
 			</part>
 			<part evaluationTime="Report" uuid="56ab525c-754f-4f48-a52c-7cc23934be3d">
@@ -100,7 +110,7 @@ where company_tag =  $P{customer}]]>
 					<subreportParameter name="coverTitle">
 						<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
 					</subreportParameter>
-					<subreportExpression><![CDATA["C:\\Users\\Gabriel\\jasper\\Templates & Styles\\Templates\\Welcome.jasper"]]></subreportExpression>
+					<subreportExpression><![CDATA["Welcome.jasper"]]></subreportExpression>
 				</p:subreportPart>
 			</part>
 		</groupHeader>
@@ -147,7 +157,7 @@ where company_tag =  $P{customer}]]>
 					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="customer">
-					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$F{customer}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="selectedDate">
 					<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
@@ -170,7 +180,7 @@ where company_tag =  $P{customer}]]>
 					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="customer">
-					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$F{customer}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="section">
 					<subreportParameterExpression><![CDATA[$V{section}]]></subreportParameterExpression>
@@ -199,7 +209,7 @@ where company_tag =  $P{customer}]]>
 					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="customer">
-					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$F{company_tag}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="section">
 					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
@@ -219,7 +229,7 @@ where company_tag =  $P{customer}]]>
 		<part uuid="1b18a4a4-c327-4922-8110-ec507ad8f118">
 			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
 				<subreportParameter name="REPORT_CONNECTION">
-					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION} ]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="chapter">
 					<subreportParameterExpression><![CDATA[$V{chapter} + 1]]></subreportParameterExpression>
@@ -231,7 +241,7 @@ where company_tag =  $P{customer}]]>
 					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="customer">
-					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$F{customer}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="section">
 					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
@@ -260,7 +270,7 @@ where company_tag =  $P{customer}]]>
 					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="customer">
-					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$F{customer}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="section">
 					<subreportParameterExpression><![CDATA[$V{section}]]></subreportParameterExpression>
@@ -315,7 +325,7 @@ where company_tag =  $P{customer}]]>
 					<subreportParameterExpression><![CDATA[$V{chapter} +1]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="customer">
-					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$F{customer}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="covertTitle">
 					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
@@ -347,7 +357,7 @@ where company_tag =  $P{customer}]]>
 					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="customer">
-					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$F{customer}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="section">
 					<subreportParameterExpression><![CDATA[$V{section}]]></subreportParameterExpression>
@@ -377,7 +387,7 @@ where company_tag =  $P{customer}]]>
 					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="customer">
-					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$F{customer}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="section">
 					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>

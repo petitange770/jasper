@@ -8,28 +8,28 @@
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
 		<parameter name="customer" class="java.lang.String">
-			<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["bsct"]]></defaultValueExpression>
 		</parameter>
 		<parameter name="periodSelected" class="java.lang.String">
-			<defaultValueExpression><![CDATA["20190601"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[SELECT customer, 
-       CASE group_id WHEN '' THEN 'Standard accounts'
-                               WHEN 'admin' THEN 'Admin accounts'
-                               WHEN 'dba' THEN 'Dba accounts	' 
-                               ELSE 'Other'
+       CASE LOWER(group_id) WHEN '' THEN 'Other'
+                     WHEN 'bsadmins' THEN 'Admin accounts'
+                     WHEN 'dba' THEN 'Dba accounts	' 
+                     ELSE 'Standard'
                  END AS user_role , 
-       extract(year from export_date) as period_year, 
-	   LPAD(extract(month from export_date)::text, 2, '0') as period_month, 
-	   CONCAT (extract(year from export_date), ' - ',LPAD(extract(month from export_date)::text, 2, '0') ) AS yearmonth, 
-	   COUNT(group_id) AS nb_users
+       extract(year from export_date) as period_year,
+       LPAD(extract(month from export_date)::text, 2, '0') as period_month,
+       CONCAT(extract(year from export_date), ' - ', LPAD(extract(month from export_date)::text, 2, '0') ) as yearmonth,
+ 	   COUNT(LOWER(group_id)) AS nb_users
   FROM msr.unix_dba_users
-  WHERE (customer =  $P{customer} )
-  AND  export_date >= to_date( $P{periodSelected} , 'YYYYMMDD') - interval '6 months' 
-  AND  export_date <= to_date( $P{periodSelected} , 'YYYYMMDD') 
-  GROUP BY customer, group_id, period_year, period_month
-  ORDER BY customer, group_id, period_year, period_month]]>
+  WHERE (LOWER(customer) =  $P{customer} )
+  AND export_date >= (to_date( $P{periodSelected} , 'YYYYMMDD') - interval '6 months')
+  AND export_date <= to_date( $P{periodSelected}  , 'YYYYMMDD')
+  GROUP BY customer, user_role, period_year, period_month
+  ORDER BY customer, user_role, period_year, period_month]]>
 		</queryString>
 		<field name="customer" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="customer"/>
@@ -55,7 +55,7 @@
 		<defaultValueExpression><![CDATA["NEWSLETTER TITLE"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="customer" class="java.lang.String">
-		<defaultValueExpression><![CDATA["ARAB"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["sb4"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="subsection" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
@@ -67,11 +67,14 @@
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
-		<defaultValueExpression><![CDATA["20190601"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select 1]]>
 	</queryString>
+	<field name="?column?" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="?column?"/>
+	</field>
 	<variable name="newSubsection" class="java.lang.Integer">
 		<variableExpression><![CDATA[$P{subsection}]]></variableExpression>
 	</variable>

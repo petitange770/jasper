@@ -184,43 +184,45 @@
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="140" uuid="fede1227-ff8b-4670-943d-14c0351634cd">
-						<jr:columnHeader style="Table_CH" height="20">
+						<jr:columnHeader style="Table_CH" height="18">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="140" height="20" uuid="ddc27604-73a8-494f-9e2b-b856c540bc2a"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="140" height="18" uuid="ddc27604-73a8-494f-9e2b-b856c540bc2a"/>
 								<text><![CDATA[Service]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="20">
+						<jr:detailCell style="Table_TD" height="17">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<textField>
-								<reportElement style="Table-Detail-line" x="0" y="0" width="140" height="20" uuid="939cb514-51a0-4558-9b3a-614d535483c2"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="140" height="17" uuid="939cb514-51a0-4558-9b3a-614d535483c2"/>
 								<textFieldExpression><![CDATA[$F{service}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="200" uuid="d803dfa4-0973-457f-b713-8e310fe77b36">
-						<jr:columnHeader style="Table_CH" height="20">
+						<jr:columnHeader style="Table_CH" height="18">
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="200" height="20" uuid="3e7f9ace-be5a-478f-90df-be2ab1388345"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="200" height="18" uuid="3e7f9ace-be5a-478f-90df-be2ab1388345"/>
 								<text><![CDATA[Hostname]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="20">
+						<jr:detailCell style="Table_TD" height="17">
 							<textField>
-								<reportElement style="Table-Detail-line" x="0" y="0" width="200" height="20" uuid="3838c0cc-98f5-4a09-bb8f-9ee165f1d000"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="200" height="17" uuid="3838c0cc-98f5-4a09-bb8f-9ee165f1d000"/>
 								<textFieldExpression><![CDATA[$F{hostname}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="bf34df02-2f78-42e3-8998-3ab6ee598710">
-						<jr:columnHeader style="Table_CH" height="20">
+						<jr:columnHeader style="Table_CH" height="18">
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="90" height="20" uuid="9aa558dc-58f4-4877-a2a5-80d8bcc64a4c"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="90" height="18" uuid="9aa558dc-58f4-4877-a2a5-80d8bcc64a4c"/>
 								<text><![CDATA[Confidentiality]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="20">
+						<jr:detailCell style="Table_TD" height="17">
 							<textField>
-								<reportElement style="Table-Detail-line" x="0" y="0" width="90" height="20" uuid="61e6985f-8d47-4be9-8780-0808a596055c"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="90" height="17" uuid="61e6985f-8d47-4be9-8780-0808a596055c"/>
 								<textFieldExpression><![CDATA[IF($F{confidentiality}.equals("DC1"),"DC1 - Public Data", IF($F{confidentiality}.equals("DC2"),"DC2 - Internal Use", 
 IF($F{confidentiality}.equals("DC3"),"DC3 - Confidential", IF($F{confidentiality}.equals("DC4"),"DC4 - Restricted",
   $F{confidentiality}))))]]></textFieldExpression>
@@ -228,15 +230,15 @@ IF($F{confidentiality}.equals("DC3"),"DC3 - Confidential", IF($F{confidentiality
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="180" uuid="eb71e56e-dce7-4eb2-8c75-a9048b38ffe2">
-						<jr:columnHeader style="Table_CH" height="20">
+						<jr:columnHeader style="Table_CH" height="18">
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="180" height="20" uuid="79fc7f48-f3a1-41a6-9163-ef80aec938bb"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="180" height="18" uuid="79fc7f48-f3a1-41a6-9163-ef80aec938bb"/>
 								<text><![CDATA[Physical location (server room)]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="20">
+						<jr:detailCell style="Table_TD" height="17">
 							<textField>
-								<reportElement style="Table-Detail-line" x="0" y="0" width="180" height="20" uuid="06beddcc-2b61-4206-8d6d-b32b7e80990a"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="180" height="17" uuid="06beddcc-2b61-4206-8d6d-b32b7e80990a"/>
 								<textFieldExpression><![CDATA[$F{server_room}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>

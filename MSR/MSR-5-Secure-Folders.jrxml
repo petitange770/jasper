@@ -142,7 +142,7 @@
 					<text><![CDATA[The following table shows the folder hierarchy of Avaloq Sourcing (Switzerland & Liechtenstein) SA Banking Operations offices, used for the secure export of customer information and related authorized users.]]></text>
 				</staticText>
 				<componentElement>
-					<reportElement x="0" y="80" width="483" height="40" uuid="be830748-d5f5-426b-887a-6644ceafce1b">
+					<reportElement x="0" y="80" width="483" height="35" uuid="be830748-d5f5-426b-887a-6644ceafce1b">
 						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 						<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 						<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -159,29 +159,31 @@
 							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 						</datasetRun>
 						<jr:column width="270" uuid="d36f0c3d-4756-4e42-9a08-58d4616be76e">
-							<jr:columnHeader style="Table_CH" height="20">
+							<jr:columnHeader style="Table_CH" height="18">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
 								<staticText>
-									<reportElement style="Table-Column-Header" x="0" y="0" width="270" height="20" uuid="91656f96-17a0-454a-b3d4-e607b9051610"/>
+									<reportElement style="Table-Column-Header" x="0" y="0" width="270" height="18" uuid="91656f96-17a0-454a-b3d4-e607b9051610"/>
 									<text><![CDATA[Folder]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="Table_TD" height="20">
+							<jr:detailCell style="Table_TD" height="17">
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
 								<textField>
-									<reportElement style="Table-Detail-line" x="0" y="0" width="270" height="20" uuid="b428f191-67c3-40d6-8844-8f72146ba546"/>
+									<reportElement style="Table-Detail-line" x="0" y="0" width="270" height="17" uuid="b428f191-67c3-40d6-8844-8f72146ba546"/>
 									<textFieldExpression><![CDATA[$F{folder}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="213" uuid="dddba26d-417d-4fd5-bc61-2ceb86f0339b">
-							<jr:columnHeader style="Table_CH" height="20">
+							<jr:columnHeader style="Table_CH" height="18">
 								<staticText>
-									<reportElement style="Table-Column-Header" x="0" y="0" width="213" height="20" uuid="87a825a0-2f25-440d-8879-3d70c40969a0"/>
+									<reportElement style="Table-Column-Header" x="0" y="0" width="213" height="18" uuid="87a825a0-2f25-440d-8879-3d70c40969a0"/>
 									<text><![CDATA[User]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="Table_TD" height="20">
+							<jr:detailCell style="Table_TD" height="17">
 								<textField>
-									<reportElement style="Table-Detail-line" x="0" y="0" width="213" height="20" uuid="95756fb7-5b9b-4ae0-a928-c0e06ab47e15"/>
+									<reportElement style="Table-Detail-line" x="0" y="0" width="213" height="17" uuid="95756fb7-5b9b-4ae0-a928-c0e06ab47e15"/>
 									<textFieldExpression><![CDATA[$F{user_full_name}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>

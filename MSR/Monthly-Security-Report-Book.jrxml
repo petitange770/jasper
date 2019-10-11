@@ -105,20 +105,6 @@ where company_tag =  $P{customer}]]>
 					<subreportExpression><![CDATA["Monthly-Security-Report-Book_toc.jasper"]]></subreportExpression>
 				</p:subreportPart>
 			</part>
-			<part uuid="72b0bf1e-68de-4d5c-b589-c4e933b6d4d6">
-				<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
-					<subreportParameter name="REPORT_CONNECTION">
-						<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
-					</subreportParameter>
-					<subreportParameter name="coverTitle">
-						<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
-					</subreportParameter>
-					<subreportParameter name="selectedDate">
-						<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
-					</subreportParameter>
-					<subreportExpression><![CDATA["Welcome.jasper"]]></subreportExpression>
-				</p:subreportPart>
-			</part>
 		</groupHeader>
 	</group>
 	<detail>

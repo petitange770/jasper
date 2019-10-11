@@ -37,6 +37,9 @@
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Monthly Security Report"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="selectedDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -54,13 +57,13 @@
 			<property name="local_mesure_unitheight" value="pixel"/>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
-				<reportElement style="headerDocumentTitle" x="0" y="10" width="320" height="22" uuid="41add0da-2ed1-4019-9324-c0ec8fb08420"/>
+				<reportElement style="headerDocumentTitle" x="0" y="10" width="310" height="22" uuid="41add0da-2ed1-4019-9324-c0ec8fb08420"/>
 				<textFieldExpression><![CDATA[$P{coverTitle}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Master">
-				<reportElement style="headerPageNumbers" x="350" y="0" width="133" height="32" uuid="82e53a01-a737-4ace-944e-052f26a8bf3a"/>
+				<reportElement style="headerPageNumbers" x="320" y="0" width="163" height="32" uuid="82e53a01-a737-4ace-944e-052f26a8bf3a"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[DATEFORMAT(TODAY(),"dd MMM yyyy")+ " | Page " + $V{MASTER_CURRENT_PAGE} + " of " + $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Reporting Period " + DATEFORMAT(DATE(INTEGER_VALUE(MID($P{selectedDate},1,4)),INTEGER_VALUE(MID($P{selectedDate},5,2)),INTEGER_VALUE(MID($P{selectedDate},7,2))),"MMM yyyy")+ " | Page " + $V{MASTER_CURRENT_PAGE} + " of " + $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="32" width="483" height="1" uuid="a82043f0-5900-4a92-aa7f-129dd3b73da1"/>

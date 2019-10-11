@@ -66,19 +66,15 @@
 				</graphicElement>
 			</rectangle>
 			<textField>
-				<reportElement style="coverPrintingDate" x="47" y="740" width="505" height="20" uuid="df41d874-9907-41bd-85de-4a5e6d50f2d1"/>
-				<textFieldExpression><![CDATA["Printed on " + DATEFORMAT(TODAY( ), "E MMM d, yyyy")]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement style="coverTitleStyle" mode="Transparent" x="47" y="117" width="453" height="57" forecolor="#FFFCFC" uuid="c3a07ed4-e00a-42b1-aeac-75dbbe9e47d3"/>
 				<textFieldExpression><![CDATA[$P{coverTitle}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="coverCustomer" x="45" y="679" width="505" height="26" uuid="cddefc3b-1b9b-4224-9eb2-2a90f02ffb23"/>
+				<reportElement style="coverCustomer" x="47" y="654" width="505" height="26" uuid="cddefc3b-1b9b-4224-9eb2-2a90f02ffb23"/>
 				<textFieldExpression><![CDATA[$P{customer}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="coverPrintingDate" x="45" y="650" width="505" height="20" uuid="c05cdfbc-cd24-40db-92c1-c5f2ff9c3671"/>
+				<reportElement style="coverPrintingDate" x="47" y="740" width="505" height="20" uuid="c05cdfbc-cd24-40db-92c1-c5f2ff9c3671"/>
 				<textFieldExpression><![CDATA["Reporting period " + DATEFORMAT(DATE(INTEGER_VALUE(MID($P{selectedDate}, 1, 4)), INTEGER_VALUE(MID($P{selectedDate}, 5, 2)), 1), "MMMM yyyy")]]></textFieldExpression>
 			</textField>
 		</band>

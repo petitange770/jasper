@@ -203,16 +203,16 @@
 		<band height="68" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
-				<reportElement style="headerDocumentTitle" x="0" y="10" width="290" height="21" uuid="df195e67-a48f-44b7-b38e-859145f4aa91"/>
+				<reportElement style="headerDocumentTitle" x="0" y="10" width="310" height="21" uuid="df195e67-a48f-44b7-b38e-859145f4aa91"/>
 				<textFieldExpression><![CDATA[$P{covertTitle}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="32" width="483" height="1" uuid="43a182e6-86b5-4b25-bf0f-7131f810472b"/>
 			</line>
 			<textField evaluationTime="Master">
-				<reportElement style="headerPageNumbers" x="282" y="3" width="200" height="30" uuid="934683d7-aa82-4b7e-8a68-f15b777893c7"/>
+				<reportElement style="headerPageNumbers" x="320" y="0" width="163" height="32" uuid="5c3093c1-19ad-4b5e-8030-262e0d5c48cf"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[DATEFORMAT(TODAY(),"dd MMM yyyy")+ " | Page " + $V{MASTER_CURRENT_PAGE} + " of " + $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Reporting Period " + DATEFORMAT(DATE(INTEGER_VALUE(MID($P{selectedDate},1,4)),INTEGER_VALUE(MID($P{selectedDate},5,2)),INTEGER_VALUE(MID($P{selectedDate},7,2))),"MMM yyyy")+ " | Page " + $V{MASTER_CURRENT_PAGE} + " of " + $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>

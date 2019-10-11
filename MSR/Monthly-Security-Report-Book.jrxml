@@ -99,6 +99,9 @@ where company_tag =  $P{customer}]]>
 					<subreportParameter name="coverTitle">
 						<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
 					</subreportParameter>
+					<subreportParameter name="selectedDate">
+						<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
+					</subreportParameter>
 					<subreportExpression><![CDATA["Monthly-Security-Report-Book_toc.jasper"]]></subreportExpression>
 				</p:subreportPart>
 			</part>
@@ -109,6 +112,9 @@ where company_tag =  $P{customer}]]>
 					</subreportParameter>
 					<subreportParameter name="coverTitle">
 						<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="selectedDate">
+						<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
 					</subreportParameter>
 					<subreportExpression><![CDATA["Welcome.jasper"]]></subreportExpression>
 				</p:subreportPart>
@@ -132,6 +138,9 @@ where company_tag =  $P{customer}]]>
 				</subreportParameter>
 				<subreportParameter name="subsection">
 					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="selectedDate">
+					<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
 				</subreportParameter>
 				<returnValue subreportVariable="newChapter" toVariable="chapter"/>
 				<returnValue subreportVariable="newSection" toVariable="section"/>

@@ -88,6 +88,7 @@
 			<property name="com.jaspersoft.studio.field.label" value="export_date"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="assets"/>
 		</field>
+		<sortField name="service"/>
 	</subDataset>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["NEWSLETTER TITLE"]]></defaultValueExpression>
@@ -220,7 +221,9 @@
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
 								<reportElement style="Table-Detail-line" x="0" y="0" width="90" height="20" uuid="61e6985f-8d47-4be9-8780-0808a596055c"/>
-								<textFieldExpression><![CDATA[$F{confidentiality}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{confidentiality}.equals("DC1"),"DC1 - Public Data", IF($F{confidentiality}.equals("DC2"),"DC2 - Internal Use", 
+IF($F{confidentiality}.equals("DC3"),"DC3 - Confidential", IF($F{confidentiality}.equals("DC4"),"DC4 - Restricted",
+  $F{confidentiality}))))]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Windows Users Graph" pageWidth="595" pageHeight="842" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" uuid="b68e4251-4e98-4ffa-99cc-646e75dcfaf5">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
+	<subDataset name="WindowsUsers" uuid="727dbfe7-4e1f-4d9e-aa0f-0a7cd6e9b2c2">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+		<parameter name="customer" class="java.lang.String">
+			<defaultValueExpression><![CDATA["bsct"]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodSelected" class="java.lang.String">
+			<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
+		</parameter>
+		<queryString language="SQL">
+			<![CDATA[SELECT customer, 
+       'Windows accounts' AS user_role , 
+       extract(year from export_date) as period_year,
+       LPAD(extract(month from export_date)::text, 2, '0') as period_month,
+       CONCAT(extract(year from export_date), ' - ', LPAD(extract(month from export_date)::text, 2, '0') ) as yearmonth,
+ 	   COUNT(LOWER(user_id)) AS nb_users
+  FROM msr.windows_users
+  WHERE (LOWER(customer) =  $P{customer} )
+  AND export_date >= (to_date( $P{periodSelected} , 'YYYYMMDD') - interval '6 months')
+  AND export_date <= to_date( $P{periodSelected}  , 'YYYYMMDD')
+  GROUP BY customer, user_role, period_year, period_month
+  ORDER BY customer, user_role, period_year, period_month]]>
+		</queryString>
+		<field name="customer" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="customer"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="unix_dba_users"/>
+		</field>
+		<field name="user_role" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="user_role"/>
+		</field>
+		<field name="period_year" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="period_year"/>
+		</field>
+		<field name="period_month" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="period_month"/>
+		</field>
+		<field name="yearmonth" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="yearmonth"/>
+		</field>
+		<field name="nb_users" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.label" value="nb_users"/>
+		</field>
+	</subDataset>
+	<parameter name="coverTitle" class="java.lang.String">
+		<defaultValueExpression><![CDATA["NEWSLETTER TITLE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="customer" class="java.lang.String">
+		<defaultValueExpression><![CDATA["sb4"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="subsection" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="section" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="chapter" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="selectedDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select 1]]>
+	</queryString>
+	<field name="?column?" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="?column?"/>
+	</field>
+	<variable name="newSubsection" class="java.lang.Integer">
+		<variableExpression><![CDATA[$P{subsection}]]></variableExpression>
+	</variable>
+	<variable name="newSection" class="java.lang.Integer">
+		<variableExpression><![CDATA[$P{section} + 1]]></variableExpression>
+	</variable>
+	<variable name="newChapter" class="java.lang.Integer">
+		<variableExpression><![CDATA[$P{chapter}]]></variableExpression>
+	</variable>
+	<variable name="x.y+1_access_control" class="java.lang.String">
+		<variableExpression><![CDATA[$P{chapter}+"."+($P{section}+1)+"     Access Control"]]></variableExpression>
+	</variable>
+	<variable name="x.Management_Summary" class="java.lang.String">
+		<variableExpression><![CDATA[$P{chapter}+"."+"    Management Summary"]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="68" splitType="Stretch">
+			<textField>
+				<reportElement style="headerDocumentTitle" x="0" y="10" width="310" height="21" uuid="e6196853-2085-414b-b530-4a9a8f02734e"/>
+				<textFieldExpression><![CDATA[$P{coverTitle}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="32" width="483" height="1" uuid="d09819fc-4982-4636-b9e9-e96aaa844363"/>
+			</line>
+			<textField evaluationTime="Master">
+				<reportElement style="headerPageNumbers" x="320" y="0" width="163" height="32" uuid="3d6cd5bf-d4c2-47b3-a68c-08b4c06261dc"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Reporting Period " + DATEFORMAT(DATE(INTEGER_VALUE(MID($P{selectedDate},1,4)),INTEGER_VALUE(MID($P{selectedDate},5,2)),INTEGER_VALUE(MID($P{selectedDate},7,2))),"MMM yyyy")+ " | Page " + $V{MASTER_CURRENT_PAGE} + " of " + $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="340">
+			<staticText>
+				<reportElement x="0" y="0" width="483" height="60" uuid="35b825dc-1f6d-48da-a2ea-fa4a76a77c50"/>
+				<text><![CDATA[The access to sensitive data in Avaloq is granted based on the principles “need-to-do”/ “need-to-know” according to the mapping confirmed in the Security Control Document. Each service is thus granted access to sensitive data or the export function or a combination of both. A user would inherit the profile agreed for its service.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="NormalText" positionType="Float" x="0" y="185" width="483" height="135" isPrintWhenDetailOverflows="true" uuid="4ce8fed6-885a-4866-a589-ec6b4bdef362">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="40" bottomPadding="0" rightPadding="0"/>
+				<textElement markup="none">
+					<font fontName="Arial" size="11"/>
+					<paragraph firstLineIndent="-20" leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[•	Asset Masterdata
+•	Cost and Fees
+•	Payments processing
+•	Payments Investigation
+•	BO Service Desk (for investigation purposes for the below areas)
+•	Security Transfers
+•	Funds (to provide data for client’s notifications/subscriptions)
+•	Corporate Actions (to provide data for client’s notifications)
+•	Income (to provide data for client’s notifications)
+•	Tax
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="483" height="60" uuid="6faf01a6-15ec-475a-a746-41cc60578292"/>
+				<text><![CDATA[Asset Masterdata Cost and FeesPayments processingPayments InvestigationBO Service Desk (for investigation purposes for the below areas)Security TransfersFunds (to provide data for client’s notifications/subscriptions)Corporate Actions (to provide data for client’s notifications)Income (to provide data for client’s notifications)Tax
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="483" height="30" uuid="05af7b97-9b9e-4d0a-ae0e-60750745c994"/>
+				<text><![CDATA[At the moment, the following services need to have access to sensitive data in order to be able to perform their daily duties:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="150" width="483" height="35" uuid="6f1540bd-e5f6-45fe-8d0c-5a46babab55c"/>
+				<text><![CDATA[At the moment, the following services need to have access to sensitive data in order to be able to perform their daily duties:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="320" width="483" height="20" uuid="624980cd-701b-4283-8686-be7b442a0685"/>
+				<text><![CDATA[Please note that the ratio remains the same for all clients, as the business model applied does not vary.
+]]></text>
+			</staticText>
+		</band>
+		<band height="20">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement style="Header-3" x="0" y="0" width="483" height="20" uuid="ea16c5b1-c3f0-454a-8888-556a34266a42"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Windows]]></text>
+			</staticText>
+		</band>
+		<band height="230">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<stackedBar3DChart>
+				<chart evaluationTime="Report" theme="generic">
+					<reportElement key="" x="0" y="0" width="483" height="230" uuid="620db260-61ba-488a-bc24-8f7869c4a827">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<chartTitle>
+						<font fontName="Arial" size="16"/>
+						<titleExpression><![CDATA["Unix Accounts by Type"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend position="Bottom">
+						<font fontName="Arial" size="12"/>
+					</chartLegend>
+				</chart>
+				<categoryDataset>
+					<dataset>
+						<datasetRun subDataset="WindowsUsers" uuid="d6035398-87eb-436b-9bf1-2ce6e3053d53">
+							<datasetParameter name="customer">
+								<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="periodSelected">
+								<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
+							</datasetParameter>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{user_role}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{yearmonth}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{nb_users}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot isShowLabels="true">
+					<plot>
+						<seriesColor seriesOrder="0" color="#C4000A"/>
+						<seriesColor seriesOrder="1" color="#FC9F42"/>
+						<seriesColor seriesOrder="2" color="#80C91A"/>
+						<seriesColor seriesOrder="3" color="#A27696"/>
+						<seriesColor seriesOrder="4" color="#521816"/>
+						<seriesColor seriesOrder="5" color="#9F8313"/>
+					</plot>
+					<itemLabel>
+						<font fontName="Arial" size="8"/>
+					</itemLabel>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" verticalTickLabels="true" axisLineColor="#000000">
+							<labelFont>
+								<font fontName="Arial"/>
+							</labelFont>
+							<tickLabelFont>
+								<font fontName="Arial"/>
+							</tickLabelFont>
+						</axisFormat>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000">
+							<labelFont>
+								<font fontName="Arial"/>
+							</labelFont>
+							<tickLabelFont>
+								<font fontName="Arial"/>
+							</tickLabelFont>
+						</axisFormat>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</stackedBar3DChart>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<image>
+				<reportElement x="0" y="19" width="153" height="10" uuid="256c99c8-bb71-4c80-969f-59100f263bf9"/>
+				<imageExpression><![CDATA["Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="403" y="9" width="80" height="21" uuid="6e0eda3e-3fa6-4f1f-88b7-3a99cd1be625"/>
+				<imageExpression><![CDATA["Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>

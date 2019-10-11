@@ -390,24 +390,25 @@ GROUP BY customer, export_date]]>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="240" uuid="e9b40a36-b4b1-4181-8073-54434e8452d8">
+					<jr:column width="242" uuid="e9b40a36-b4b1-4181-8073-54434e8452d8">
 						<jr:tableHeader style="Table_TH" height="30">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Table-Name" x="0" y="0" width="240" height="30" uuid="685807e4-fb9b-42b0-9cc1-bf6777a6e75a"/>
-								<text><![CDATA[Users by type]]></text>
+								<reportElement style="Table-Table-Name" x="0" y="0" width="242" height="30" uuid="685807e4-fb9b-42b0-9cc1-bf6777a6e75a"/>
+								<text><![CDATA[ASSL User Accounts]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:columnHeader style="Table_CH" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="240" height="20" uuid="da8feeda-5814-4552-a15d-1912add5c26d"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="242" height="20" uuid="da8feeda-5814-4552-a15d-1912add5c26d"/>
 								<text><![CDATA[Account type]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<textField>
-								<reportElement style="Table-Detail-line" x="0" y="0" width="240" height="20" forecolor="#000000" uuid="027ce7a9-fe43-4dc3-a62f-1c6b60f1330a"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="242" height="20" forecolor="#000000" uuid="027ce7a9-fe43-4dc3-a62f-1c6b60f1330a"/>
 								<textFieldExpression><![CDATA[$F{user_system}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -468,14 +469,10 @@ GROUP BY customer, export_date]]>
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="55">
+		<band height="22">
 			<staticText>
-				<reportElement style="Header-3" x="0" y="35" width="483" height="20" uuid="7e5b1d11-f067-40d7-9022-358d46cf3c8b"/>
-				<text><![CDATA[Business Access]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="1" y="0" width="483" height="30" uuid="593fbb00-7416-40ff-98c0-9973e36799d2"/>
-				<text><![CDATA[From a risk perspective, the changes introduced during current month did not modify the security exposure of the Client.]]></text>
+				<reportElement style="Header-3" x="1" y="0" width="483" height="20" uuid="7e5b1d11-f067-40d7-9022-358d46cf3c8b"/>
+				<text><![CDATA[Business Access on Avaloq]]></text>
 			</staticText>
 		</band>
 		<band height="266">

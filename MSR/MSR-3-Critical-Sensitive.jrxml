@@ -89,6 +89,9 @@
 			<property name="com.jaspersoft.studio.field.tree.path" value="assets"/>
 		</field>
 		<sortField name="service"/>
+		<variable name="myCount" class="java.lang.Integer" calculation="Count">
+			<variableExpression><![CDATA[0]]></variableExpression>
+		</variable>
 	</subDataset>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["NEWSLETTER TITLE"]]></defaultValueExpression>
@@ -122,6 +125,9 @@
 	</variable>
 	<variable name="x.CriticalAndSensitiveAccesses" class="java.lang.String">
 		<variableExpression><![CDATA[$P{chapter} + "       Critical and Sensitive Assets"]]></variableExpression>
+	</variable>
+	<variable name="nbCriticalAndSensitiveAssets" class="java.lang.Integer">
+		<variableExpression><![CDATA[0]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -164,10 +170,10 @@
 				</staticText>
 			</frame>
 		</band>
-		<band height="68">
+		<band height="37">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<componentElement>
-				<reportElement x="60" y="0" width="610" height="40" uuid="73870539-7c01-46dd-ae8b-41400fd52c8c">
+				<reportElement x="60" y="0" width="610" height="37" isRemoveLineWhenBlank="true" uuid="73870539-7c01-46dd-ae8b-41400fd52c8c">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -182,6 +188,7 @@
 							<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<returnValue fromVariable="myCount" toVariable="nbCriticalAndSensitiveAssets"/>
 					</datasetRun>
 					<jr:column width="140" uuid="fede1227-ff8b-4670-943d-14c0351634cd">
 						<jr:columnHeader style="Table_CH" height="18">
@@ -245,6 +252,15 @@ IF($F{confidentiality}.equals("DC3"),"DC3 - Confidential", IF($F{confidentiality
 					</jr:column>
 				</jr:table>
 			</componentElement>
+		</band>
+		<band height="20">
+			<staticText>
+				<reportElement style="TitleBlue" x="0" y="0" width="730" height="20" isPrintInFirstWholeBand="true" uuid="92df6694-d04d-437f-b1da-359942f94336">
+					<printWhenExpression><![CDATA[$V{nbCriticalAndSensitiveAssets} == null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No Critical and Sensitive Assets to report]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<pageFooter>

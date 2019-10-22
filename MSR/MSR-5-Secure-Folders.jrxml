@@ -95,6 +95,9 @@
 	<variable name="newChapter" class="java.lang.Integer">
 		<variableExpression><![CDATA[$P{chapter}]]></variableExpression>
 	</variable>
+	<variable name="nbSecureFolders" class="java.lang.Integer">
+		<variableExpression><![CDATA[0]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -122,78 +125,84 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="83" splitType="Stretch">
+		<band height="121" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
-			<frame>
-				<reportElement positionType="Float" x="0" y="0" width="483" height="80" uuid="22a3411d-2442-458c-a154-0c0e05ebf4e3"/>
-				<textField bookmarkLevel="1">
-					<reportElement style="Header-2" positionType="Float" x="0" y="0" width="483" height="30" uuid="b3c0ef28-32e6-408b-bfb6-440082728012"/>
-					<textElement>
-						<font fontName="Arial" size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{x.SecureFolders}]]></textFieldExpression>
-					<anchorNameExpression><![CDATA[$V{x.SecureFolders}]]></anchorNameExpression>
-				</textField>
-				<staticText>
-					<reportElement style="NormalText" positionType="Float" x="0" y="30" width="483" height="50" isPrintWhenDetailOverflows="true" uuid="9125befa-5ead-429b-b963-9de314f2fab2"/>
-					<textElement>
-						<font fontName="Arial" size="11"/>
-					</textElement>
-					<text><![CDATA[The following table shows the folder hierarchy of Avaloq Sourcing (Switzerland & Liechtenstein) SA Banking Operations offices, used for the secure export of customer information and related authorized users.]]></text>
-				</staticText>
-				<componentElement>
-					<reportElement x="0" y="80" width="483" height="35" uuid="be830748-d5f5-426b-887a-6644ceafce1b">
-						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
-						<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-						<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-						<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-					</reportElement>
-					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-						<datasetRun subDataset="SecureFolders" uuid="102d8b64-315a-4044-adff-111e6fb2cc95">
-							<datasetParameter name="customer">
-								<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
-							</datasetParameter>
-							<datasetParameter name="selectedDate">
-								<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
-							</datasetParameter>
-							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-						</datasetRun>
-						<jr:column width="270" uuid="d36f0c3d-4756-4e42-9a08-58d4616be76e">
-							<jr:columnHeader style="Table_CH" height="18">
-								<property name="com.jaspersoft.studio.unit.height" value="px"/>
-								<staticText>
-									<reportElement style="Table-Column-Header" x="0" y="0" width="270" height="18" uuid="91656f96-17a0-454a-b3d4-e607b9051610"/>
-									<text><![CDATA[Folder]]></text>
-								</staticText>
-							</jr:columnHeader>
-							<jr:detailCell style="Table_TD" height="17">
-								<property name="com.jaspersoft.studio.unit.height" value="px"/>
-								<textField>
-									<reportElement style="Table-Detail-line" x="0" y="0" width="270" height="17" uuid="b428f191-67c3-40d6-8844-8f72146ba546"/>
-									<textFieldExpression><![CDATA[$F{folder}]]></textFieldExpression>
-								</textField>
-							</jr:detailCell>
-						</jr:column>
-						<jr:column width="213" uuid="dddba26d-417d-4fd5-bc61-2ceb86f0339b">
-							<jr:columnHeader style="Table_CH" height="18">
-								<staticText>
-									<reportElement style="Table-Column-Header" x="0" y="0" width="213" height="18" uuid="87a825a0-2f25-440d-8879-3d70c40969a0"/>
-									<text><![CDATA[User]]></text>
-								</staticText>
-							</jr:columnHeader>
-							<jr:detailCell style="Table_TD" height="17">
-								<textField>
-									<reportElement style="Table-Detail-line" x="0" y="0" width="213" height="17" uuid="95756fb7-5b9b-4ae0-a928-c0e06ab47e15"/>
-									<textFieldExpression><![CDATA[$F{user_full_name}]]></textFieldExpression>
-								</textField>
-							</jr:detailCell>
-						</jr:column>
-					</jr:table>
-				</componentElement>
-			</frame>
+			<textField bookmarkLevel="1">
+				<reportElement style="Header-2" positionType="Float" x="0" y="0" width="483" height="30" uuid="b3c0ef28-32e6-408b-bfb6-440082728012"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{x.SecureFolders}]]></textFieldExpression>
+				<anchorNameExpression><![CDATA[$V{x.SecureFolders}]]></anchorNameExpression>
+			</textField>
+			<staticText>
+				<reportElement style="NormalText" positionType="Float" x="0" y="30" width="483" height="42" isPrintWhenDetailOverflows="true" uuid="9125befa-5ead-429b-b963-9de314f2fab2"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[The following table shows the folder hierarchy of Avaloq Sourcing (Switzerland & Liechtenstein) SA Banking Operations offices, used for the secure export of customer information and related authorized users.]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="0" y="80" width="483" height="35" isRemoveLineWhenBlank="true" uuid="be830748-d5f5-426b-887a-6644ceafce1b">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="SecureFolders" uuid="102d8b64-315a-4044-adff-111e6fb2cc95">
+						<datasetParameter name="customer">
+							<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="selectedDate">
+							<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<returnValue fromVariable="REPORT_COUNT" toVariable="nbSecureFolders"/>
+					</datasetRun>
+					<jr:column width="270" uuid="d36f0c3d-4756-4e42-9a08-58d4616be76e">
+						<jr:columnHeader style="Table_CH" height="18">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="270" height="18" uuid="91656f96-17a0-454a-b3d4-e607b9051610"/>
+								<text><![CDATA[Folder]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="17">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="270" height="17" uuid="b428f191-67c3-40d6-8844-8f72146ba546"/>
+								<textFieldExpression><![CDATA[$F{folder}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="213" uuid="dddba26d-417d-4fd5-bc61-2ceb86f0339b">
+						<jr:columnHeader style="Table_CH" height="18">
+							<staticText>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="213" height="18" uuid="87a825a0-2f25-440d-8879-3d70c40969a0"/>
+								<text><![CDATA[User]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="17">
+							<textField>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="213" height="17" uuid="95756fb7-5b9b-4ae0-a928-c0e06ab47e15"/>
+								<textFieldExpression><![CDATA[$F{user_full_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
 		</band>
-		<band height="46">
+		<band height="36">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$V{nbSecureFolders} == null]]></printWhenExpression>
+			<staticText>
+				<reportElement style="TitleBlue" x="0" y="0" width="483" height="20" isPrintInFirstWholeBand="true" uuid="ce131b9e-3f9b-4456-86cc-a462299089a8">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No Secure Folders to Report]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>

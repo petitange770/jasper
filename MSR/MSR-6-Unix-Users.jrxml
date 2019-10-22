@@ -196,6 +196,15 @@
 	<variable name="newChapter" class="java.lang.Integer">
 		<variableExpression><![CDATA[$P{chapter}]]></variableExpression>
 	</variable>
+	<variable name="nbDeletedAccounts" class="java.lang.Integer">
+		<variableExpression><![CDATA[0]]></variableExpression>
+	</variable>
+	<variable name="nbAddedAccounts" class="java.lang.Integer">
+		<variableExpression><![CDATA[0]]></variableExpression>
+	</variable>
+	<variable name="nbCurrentAccounts" class="java.lang.Integer">
+		<variableExpression><![CDATA[0]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -252,7 +261,7 @@
 				</staticText>
 			</frame>
 		</band>
-		<band height="70">
+		<band height="62">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
 				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="483" height="20" uuid="74dc7a54-075e-41eb-a1d4-ae2fa1ac5dfe"/>
@@ -263,7 +272,7 @@
 				<anchorNameExpression><![CDATA[$V{x.y+1.1.UnixAccountsExisting}]]></anchorNameExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="0" y="21" width="483" height="35" uuid="3ac198c2-2e9c-402b-8e1d-1956b1ffe6af">
+				<reportElement x="0" y="21" width="483" height="35" isRemoveLineWhenBlank="true" uuid="3ac198c2-2e9c-402b-8e1d-1956b1ffe6af">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -278,6 +287,7 @@
 							<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<returnValue fromVariable="REPORT_COUNT" toVariable="nbCurrentAccounts"/>
 					</datasetRun>
 					<jr:column width="30" uuid="5734beb4-dcda-4437-bfc8-c983abf9e3c1">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
@@ -354,7 +364,18 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="70">
+		<band height="30">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$V{nbCurrentAccounts} == null]]></printWhenExpression>
+			<staticText>
+				<reportElement style="TitleBlue" x="0" y="0" width="483" height="20" isPrintInFirstWholeBand="true" uuid="ca0f3a72-2df2-4333-b993-aaa73b17d1d5">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No Current Unix Accounts to report]]></text>
+			</staticText>
+		</band>
+		<band height="60">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
 				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="482" height="20" uuid="e6d01b76-de87-42d3-bf26-40e8845b10d2"/>
@@ -365,7 +386,7 @@
 				<anchorNameExpression><![CDATA[$V{x.y+1.2.UnixAccountsCreated}]]></anchorNameExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="0" y="21" width="483" height="35" uuid="8653e131-e847-4e81-bd9c-958158fd90d8">
+				<reportElement x="0" y="21" width="483" height="35" isRemoveLineWhenBlank="true" uuid="8653e131-e847-4e81-bd9c-958158fd90d8">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -380,6 +401,7 @@
 							<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<returnValue fromVariable="REPORT_COUNT" toVariable="nbAddedAccounts"/>
 					</datasetRun>
 					<jr:column width="30" uuid="a2ec8ef7-9b54-4725-b604-3c9d5dafc466">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
@@ -456,7 +478,18 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="74">
+		<band height="30">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$V{nbAddedAccounts} == null]]></printWhenExpression>
+			<staticText>
+				<reportElement style="TitleBlue" x="0" y="0" width="483" height="20" isPrintInFirstWholeBand="true" uuid="8b8ba36d-14c7-498a-886d-7bdd2b8a41b0">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No Unix Accounts Added/Enabled to report]]></text>
+			</staticText>
+		</band>
+		<band height="62">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
 				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="483" height="20" uuid="20f8cb1f-4d94-4bc5-9d42-96915e1bee0c"/>
@@ -467,7 +500,7 @@
 				<anchorNameExpression><![CDATA[$V{x.y+1.3.UnixAccountsDeleted}]]></anchorNameExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="0" y="21" width="483" height="35" uuid="9666fc53-226b-439c-9802-6b7e475003d6">
+				<reportElement x="0" y="21" width="483" height="35" isRemoveLineWhenBlank="true" uuid="9666fc53-226b-439c-9802-6b7e475003d6">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -482,6 +515,7 @@
 							<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<returnValue fromVariable="REPORT_COUNT" toVariable="nbDeletedAccounts"/>
 					</datasetRun>
 					<jr:column width="30" uuid="cbccbde1-bd4d-4f36-a8ac-b6761f8b1eff">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
@@ -557,6 +591,17 @@
 					</jr:column>
 				</jr:table>
 			</componentElement>
+		</band>
+		<band height="30">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$V{nbDeletedAccounts} == null]]></printWhenExpression>
+			<staticText>
+				<reportElement style="TitleBlue" x="0" y="0" width="483" height="20" isPrintInFirstWholeBand="true" uuid="2d45bf72-4703-49e3-8859-ac8d599b5eae">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No Unix Accounts Removed/Disabled to report]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>

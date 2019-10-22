@@ -193,6 +193,15 @@
 	<variable name="newChapter" class="java.lang.Integer">
 		<variableExpression><![CDATA[$P{chapter}]]></variableExpression>
 	</variable>
+	<variable name="nbDeletedAccounts" class="java.lang.Integer">
+		<variableExpression><![CDATA[0]]></variableExpression>
+	</variable>
+	<variable name="nbAddedAccounts" class="java.lang.Integer">
+		<variableExpression><![CDATA[0]]></variableExpression>
+	</variable>
+	<variable name="nbCurrentAccounts" class="java.lang.Integer">
+		<variableExpression><![CDATA[0]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -249,7 +258,7 @@
 				</staticText>
 			</frame>
 		</band>
-		<band height="72">
+		<band height="62">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
 				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="483" height="20" uuid="74dc7a54-075e-41eb-a1d4-ae2fa1ac5dfe"/>
@@ -260,11 +269,12 @@
 				<anchorNameExpression><![CDATA[$V{x.y+1.1.WindowsAccountsExisting}]]></anchorNameExpression>
 			</textField>
 			<componentElement>
-				<reportElement style="Table_CH" x="0" y="19" width="483" height="35" uuid="68915e08-d921-497b-bd35-591e56ec6af3">
+				<reportElement style="Table_CH" x="0" y="20" width="483" height="35" isRemoveLineWhenBlank="true" uuid="68915e08-d921-497b-bd35-591e56ec6af3">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="WindowsCurrentUsers" uuid="02e8fa96-f3bc-4810-a1dc-cd6eaf8c71ac">
@@ -275,6 +285,7 @@
 							<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<returnValue fromVariable="REPORT_COUNT" toVariable="nbCurrentAccounts"/>
 					</datasetRun>
 					<jr:column width="30" uuid="cc53e09f-138d-4b09-9a03-e1032d2f64dc">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
@@ -351,7 +362,18 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="70">
+		<band height="30">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$V{nbCurrentAccounts} == null]]></printWhenExpression>
+			<staticText>
+				<reportElement style="TitleBlue" x="0" y="0" width="483" height="20" isPrintInFirstWholeBand="true" uuid="c04a2a22-70e7-4636-8b8e-2623ded6bcc7">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No Current Windows Accounts to report]]></text>
+			</staticText>
+		</band>
+		<band height="64">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
 				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="482" height="20" uuid="e6d01b76-de87-42d3-bf26-40e8845b10d2"/>
@@ -362,7 +384,7 @@
 				<anchorNameExpression><![CDATA[$V{x.y+1.2.WindowsAccountsCreated}]]></anchorNameExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="0" y="19" width="483" height="35" uuid="0f40f756-bdb9-43a4-a674-f56a8d2097f4">
+				<reportElement x="0" y="20" width="483" height="35" isRemoveLineWhenBlank="true" uuid="0f40f756-bdb9-43a4-a674-f56a8d2097f4">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -377,6 +399,7 @@
 							<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<returnValue fromVariable="REPORT_COUNT" toVariable="nbAddedAccounts"/>
 					</datasetRun>
 					<jr:column width="30" uuid="c7cb5640-9f83-42ad-83c9-98c2881bf708">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
@@ -453,7 +476,18 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="74">
+		<band height="30">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$V{nbAddedAccounts} == null]]></printWhenExpression>
+			<staticText>
+				<reportElement style="TitleBlue" x="0" y="0" width="483" height="20" isPrintInFirstWholeBand="true" uuid="17f0958a-d007-4cfa-b645-3ceae47c3d77">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No Windows Accounts Added/Enabled to report]]></text>
+			</staticText>
+		</band>
+		<band height="63">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
 				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="483" height="20" uuid="20f8cb1f-4d94-4bc5-9d42-96915e1bee0c"/>
@@ -464,11 +498,12 @@
 				<anchorNameExpression><![CDATA[$V{x.y+1.3.WindowsAccountsDeleted}]]></anchorNameExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="0" y="19" width="483" height="35" uuid="734d470d-accf-4fbc-9249-e91350bb1da4">
+				<reportElement x="0" y="20" width="483" height="35" isRemoveLineWhenBlank="true" uuid="734d470d-accf-4fbc-9249-e91350bb1da4">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="WindowsDeletedUsers" uuid="21982618-0c52-4a12-8f25-4f8bf2d7941f">
@@ -479,6 +514,7 @@
 							<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<returnValue fromVariable="REPORT_COUNT" toVariable="nbDeletedAccounts"/>
 					</datasetRun>
 					<jr:column width="30" uuid="a473a9e0-6e8a-4b76-8882-fb41093f96c8">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
@@ -554,6 +590,17 @@
 					</jr:column>
 				</jr:table>
 			</componentElement>
+		</band>
+		<band height="30">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$V{nbDeletedAccounts} == null]]></printWhenExpression>
+			<staticText>
+				<reportElement style="TitleBlue" x="0" y="0" width="483" height="20" isPrintInFirstWholeBand="true" uuid="f304f0ea-efcd-4bf1-95b1-d8f2621ddf09">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[No Windows Accounts Added/Enabled to report]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>

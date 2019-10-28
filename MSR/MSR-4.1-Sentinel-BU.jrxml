@@ -465,7 +465,7 @@
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="35" height="17" uuid="5386b923-9d77-4dee-a91c-8093324f540d">
 									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 								</reportElement>
@@ -519,9 +519,9 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField isStretchWithOverflow="true">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="160" height="17" uuid="6de6baf6-2fef-4b9b-8c63-eaea236d645c"/>
-								<textFieldExpression><![CDATA[IF($F{unit}==null, "-", $F{unit})]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -536,7 +536,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="65" height="17" uuid="d27c715a-249d-445b-9904-523939fba8fd"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[IF(DATEFORMAT($F{last_login},"YYYY/MM/dd")==null, "", DATEFORMAT($F{last_login},"YYYY/MM/dd"))]]></textFieldExpression>
@@ -554,7 +554,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="57" height="17" uuid="879fa2af-5de6-47a2-b46a-374e3e62c8ad"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[IF($F{is_export}.equals("1"),"Yes", "No")]]></textFieldExpression>
@@ -572,7 +572,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="56" height="17" uuid="f09a5bfa-d268-4d81-9c39-bbed6ede8f7e"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[IF($F{is_sensitive}.equals("1"),"Yes", "No")]]></textFieldExpression>
@@ -590,7 +590,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="56" height="17" uuid="6401fd4d-d673-4c1b-a76e-48b01b6b290d"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[IF($F{is_external}.equals("1"),"Yes","No")]]></textFieldExpression>
@@ -608,7 +608,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="56" height="17" uuid="b8ea356f-64af-4c17-a59f-09ec5519c315"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{nda}]]></textFieldExpression>
@@ -661,7 +661,7 @@
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="35" height="17" uuid="3d72ce96-4bcc-44fe-9837-1d3589dea102">
 									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 								</reportElement>
@@ -682,7 +682,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="165" height="17" uuid="30005952-6a11-4fc7-8cd4-a658c51ea0c3"/>
 								<textFieldExpression><![CDATA[$F{user_full_name}]]></textFieldExpression>
 							</textField>
@@ -698,7 +698,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="80" height="17" uuid="416f814e-7d17-46f5-830a-543a23261a76"/>
 								<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
 							</textField>
@@ -714,9 +714,9 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="165" height="17" uuid="1b31454a-fe0d-40dc-bb39-164a5912b26e"/>
-								<textFieldExpression><![CDATA[IF($F{unit}==null, "-", $F{unit})]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -731,7 +731,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="65" height="17" uuid="c1680d16-10fd-4acb-873b-61d64b6152df"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[IF(DATEFORMAT($F{last_login},"YYYY/MM/dd")==null, "", DATEFORMAT($F{last_login},"YYYY/MM/dd"))]]></textFieldExpression>
@@ -749,7 +749,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="17" uuid="cb30468d-cc05-4127-9aef-92dc5fb8c05a"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[IF($F{is_export}.equals("1"), "Yes", "No")]]></textFieldExpression>
@@ -766,7 +766,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="17" uuid="9f22d027-db92-453b-b832-4fbac6b65c38"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[IF($F{is_sensitive}.equals("1"), "Yes", "No")]]></textFieldExpression>
@@ -784,7 +784,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="17" uuid="e106e3c0-77b7-4559-b69c-8c5d7e8a3bf6"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[IF($F{is_external}.equals("1"), "Yes", "No")]]></textFieldExpression>
@@ -802,7 +802,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="17" uuid="652c71aa-840d-4768-99b0-9cfe62454564"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{nda}]]></textFieldExpression>
@@ -871,7 +871,7 @@
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
-							<textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="35" height="17" uuid="3b99fd8e-04f3-4852-8c0d-90864fea5379">
 									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 								</reportElement>
@@ -892,7 +892,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="165" height="17" uuid="83319b7c-24ff-459d-a6e6-70918e3d4213"/>
 								<textFieldExpression><![CDATA[$F{user_full_name}]]></textFieldExpression>
 							</textField>
@@ -908,7 +908,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="80" height="17" uuid="53fbe1d3-80f8-488a-8b0c-33efbfd54c8d"/>
 								<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
 							</textField>
@@ -924,9 +924,9 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="165" height="17" uuid="ebd61b74-12d2-43e2-9e81-3301965e3d95"/>
-								<textFieldExpression><![CDATA[IF($F{unit}==null, "-", $F{unit})]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -941,7 +941,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="65" height="17" uuid="4b4a7f60-5014-4553-8b02-0d198f6afc5d"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[IF(DATEFORMAT($F{last_login},"YYYY/MM/dd")==null, "", DATEFORMAT($F{last_login},"YYYY/MM/dd"))]]></textFieldExpression>
@@ -959,7 +959,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="17" uuid="961dda94-91c6-48ac-8111-b858b3574d06"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[IF($F{is_export}.equals("1"), "Yes", "No")]]></textFieldExpression>
@@ -976,7 +976,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="17" uuid="6057be2d-e8a2-4bbe-bedf-06823fac910a"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[IF($F{is_sensitive}.equals("1"), "Yes", "No")]]></textFieldExpression>
@@ -994,7 +994,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="17" uuid="c1f714ad-87f0-4a3a-b7d6-643c78b0bc42"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[IF($F{is_external}.equals("1"), "Yes", "No")]]></textFieldExpression>
@@ -1012,7 +1012,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="17" uuid="770d8450-5073-4b31-9484-694d19b2ba29"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{nda}]]></textFieldExpression>

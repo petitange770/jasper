@@ -58,6 +58,7 @@
 			<property name="com.jaspersoft.studio.field.label" value="user_full_name"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="boa_folders"/>
 		</field>
+		<sortField name="folder"/>
 	</subDataset>
 	<parameter name="chapter" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
@@ -170,7 +171,7 @@
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="270" height="17" uuid="b428f191-67c3-40d6-8844-8f72146ba546"/>
 								<textFieldExpression><![CDATA[$F{folder}]]></textFieldExpression>
 							</textField>
@@ -184,7 +185,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="213" height="17" uuid="95756fb7-5b9b-4ae0-a928-c0e06ab47e15"/>
 								<textFieldExpression><![CDATA[$F{user_full_name}]]></textFieldExpression>
 							</textField>

@@ -188,7 +188,7 @@
 							<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-						<returnValue fromVariable="myCount" toVariable="nbCriticalAndSensitiveAssets"/>
+						<returnValue fromVariable="REPORT_COUNT" toVariable="nbCriticalAndSensitiveAssets"/>
 					</datasetRun>
 					<jr:column width="140" uuid="fede1227-ff8b-4670-943d-14c0351634cd">
 						<jr:columnHeader style="Table_CH" height="18">
@@ -200,7 +200,7 @@
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="140" height="17" uuid="939cb514-51a0-4558-9b3a-614d535483c2"/>
 								<textFieldExpression><![CDATA[$F{service}]]></textFieldExpression>
 							</textField>
@@ -214,7 +214,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="200" height="17" uuid="3838c0cc-98f5-4a09-bb8f-9ee165f1d000"/>
 								<textFieldExpression><![CDATA[$F{hostname}]]></textFieldExpression>
 							</textField>
@@ -228,7 +228,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="90" height="17" uuid="61e6985f-8d47-4be9-8780-0808a596055c"/>
 								<textFieldExpression><![CDATA[IF($F{confidentiality}.equals("DC1"),"DC1 - Public Data", IF($F{confidentiality}.equals("DC2"),"DC2 - Internal Use", 
 IF($F{confidentiality}.equals("DC3"),"DC3 - Confidential", IF($F{confidentiality}.equals("DC4"),"DC4 - Restricted",
@@ -244,7 +244,7 @@ IF($F{confidentiality}.equals("DC3"),"DC3 - Confidential", IF($F{confidentiality
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField>
+							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="180" height="17" uuid="06beddcc-2b61-4206-8d6d-b32b7e80990a"/>
 								<textFieldExpression><![CDATA[$F{server_room}]]></textFieldExpression>
 							</textField>

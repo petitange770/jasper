@@ -21,7 +21,7 @@
        CONCAT(extract(year from export_date), ' - ', LPAD(extract(month from export_date)::text, 2, '0') ) as yearmonth,
  	   COUNT(LOWER(user_id)) AS nb_users
   FROM msr.windows_users
-  WHERE (LOWER(customer) =  $P{customer} )
+  WHERE (LOWER(customer) =  lower($P{customer}) )
   AND export_date >= (to_date( $P{periodSelected} , 'YYYYMMDD') - interval '6 months')
   AND export_date <= to_date( $P{periodSelected}  , 'YYYYMMDD')
   GROUP BY customer, user_role, period_year, period_month
@@ -172,12 +172,12 @@
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<stackedBar3DChart>
 				<chart evaluationTime="Report" theme="generic">
-					<reportElement key="" x="0" y="0" width="483" height="230" uuid="620db260-61ba-488a-bc24-8f7869c4a827">
+					<reportElement key="" x="0" y="0" width="483" height="230" uuid="454439fd-3a45-4055-b637-954905caf257">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<chartTitle>
 						<font fontName="Arial" size="16"/>
-						<titleExpression><![CDATA["Unix Accounts by Type"]]></titleExpression>
+						<titleExpression><![CDATA["Windows Accounts"]]></titleExpression>
 					</chartTitle>
 					<chartSubtitle/>
 					<chartLegend position="Bottom">
@@ -186,7 +186,7 @@
 				</chart>
 				<categoryDataset>
 					<dataset>
-						<datasetRun subDataset="WindowsUsers" uuid="d6035398-87eb-436b-9bf1-2ce6e3053d53">
+						<datasetRun subDataset="WindowsUsers" uuid="015a06a2-b492-4e63-a320-e23c6a40615a">
 							<datasetParameter name="customer">
 								<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
 							</datasetParameter>

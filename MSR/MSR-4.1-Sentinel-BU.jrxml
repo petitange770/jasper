@@ -539,7 +539,7 @@
 							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="65" height="17" uuid="d27c715a-249d-445b-9904-523939fba8fd"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[IF(DATEFORMAT($F{last_login},"YYYY/MM/dd")==null, "", DATEFORMAT($F{last_login},"YYYY/MM/dd"))]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF(DATEFORMAT($F{last_login},"YYYY/MM/dd")==null, "", DATEFORMAT($F{last_login},"dd/MM/YYYY"))]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -734,7 +734,7 @@
 							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="65" height="17" uuid="c1680d16-10fd-4acb-873b-61d64b6152df"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[IF(DATEFORMAT($F{last_login},"YYYY/MM/dd")==null, "", DATEFORMAT($F{last_login},"YYYY/MM/dd"))]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF(DATEFORMAT($F{last_login},"YYYY/MM/dd")==null, "", DATEFORMAT($F{last_login},"dd/MM/YYYY"))]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -944,7 +944,7 @@
 							<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="65" height="17" uuid="4b4a7f60-5014-4553-8b02-0d198f6afc5d"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[IF(DATEFORMAT($F{last_login},"YYYY/MM/dd")==null, "", DATEFORMAT($F{last_login},"YYYY/MM/dd"))]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF(DATEFORMAT($F{last_login},"YYYY/MM/dd")==null, "", DATEFORMAT($F{last_login},"dd/MM/YYYY"))]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

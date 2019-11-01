@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Vulnerabilities_list" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8075a1c3-7bb3-4271-b957-99e29cb71128">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<template><![CDATA["C:\\Users\\Gabriel\\jasper\\MSR\\Styles\\Assl-Style-Template.jrtx"]]></template>
+	<subDataset name="Vulnerability" uuid="eb1225bd-f0bf-4db9-8f1c-d50fd608b88b">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+		<parameter name="Qualys-ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[100]]></defaultValueExpression>
+		</parameter>
+		<queryString language="SQL">
+			<![CDATA[select * from msr.qualys
+where qualys_id =  $P{Qualys-ID} ]]>
+		</queryString>
+		<field name="qualys_id" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="qualys_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="upsert_id" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="upsert_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="ip" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ip"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="host" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="host"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="port" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="port"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="protocol" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="protocol"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="category" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="category"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="qid" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="qid"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="title" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="title"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="cve" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="cve"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="cvss_base" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="cvss_base"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="cvss_temporal" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="cvss_temporal"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="cvss_v3_base" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="cvss_v3_base"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="cvss_v3_temporal" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="cvss_v3_temporal"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="patchable" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="patchable"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="pci_flag" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="pci_flag"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="published_datetime" class="java.sql.Timestamp">
+			<property name="com.jaspersoft.studio.field.label" value="published_datetime"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="severity" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="severity"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="status" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="status"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="os" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="os"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="first_found_datetime" class="java.sql.Timestamp">
+			<property name="com.jaspersoft.studio.field.label" value="first_found_datetime"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="last_found_datetime" class="java.sql.Timestamp">
+			<property name="com.jaspersoft.studio.field.label" value="last_found_datetime"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="customer" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="customer"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="env" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="env"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="export_date" class="java.sql.Date">
+			<property name="com.jaspersoft.studio.field.label" value="export_date"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[select 1]]>
+	</queryString>
+	<field name="?column?" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="?column?"/>
+	</field>
+	<detail>
+		<band height="500">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<componentElement>
+				<reportElement stretchType="ContainerHeight" x="0" y="0" width="550" height="470" isPrintWhenDetailOverflows="true" uuid="0994dbe2-8883-4672-89d5-b74c750a0a11">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Vulnerability" uuid="5b8b83d3-7696-4da8-885d-7f57a7c2e00e">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="470" width="550">
+						<textField isStretchWithOverflow="true">
+							<reportElement style="Table-Detail-line" positionType="Float" x="0" y="0" width="550" height="38" uuid="4dd31b2b-259c-4028-8007-4b85fd43af7b">
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+								<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+							</reportElement>
+							<box topPadding="0" leftPadding="120" bottomPadding="0" rightPadding="0"/>
+							<textElement>
+								<font fontName="Arial"/>
+								<paragraph firstLineIndent="-120" leftIndent="0">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["Qualys ID" + "\t\t" + $F{qualys_id}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement style="Table-Detail-line" positionType="Float" x="0" y="38" width="550" height="18" uuid="5421b079-febd-4662-b1fb-02ead3e9210e">
+								<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+							</reportElement>
+							<box topPadding="0" leftPadding="120" bottomPadding="0" rightPadding="0"/>
+							<textElement>
+								<font fontName="Arial"/>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["Upsert ID" + "\t\t" + $F{upsert_id}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement style="Table-Detail-line" positionType="Float" x="0" y="56" width="550" height="18" uuid="0a3ba0f5-a895-4697-b287-d95c13f47d8f"/>
+							<box topPadding="0" leftPadding="120" bottomPadding="0" rightPadding="0"/>
+							<textElement>
+								<font fontName="Arial"/>
+								<paragraph firstLineIndent="-120"/>
+							</textElement>
+							<textFieldExpression><![CDATA["IP" + "\t\t\t" + $F{ip}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement style="Table-Detail-line" positionType="Float" x="0" y="74" width="550" height="18" uuid="f9518c60-bc2a-4807-a7a2-8efa0c516aed"/>
+							<box topPadding="0" leftPadding="120" bottomPadding="0" rightPadding="0"/>
+							<textElement>
+								<font fontName="Arial"/>
+								<paragraph firstLineIndent="-120"/>
+							</textElement>
+							<textFieldExpression><![CDATA["Hostname" + "\t\t" + $F{host}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement style="Table-Detail-line" positionType="Float" x="0" y="92" width="550" height="18" uuid="df6cf81b-02ee-4e7d-bf0d-dcb527c55507"/>
+							<box topPadding="0" leftPadding="120" bottomPadding="0" rightPadding="0"/>
+							<textElement>
+								<font fontName="Arial"/>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["Port" + "\t\t\t" + + $F{port}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="110" width="550" height="18" uuid="88a04479-95fe-43f8-aa5b-59bc4de462e2"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["Protocol" + "\t\t\t" + $F{protocol}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="128" width="550" height="18" uuid="5180505a-5984-4913-84e8-e9b545f3ca19"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["Category" + "\t\t" + $F{category}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="146" width="550" height="18" uuid="e47cfa62-a578-44fb-8508-c0008ddec236"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["quid" + "\t\t\t" + $F{qid}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="164" width="550" height="18" uuid="1a45fd45-2ec4-4208-896b-8ab663fa1305"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["title" + "\t\t\t" + $F{title}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="182" width="550" height="18" uuid="dcbabca8-d8bb-44e7-a382-a06b154d83d0"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["CVE" + "\t\t\t" + $F{cve}+$F{cve}+$F{cve}+$F{cve}+$F{cve}+$F{cve}+$F{cve}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="200" width="550" height="18" uuid="aca2ab03-7ceb-4c56-af87-b25e3ed7c9da"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["CVS Base" + "\t\t" + $F{cvss_base}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="218" width="550" height="18" uuid="d98d9975-0f84-47a3-b38a-a098eee79816"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["CVSS Temporal" + "\t\t" + $F{cvss_temporal}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="236" width="550" height="18" uuid="d2869628-ba3e-4ab3-8d2e-0bb131d5d964"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["CVSS V3 Base" + "\t\t" + $F{cvss_v3_base}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="254" width="550" height="18" uuid="c0df5e9c-a05c-4acc-bb8b-43ddf3029426"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["CVSS V3 Temporal" + "\t" + $F{cvss_v3_temporal}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="272" width="550" height="18" uuid="351a97ef-bac7-4aea-8657-1b5ef24f3f6d"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["Patchable" + "\t\t" + $F{patchable}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="290" width="550" height="18" uuid="10dd67f1-5e3d-4921-b835-4196c2e7e557"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["PCI Flag" + "\t\t\t" + $F{pci_flag}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="308" width="550" height="18" uuid="bfd0baf0-f48f-4b1c-b138-d7b7dbe9ebdb"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["Published Datetime" + "\t" + $F{published_datetime}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="326" width="550" height="18" uuid="b9d3305a-cec1-46b3-960f-7f112589f571"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["Severity" + "\t\t\t" + $F{severity}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="344" width="550" height="18" uuid="e742988b-a8cb-4157-b959-2298773b0111"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["Status" + "\t\t\t" + $F{status}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="362" width="550" height="18" uuid="c494faf5-81a4-4815-8f62-a549fe732e4e"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["OS" + "\t\t\t" + $F{os}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="380" width="550" height="18" uuid="5e0db13f-9a7d-4fe2-8623-2d74c1499e7d"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["First Found Datetime" + "\t" + $F{first_found_datetime}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="398" width="550" height="18" uuid="dce4e302-b705-4cd5-82e5-03054d569b34"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["Last Found Datetime" + "\t" + $F{last_found_datetime}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="416" width="550" height="18" uuid="d31f02e0-1d5c-4b3b-b92a-44cd45eb752b"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["Customer" + "\t\t" + $F{customer}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="434" width="550" height="18" uuid="56dffb79-deaf-47b6-acc9-407ffe5d3250"/>
+							<box leftPadding="120"/>
+							<textElement>
+								<paragraph firstLineIndent="-120">
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["Env" + "\t\t\t" + $F{env}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement positionType="Float" x="0" y="452" width="550" height="18" uuid="3a55e23c-20a0-47f5-bf08-ca0594814418"/>
+							<textElement>
+								<paragraph>
+									<tabStop position="40" alignment="Left"/>
+								</paragraph>
+							</textElement>
+							<textFieldExpression><![CDATA["Export Date" + "\t\t" + $F{export_date}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="crosstab" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="95be6d25-635f-4581-a0ea-a1f69b26f2bd">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<subDataset name="Vulnerabilities" uuid="c7b639f4-2cc7-4ef3-a5d4-ee3582433baf">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+		<queryString language="SQL">
+			<![CDATA[select * from msr.qualys
+where lower(customer) = lower('BSCT')
+and export_date = to_date('20190901', 'YYYYMMDD')]]>
+		</queryString>
+		<field name="qualys_id" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="qualys_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="upsert_id" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="upsert_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="ip" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ip"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="host" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="host"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="port" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="port"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="protocol" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="protocol"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="category" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="category"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="qid" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="qid"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="title" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="title"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="cve" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="cve"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="cvss_base" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="cvss_base"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="cvss_temporal" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="cvss_temporal"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="cvss_v3_base" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="cvss_v3_base"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="cvss_v3_temporal" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="cvss_v3_temporal"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="patchable" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="patchable"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="pci_flag" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="pci_flag"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="published_datetime" class="java.sql.Timestamp">
+			<property name="com.jaspersoft.studio.field.label" value="published_datetime"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="severity" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="severity"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="status" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="status"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="os" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="os"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="first_found_datetime" class="java.sql.Timestamp">
+			<property name="com.jaspersoft.studio.field.label" value="first_found_datetime"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="last_found_datetime" class="java.sql.Timestamp">
+			<property name="com.jaspersoft.studio.field.label" value="last_found_datetime"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="customer" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="customer"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="env" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="env"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+		<field name="export_date" class="java.sql.Date">
+			<property name="com.jaspersoft.studio.field.label" value="export_date"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys"/>
+		</field>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[select 1]]>
+	</queryString>
+	<field name="?column?" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="?column?"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="607" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

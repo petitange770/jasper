@@ -8,8 +8,8 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="palg"/>
-	<property name="ireport.jasperserver.report.resource" value="/reports/Monthly_Security_Report_Book_files/main_jrxml"/>
-	<property name="ireport.jasperserver.reportUnit" value="/reports/Monthly_Security_Report_Book"/>
+	<property name="ireport.jasperserver.report.resource" value="/Templates/reports/Monthly_Security_Report_Book_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Templates/reports/Monthly_Security_Report_Book"/>
 	<parameter name="customer" class="java.lang.String">
 		<defaultValueExpression><![CDATA["BSCT"]]></defaultValueExpression>
 	</parameter>
@@ -453,6 +453,32 @@ where company_tag =  $P{customer}]]>
 				<returnValue subreportVariable="newSection" toVariable="section"/>
 				<returnValue subreportVariable="newSubsection" toVariable="subsection"/>
 				<subreportExpression><![CDATA["MSR-7-Windows-Users.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="34937f8a-9451-4f1e-b810-5b333c1b0aff">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="REPORT_CONNECTION">
+					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION} ]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="chapter">
+					<subreportParameterExpression><![CDATA[$V{chapter} + 1]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="coverTitle">
+					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="customer">
+					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="section">
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="selectedDate">
+					<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subsection">
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["MSR-9-Qualys.jasper"]]></subreportExpression>
 			</p:subreportPart>
 		</part>
 	</detail>

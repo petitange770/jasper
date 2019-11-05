@@ -1,7 +1,4 @@
 eclipse.preferences.version=1
-encoding/MSR-10-Customer-Vulnerabilities.jrxml=UTF-8
-encoding/MSR-10-Vulnerabilities.jrxml=UTF-8
-encoding/MSR-10-Vulnerability_list.jrxml=UTF-8
 encoding/MSR-2-Management-Summary.jrxml=UTF-8
 encoding/MSR-2.1-Management-Summary.jrxml=UTF-8
 encoding/MSR-2.2-Graph-Windows-Users.jrxml=UTF-8
@@ -14,6 +11,8 @@ encoding/MSR-6.2-DBA-Users.jrxml=UTF-8
 encoding/MSR-7-Windows-Users.jrxml=UTF-8
 encoding/MSR-8-Security-Incidents.jrxml=UTF-8
 encoding/MSR-9-Qualys.jrxml=UTF-8
+encoding/MSR-9.0-Qualys-Summary.jrxml=UTF-8
+encoding/MSR-9.1-Qualys-Details.jrxml=UTF-8
 encoding/MSR-Introduction.jrxml=UTF-8
 encoding/Monthly-Security-Report-Book.jrxml=UTF-8
 encoding/Monthly-Security-Report-Book_toc.jrxml=UTF-8

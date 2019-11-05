@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Templates &amp; Styles</name>
+	<name>Security Control Document</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -20,11 +20,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>net.sf.jasperreports.nature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>Qualys Summary.jrprint</name>
-			<type>1</type>
-			<location>C:/Temp/Qualys Summary.jrprint</location>
-		</link>
-	</linkedResources>
 </projectDescription>

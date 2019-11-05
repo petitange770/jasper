@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportCoverTemplate" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isFloatColumnFooter="true" uuid="46a3caf7-2821-4a54-a400-0ee9ac3664de">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+	<property name="ireport.jasperserver.url" value="https://jasper.mgt.ac.avaloqsourcing.net:8443/jasperserver-pro/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.reportUnit" value="/templates/Cover/ReportCoverTemplate"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="ireport.jasperserver.report.resource" value="/templates/Cover/ReportCoverTemplate_files/main_jrxml"/>
+	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
+	<parameter name="coverTitle" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Newsletter template"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="customer" class="java.lang.String">
+		<defaultValueExpression><![CDATA["IWM"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="selectedDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["20190601"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select 1]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="842" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<image scaleImage="FillFrame">
+				<reportElement stretchType="ElementGroupHeight" x="0" y="0" width="595" height="842" uuid="33e4dafd-c309-4548-a9f0-48e3400bdaa9">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["/Images/Client-Security-Report_CG.jpg"]]></imageExpression>
+			</image>
+			<rectangle radius="15">
+				<reportElement mode="Opaque" x="30" y="100" width="510" height="61" forecolor="#0097DB" backcolor="rgba(0, 151, 219, 0.6862745)" uuid="f412760f-9cf5-4360-ba1c-64c4c17f4939"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="15">
+				<reportElement mode="Opaque" x="30" y="106" width="491" height="61" forecolor="#0097DB" backcolor="rgba(0, 151, 219, 0.7058824)" uuid="acca72f4-8757-4fe3-8561-961fd9f7a68e"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="15">
+				<reportElement mode="Opaque" x="35" y="110" width="465" height="61" forecolor="#9ED6FF" backcolor="rgba(158, 214, 255, 0.64705884)" uuid="168ac3e7-82b0-4c94-bd2f-6e4bddd2ada3"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="30" y="640" width="534" height="131" backcolor="rgba(255, 255, 255, 0.6862745)" uuid="cf3ec83f-fee5-40bf-9f17-062b0bd75afa"/>
+				<graphicElement>
+					<pen lineStyle="Solid" lineColor="#797878"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement style="coverTitleStyle" mode="Transparent" x="47" y="117" width="453" height="57" forecolor="#FFFCFC" uuid="c3a07ed4-e00a-42b1-aeac-75dbbe9e47d3"/>
+				<textFieldExpression><![CDATA[$P{coverTitle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="coverCustomer" x="47" y="654" width="505" height="26" uuid="cddefc3b-1b9b-4224-9eb2-2a90f02ffb23"/>
+				<textFieldExpression><![CDATA[$P{customer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="coverPrintingDate" x="47" y="740" width="505" height="20" uuid="c05cdfbc-cd24-40db-92c1-c5f2ff9c3671"/>
+				<textFieldExpression><![CDATA["Reporting period " + DATEFORMAT(DATE(INTEGER_VALUE(MID($P{selectedDate}, 1, 4)), INTEGER_VALUE(MID($P{selectedDate}, 5, 2)), 1), "MMMM yyyy")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

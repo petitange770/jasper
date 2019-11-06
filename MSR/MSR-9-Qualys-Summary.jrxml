@@ -45,9 +45,11 @@
 			<defaultValueExpression><![CDATA[20190901]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
-			<![CDATA[select host, ip, customer, severity_1, severity_2, severity_3, severity_4, severity_5, ROW_NUMBER() OVER (ORDER BY qualys_summary_id) AS rownum from msr.qualys_summary
+			<![CDATA[select host, ip, severity_5, severity_4, severity_3, severity_2, severity_1
+from msr.qualys_summary
 where lower(customer) = lower( $P{customer} )
-and export_date = to_date( $P{selectedDate} , 'YYYYMMDD')]]>
+and export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
+group by host, ip, severity_5, severity_4, severity_3, severity_2, severity_1]]>
 		</queryString>
 		<field name="host" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="host"/>
@@ -57,32 +59,25 @@ and export_date = to_date( $P{selectedDate} , 'YYYYMMDD')]]>
 			<property name="com.jaspersoft.studio.field.label" value="ip"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
 		</field>
-		<field name="customer" class="java.lang.String">
-			<property name="com.jaspersoft.studio.field.label" value="customer"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
-		</field>
-		<field name="severity_1" class="java.lang.Integer">
-			<property name="com.jaspersoft.studio.field.label" value="severity_1"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
-		</field>
-		<field name="severity_2" class="java.lang.Integer">
-			<property name="com.jaspersoft.studio.field.label" value="severity_2"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
-		</field>
-		<field name="severity_3" class="java.lang.Integer">
-			<property name="com.jaspersoft.studio.field.label" value="severity_3"/>
+		<field name="severity_5" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="severity_5"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
 		</field>
 		<field name="severity_4" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.label" value="severity_4"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
 		</field>
-		<field name="severity_5" class="java.lang.Integer">
-			<property name="com.jaspersoft.studio.field.label" value="severity_5"/>
+		<field name="severity_3" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="severity_3"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
 		</field>
-		<field name="rownum" class="java.lang.Long">
-			<property name="com.jaspersoft.studio.field.label" value="rownum"/>
+		<field name="severity_2" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="severity_2"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
+		</field>
+		<field name="severity_1" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="severity_1"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
 		</field>
 		<sortField name="severity_5" order="Descending"/>
 		<sortField name="severity_4" order="Descending"/>
@@ -90,6 +85,7 @@ and export_date = to_date( $P{selectedDate} , 'YYYYMMDD')]]>
 		<sortField name="severity_2" order="Descending"/>
 		<sortField name="severity_1" order="Descending"/>
 		<sortField name="host"/>
+		<sortField name="ip"/>
 	</subDataset>
 	<parameter name="chapter" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>

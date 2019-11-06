@@ -88,10 +88,12 @@
 					<property name="local_mesure_unity" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
 				</reportElement>
+				<box leftPadding="15"/>
 				<textElement>
 					<font fontName="Arial" size="11" isBold="false"/>
-					<paragraph leftIndent="2"/>
+					<paragraph firstLineIndent="-15" leftIndent="2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{label}]]></textFieldExpression>
 				<hyperlinkAnchorExpression><![CDATA[$F{label}]]></hyperlinkAnchorExpression>
@@ -120,10 +122,12 @@
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
 				</reportElement>
+				<box leftPadding="20"/>
 				<textElement>
 					<font fontName="Arial" size="11" isBold="false"/>
-					<paragraph leftIndent="2"/>
+					<paragraph firstLineIndent="-20" leftIndent="2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{label}]]></textFieldExpression>
 				<hyperlinkAnchorExpression><![CDATA[$F{label}]]></hyperlinkAnchorExpression>
@@ -150,10 +154,12 @@
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
 				</reportElement>
+				<box leftPadding="25"/>
 				<textElement markup="html">
 					<font fontName="Arial" size="11" isBold="false"/>
-					<paragraph leftIndent="2"/>
+					<paragraph firstLineIndent="-25" leftIndent="2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{label}]]></textFieldExpression>
 				<hyperlinkAnchorExpression><![CDATA[$F{label}]]></hyperlinkAnchorExpression>
@@ -180,10 +186,12 @@
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
 				</reportElement>
+				<box leftPadding="30"/>
 				<textElement markup="html">
 					<font fontName="Arial" size="11" isBold="false"/>
-					<paragraph leftIndent="2"/>
+					<paragraph firstLineIndent="-30" leftIndent="2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{label}]]></textFieldExpression>
 				<hyperlinkAnchorExpression><![CDATA[$F{label}]]></hyperlinkAnchorExpression>
@@ -221,10 +229,12 @@
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
 				</reportElement>
+				<box leftPadding="35"/>
 				<textElement markup="html">
 					<font fontName="Arial" size="11" isBold="false"/>
-					<paragraph leftIndent="2"/>
+					<paragraph firstLineIndent="-35" leftIndent="2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{label}]]></textFieldExpression>
 				<hyperlinkAnchorExpression><![CDATA[$F{label}]]></hyperlinkAnchorExpression>

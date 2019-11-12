@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TocReport" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" uuid="6e74177b-d551-4a75-ae51-6cdde3f284ce">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="TocData"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper PRD"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<style name="Title" hTextAlign="Right" hImageAlign="Right" fontSize="32">
 		<box>
@@ -61,7 +62,7 @@
 				<textFieldExpression><![CDATA[$P{coverTitle}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Master">
-				<reportElement style="headerPageNumbers" x="320" y="0" width="163" height="32" uuid="82e53a01-a737-4ace-944e-052f26a8bf3a"/>
+				<reportElement style="headerPageNumbers" x="310" y="0" width="173" height="32" uuid="82e53a01-a737-4ace-944e-052f26a8bf3a"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Reporting Period " + DATEFORMAT(DATE(INTEGER_VALUE(MID($P{selectedDate},1,4)),INTEGER_VALUE(MID($P{selectedDate},5,2)),INTEGER_VALUE(MID($P{selectedDate},7,2))),"MMM yyyy")+ " | Page " + $V{MASTER_CURRENT_PAGE} + " of " + $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
 			</textField>

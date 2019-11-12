@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportCoverTemplate" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isFloatColumnFooter="true" uuid="46a3caf7-2821-4a54-a400-0ee9ac3664de">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper PRD"/>
 	<property name="ireport.jasperserver.url" value="https://jasper.mgt.ac.avaloqsourcing.net:8443/jasperserver-pro/"/>
 	<property name="ireport.jasperserver.user" value="jasperadmin"/>
 	<property name="ireport.jasperserver.reportUnit" value="/templates/Cover/ReportCoverTemplate"/>
@@ -14,7 +14,6 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<property name="ireport.jasperserver.report.resource" value="/templates/Cover/ReportCoverTemplate_files/main_jrxml"/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<parameter name="coverTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Newsletter template"]]></defaultValueExpression>
@@ -23,7 +22,7 @@
 		<defaultValueExpression><![CDATA["IWM"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
-		<defaultValueExpression><![CDATA["20190601"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["20190901"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select 1]]>
@@ -75,7 +74,7 @@
 			</textField>
 			<textField>
 				<reportElement style="coverPrintingDate" x="47" y="740" width="505" height="20" uuid="c05cdfbc-cd24-40db-92c1-c5f2ff9c3671"/>
-				<textFieldExpression><![CDATA["Reporting period " + DATEFORMAT(DATE(INTEGER_VALUE(MID($P{selectedDate}, 1, 4)), INTEGER_VALUE(MID($P{selectedDate}, 5, 2)), 1), "MMMM yyyy")]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Reporting period " + DATEFORMAT(DATE(INTEGER_VALUE(MID($P{selectedDate},1,4)), INTEGER_VALUE(MID($P{selectedDate}, 5,2)), 1), "MMMM YYYY")]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MSR-9-Qualys-Summary" pageWidth="595" pageHeight="842" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" uuid="97992052-f653-465d-8e5f-1a6335ddfe06">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper PRD"/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<style name="Table 2_TH" mode="Opaque" backcolor="#F0F8FF">
 		<box>
@@ -37,7 +37,7 @@
 	</style>
 	<subDataset name="QualysSummary" uuid="a1e332cd-eec4-459c-88aa-836d30a594fa">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper PRD"/>
 		<parameter name="customer" class="java.lang.String">
 			<defaultValueExpression><![CDATA["bsct"]]></defaultValueExpression>
 		</parameter>
@@ -45,20 +45,12 @@
 			<defaultValueExpression><![CDATA[20190901]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
-			<![CDATA[select host, ip, severity_5, severity_4, severity_3, severity_2, severity_1
+			<![CDATA[select distinct host, ip, severity_5, severity_4, severity_3, severity_2, severity_1
 from msr.qualys_summary
 where lower(customer) = lower( $P{customer} )
 and export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
 group by host, ip, severity_5, severity_4, severity_3, severity_2, severity_1]]>
 		</queryString>
-		<field name="host" class="java.lang.String">
-			<property name="com.jaspersoft.studio.field.label" value="host"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
-		</field>
-		<field name="ip" class="java.lang.String">
-			<property name="com.jaspersoft.studio.field.label" value="ip"/>
-			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
-		</field>
 		<field name="severity_5" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.label" value="severity_5"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
@@ -77,6 +69,14 @@ group by host, ip, severity_5, severity_4, severity_3, severity_2, severity_1]]>
 		</field>
 		<field name="severity_1" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.label" value="severity_1"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
+		</field>
+		<field name="host" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="host"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
+		</field>
+		<field name="ip" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ip"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="qualys_summary"/>
 		</field>
 		<sortField name="severity_5" order="Descending"/>
@@ -103,7 +103,7 @@ group by host, ip, severity_5, severity_4, severity_3, severity_2, severity_1]]>
 		<defaultValueExpression><![CDATA["Monthly Security Report"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
-		<defaultValueExpression><![CDATA["20190901"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["20191001"]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[select 1]]>
@@ -159,7 +159,7 @@ group by host, ip, severity_5, severity_4, severity_3, severity_2, severity_1]]>
 				<reportElement x="0" y="32" width="483" height="1" uuid="43a182e6-86b5-4b25-bf0f-7131f810472b"/>
 			</line>
 			<textField evaluationTime="Master">
-				<reportElement style="headerPageNumbers" x="320" y="0" width="163" height="32" uuid="1e5668ca-8ba9-449f-ad40-eaca8819a40e"/>
+				<reportElement style="headerPageNumbers" x="310" y="0" width="173" height="32" uuid="1e5668ca-8ba9-449f-ad40-eaca8819a40e"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Reporting Period " + DATEFORMAT(DATE(INTEGER_VALUE(MID($P{selectedDate},1,4)),INTEGER_VALUE(MID($P{selectedDate},5,2)),INTEGER_VALUE(MID($P{selectedDate},7,2))),"MMM yyyy")+ " | Page " + $V{MASTER_CURRENT_PAGE} + " of " + $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
 			</textField>
@@ -211,34 +211,34 @@ group by host, ip, severity_5, severity_4, severity_3, severity_2, severity_1]]>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 						<returnValue fromVariable="REPORT_COUNT" toVariable="nbImpactedAssets"/>
 					</datasetRun>
-					<jr:column width="220" uuid="99497e54-5e77-4cda-952b-cf073545f7a6">
+					<jr:column width="210" uuid="99497e54-5e77-4cda-952b-cf073545f7a6">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
 						<jr:columnHeader style="Table 2_CH" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="220" height="20" uuid="315ad590-3111-4006-87c9-ad534105075f"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="210" height="20" uuid="315ad590-3111-4006-87c9-ad534105075f"/>
 								<text><![CDATA[Hostname]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table 2_TD" height="20">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement style="Table-Detail-line" x="0" y="0" width="220" height="20" isRemoveLineWhenBlank="true" uuid="56586dad-0673-47d3-bd59-b627193750b7"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="210" height="20" isRemoveLineWhenBlank="true" uuid="56586dad-0673-47d3-bd59-b627193750b7"/>
 								<textFieldExpression><![CDATA[$F{host}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="72" uuid="f8d36d2c-56e6-49a5-be1a-5a08d640ba8d">
+					<jr:column width="83" uuid="f8d36d2c-56e6-49a5-be1a-5a08d640ba8d">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
 						<jr:columnHeader style="Table 2_CH" height="20" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="72" height="20" uuid="4397ae37-9a87-496b-8c2a-45eec2f1712c"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="83" height="20" uuid="4397ae37-9a87-496b-8c2a-45eec2f1712c"/>
 								<text><![CDATA[Ip Address]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table 2_TD" height="20">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement style="Table-Detail-line" x="0" y="0" width="72" height="20" isRemoveLineWhenBlank="true" uuid="01d87ef5-fd38-476e-8b13-0c890c2e1f4b"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="83" height="20" isRemoveLineWhenBlank="true" uuid="01d87ef5-fd38-476e-8b13-0c890c2e1f4b"/>
 								<textFieldExpression><![CDATA[$F{ip}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>

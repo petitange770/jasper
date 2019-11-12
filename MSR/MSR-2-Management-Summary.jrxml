@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Management Summary" pageWidth="595" pageHeight="842" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" uuid="b68e4251-4e98-4ffa-99cc-646e75dcfaf5">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper PRD"/>
 	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
 	<style name="Table_TH" mode="Opaque" backcolor="#004893">
 		<box>
@@ -37,11 +37,11 @@
 	</style>
 	<subDataset name="EmployeeByType" uuid="727dbfe7-4e1f-4d9e-aa0f-0a7cd6e9b2c2">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper PRD"/>
 		<parameter name="customer" class="java.lang.String">
 			<defaultValueExpression><![CDATA["sb2"]]></defaultValueExpression>
 		</parameter>
-		<parameter name="periodSelected" class="java.lang.String">
+		<parameter name="selectedDate" class="java.lang.String">
 			<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
@@ -51,31 +51,20 @@
 	   CONCAT(extract(year from a.export_date), ' - ', 
 	   to_char( extract(month from a.export_date), '00') ) as yearmonth,
 	   count(a.user_id) as nb_users
-from (SELECT export_date as export_date,
-			   user_id as user_id
-		  FROM msr.unix_dba_users 
-		  WHERE customer =  $P{customer} 
-		  AND export_date >= to_date( $P{periodSelected} , 'YYYYMMDD') - interval '5 months'
-		  AND export_date <= to_date( $P{periodSelected} , 'YYYYMMDD') 
-		  AND user_id LIKE 'E_%'
-	  UNION
-	  SELECT export_date as export_date, 
-			   user_id as user_id
-		  FROM msr.windows_users 
-		  WHERE customer =  $P{customer} 
-		  AND export_date >= to_date( $P{periodSelected} , 'YYYYMMDD') - interval '5 months' 
-		  AND export_date <= to_date( $P{periodSelected} , 'YYYYMMDD') 
-		  AND user_id LIKE 'E_%'
-	  UNION
-	  SELECT export_date as export_date, 
-			   user_name as user_id
-		  FROM msr.avq_users 
-		  WHERE customer =  $P{customer} 
-		  AND export_date >= to_date( $P{periodSelected} , 'YYYYMMDD') - interval '5 months' 
-		  AND export_date <= to_date( $P{periodSelected} , 'YYYYMMDD') 
-		  AND user_name LIKE 'E_%'
+from (SELECT DISTINCT temp.export_date as export_date,
+	                   temp.user_id as user_id
+	  from 
+		  (SELECT DISTINCT export_date as export_date, 
+				   lower(win_user) as user_id
+			  FROM msr.avq_users 
+			  WHERE lower(customer) =  $P{customer}
+			  AND export_date >= to_date( $P{selectedDate} , 'YYYYMMDD') - interval '5 months' 
+			  AND export_date <= to_date( $P{selectedDate} , 'YYYYMMDD') 
+			  AND lower(win_user) LIKE 'e_%'
+		      AND lower(accountstatus) = 'open'
+		   ) as temp
 	) as a
-  GROUP BY period_year, period_month, user_type
+GROUP BY period_year, period_month, user_type
 UNION ALL
 SELECT extract(year from a.export_date) as period_year,
        extract(month from a.export_date) as period_month,  
@@ -84,11 +73,13 @@ SELECT extract(year from a.export_date) as period_year,
 	   to_char( extract(month from a.export_date), '00') ),
 	   count(a.user_id)
 FROM msr.avq_users as a
-  WHERE customer =  $P{customer} 
-  AND export_date >= to_date($P{periodSelected} , 'YYYYMMDD') - interval '5 months'
-  AND export_date <= to_date( $P{periodSelected} , 'YYYYMMDD')
+  WHERE lower(customer) =  lower($P{customer})
+  AND export_date >= to_date($P{selectedDate} , 'YYYYMMDD') - interval '5 months'
+  AND export_date <= to_date( $P{selectedDate} , 'YYYYMMDD')
   AND is_sensitive = '1' 
   AND is_export = '1'
+  AND lower(accountstatus) = 'open'
+  AND lower(win_user) NOT LIKE 'e_%'
   GROUP BY period_year, period_month, user_type
 UNION ALL
 SELECT extract(year from a.export_date) as period_year,
@@ -98,11 +89,13 @@ SELECT extract(year from a.export_date) as period_year,
 	   to_char( extract(month from a.export_date), '00') ),
 	   count(a.user_id)
 FROM msr.avq_users as a
-  WHERE customer =  $P{customer} 
-  AND export_date >= to_date( $P{periodSelected} , 'YYYYMMDD') - interval '5 months'
-  AND export_date <= to_date( $P{periodSelected} , 'YYYYMMDD')
+  WHERE lower(customer) =  lower($P{customer})
+  AND export_date >= to_date( $P{selectedDate} , 'YYYYMMDD') - interval '5 months'
+  AND export_date <= to_date( $P{selectedDate} , 'YYYYMMDD')
   AND is_sensitive = '1'
-  AND NOT(a.user_name LIKE 'E_%')
+  AND is_export = '0'
+  AND lower(accountstatus) = 'open'
+  AND lower(a.win_user) NOT LIKE 'e_%'
   GROUP BY period_year, period_month, user_type
 UNION ALL
 SELECT extract(year from a.export_date) as period_year,
@@ -112,11 +105,13 @@ SELECT extract(year from a.export_date) as period_year,
 	   to_char( extract(month from a.export_date), '00') ),
 	   count(a.user_id)
 FROM msr.avq_users as a
-  WHERE customer =  $P{customer} 
-  AND export_date >= to_date( $P{periodSelected} , 'YYYYMMDD') - interval '5 months'
-  AND export_date <= to_date( $P{periodSelected} , 'YYYYMMDD')
+  WHERE lower(customer) =  lower($P{customer})
+  AND export_date >= to_date( $P{selectedDate} , 'YYYYMMDD') - interval '5 months'
+  AND export_date <= to_date( $P{selectedDate} , 'YYYYMMDD')
   AND is_export = '1' 
-  AND NOT (a.user_name LIKE 'E_%')
+  AND is_sensitive = '0'
+  AND lower(a.win_user) NOT LIKE 'e_%'
+  AND lower(accountstatus) = 'open'
   GROUP BY period_year, period_month, user_type
 UNION ALL
 SELECT extract(year from a.export_date) as period_year,
@@ -126,12 +121,13 @@ SELECT extract(year from a.export_date) as period_year,
 	   to_char( extract(month from a.export_date), '00') ),
 	   count(a.user_id)
 FROM msr.avq_users as a
-  WHERE customer =  $P{customer} 
-  AND export_date >= to_date( $P{periodSelected} , 'YYYYMMDD') - interval '5 months'
-  AND export_date <= to_date( $P{periodSelected} , 'YYYYMMDD')
+  WHERE lower(customer) =  lower($P{customer})
+  AND export_date >= to_date( $P{selectedDate} , 'YYYYMMDD') - interval '5 months'
+  AND export_date <= to_date( $P{selectedDate} , 'YYYYMMDD')
   AND is_sensitive = '0'
   AND is_export = '0'
-   AND NOT(a.user_name LIKE 'E_%')
+  AND lower(accountstatus) = 'open'
+  AND lower(a.win_user) NOT LIKE 'e_%'
   GROUP BY period_year, period_month, user_type]]>
 		</queryString>
 		<field name="period_year" class="java.lang.Double">
@@ -153,7 +149,7 @@ FROM msr.avq_users as a
 	</subDataset>
 	<subDataset name="UsersByType" uuid="655f29d9-2776-4be0-bbd2-831d37cfdbab">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper MSR"/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper PRD"/>
 		<parameter name="selectedDate" class="java.lang.String">
 			<defaultValueExpression><![CDATA[20190801]]></defaultValueExpression>
 		</parameter>
@@ -183,11 +179,11 @@ FROM msr.avq_users as a
 	                		                      AND lower(US3.customer) = lower(US1.customer))) AS USERS_REMOVED
 FROM msr.avq_users  US1
 WHERE US1.export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
-AND lower(US1.customer) =  $P{customer} 
+AND lower(US1.customer) = lower($P{customer})
 GROUP BY customer, export_date
 union all
 SELECT customer,
-	   '   Accounts with permanent access to sensitive data' as user_system,
+	   '   of which with access to sens"itive data' as user_system,
        export_date, 
 	   COUNT(avq_user_id) AS nb_employees,
    	   0 AS USERS_ADDED,
@@ -199,14 +195,15 @@ AND US1.is_sensitive = '1'
 GROUP BY customer, export_date
 union all
 SELECT customer,
-	   '      Accounts with permanent sensitive data export functionality' as user_system,
+	   '      of which with access to sensitive data and export functionality' as user_system,
        export_date, 
 	   COUNT(avq_user_id) AS nb_employees,
    	   0 AS USERS_ADDED,
        0 AS USERS_REMOVED
 FROM msr.avq_users  US1
 WHERE US1.export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
-AND lower(US1.customer) =  $P{customer} 
+AND lower(US1.customer) = lower($P{customer}) 
+AND US1.is_sensitive = '1'
 AND US1.is_export = '1'
 GROUP BY customer, export_date
 union all
@@ -216,53 +213,58 @@ SELECT customer,
 	   COUNT(user_id) AS nb_employees,
    	   (SELECT count(US2.user_id) 
               FROM msr.unix_dba_users US2
-	          WHERE US2.export_date = US1.export_date
-	          AND lower(US2.customer) = lower(US1.customer)
-		      AND US2.user_id NOT IN (SELECT US3.user_id
-	                                         FROM msr.unix_dba_users US3 
-				        					  WHERE	US3.export_date = US1.export_date - interval '1 month'
-	                                          AND lower(US3.customer) = lower(US1.customer))) AS USERS_ADDED,
-       (SELECT COUNT(US2.user_id) 
-        	           FROM msr.unix_dba_users US2
-	               WHERE US2.export_date = US1.export_date - interval '1 month'
-	                    AND lower(US2.customer) = lower(US1.customer)
-	                	AND US2.user_id NOT IN (SELECT US3.user_id 
-	                		                      FROM msr.unix_dba_users US3 
-												  WHERE	US3.export_date = US1.export_date
-	                    						  AND lower(US3.customer) = lower(US1.customer))) AS USERS_REMOVED
-
+	          WHERE US2.export_date = to_date($P{selectedDate}, 'YYYYMMDD') 
+		      AND lower(US2.customer) = lower( $P{customer} )
+	          and lower(US2.group_id) != 'dba'
+	          and lower(user_id) not in (select lower(user_id) 
+           				               FROM msr.unix_dba_users US3
+	       							   WHERE US3.export_date = to_date($P{selectedDate}, 'YYYYMMDD') - interval '1 month'
+		      						   AND lower(US3.customer) = lower( $P{customer} )
+	                                   and lower(US3.group_id) != 'dba')) AS USERS_ADDED,
+		(SELECT count(US2.user_id) 
+              FROM msr.unix_dba_users US2
+	          WHERE US2.export_date = to_date($P{selectedDate}, 'YYYYMMDD') - interval '1 month'
+		      AND lower(US2.customer) = lower( $P{customer} )
+	          and lower(US2.group_id) != 'dba'
+	          and lower(user_id) not in (select lower(user_id) 
+           				               FROM msr.unix_dba_users US3
+	       							   WHERE US3.export_date = to_date( $P{selectedDate} , 'YYYYMMDD') 
+		      						   AND lower(US3.customer) = lower( $P{customer} )
+	                                   and lower(US3.group_id) != 'dba')) AS USERS_REMOVED	
 FROM msr.unix_dba_users  US1
-WHERE US1.export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
-AND lower(US1.customer) =  $P{customer} 
+WHERE US1.export_date = to_date(  $P{selectedDate}  , 'YYYYMMDD')
+AND lower(US1.customer) =  lower( $P{customer} )
+and lower(US1.group_id) != 'dba' 
 GROUP BY customer, export_date
 union all
 SELECT customer,
-	   'Database accounts' as user_system,
+	   'DBA accounts' as user_system,
        export_date, 
 	   COUNT(user_id) AS nb_employees,
    	   (SELECT count(US2.user_id) 
               FROM msr.unix_dba_users US2
-	          WHERE US2.export_date = US1.export_date
-	          AND lower(US2.customer) = lower(US1.customer)
-		      AND lower(US2.group_id) = 'dba'
-		      AND US2.user_id NOT IN (SELECT US3.user_id
-	                                         FROM msr.unix_dba_users US3 
-				        					  WHERE	US3.export_date = US1.export_date - interval '1 month'
-	                                          AND lower(US3.customer) = lower(US1.customer))) AS USERS_ADDED,
-       (SELECT COUNT(US2.user_id) 
-        	           FROM msr.unix_dba_users US2
-	               WHERE US2.export_date = US1.export_date - interval '1 month'
-	                    AND lower(US2.customer) = lower(US1.customer)
-						AND lower(US2.group_id) = 'dba'
-	                	AND US2.user_id NOT IN (SELECT US3.user_id 
-	                		                      FROM msr.unix_dba_users US3 
-												  WHERE	US3.export_date = US1.export_date
-	                    						  AND lower(US3.customer) = lower(US1.customer))) AS USERS_REMOVED
-
+	          WHERE US2.export_date = to_date($P{selectedDate}, 'YYYYMMDD') 
+		      AND lower(US2.customer) = lower( $P{customer} )
+	          and lower(US2.group_id) = 'dba'
+	          and lower(user_id) not in (select lower(user_id) 
+           				               FROM msr.unix_dba_users US3
+	       							   WHERE US3.export_date = to_date($P{selectedDate}, 'YYYYMMDD') - interval '1 month'
+		      						   AND lower(US3.customer) = lower( $P{customer} )
+	                                   and lower(US3.group_id) = 'dba')) AS USERS_ADDED,
+		(SELECT count(US2.user_id) 
+              FROM msr.unix_dba_users US2
+	          WHERE US2.export_date = to_date($P{selectedDate}, 'YYYYMMDD') - interval '1 month'
+		      AND lower(US2.customer) = lower( $P{customer} )
+	          and lower(US2.group_id) = 'dba'
+	          and lower(user_id) not in (select lower(user_id) 
+           				               FROM msr.unix_dba_users US3
+	       							   WHERE US3.export_date = to_date( $P{selectedDate} , 'YYYYMMDD') 
+		      						   AND lower(US3.customer) = lower( $P{customer} )
+	                                   and lower(US3.group_id) = 'dba')) AS USERS_REMOVED	
 FROM msr.unix_dba_users  US1
-WHERE US1.export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
-AND lower(US1.customer) =  $P{customer} 
-and lower(US1.group_id) = 'dba'
+WHERE US1.export_date = to_date(  $P{selectedDate}  , 'YYYYMMDD')
+AND lower(US1.customer) =  lower( $P{customer} )
+and lower(US1.group_id) = 'dba' 
 GROUP BY customer, export_date]]>
 		</queryString>
 		<field name="customer" class="java.lang.String">
@@ -290,7 +292,7 @@ GROUP BY customer, export_date]]>
 		<defaultValueExpression><![CDATA["NEWSLETTER TITLE"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="customer" class="java.lang.String">
-		<defaultValueExpression><![CDATA["sb2"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["bsct"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="subsection" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
@@ -302,7 +304,7 @@ GROUP BY customer, export_date]]>
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
-		<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["20190901"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select 1]]>
@@ -338,7 +340,7 @@ GROUP BY customer, export_date]]>
 				<reportElement x="0" y="32" width="483" height="1" uuid="d09819fc-4982-4636-b9e9-e96aaa844363"/>
 			</line>
 			<textField evaluationTime="Master">
-				<reportElement style="headerPageNumbers" x="320" y="0" width="163" height="32" uuid="70282b61-f34d-40b1-86c5-4a5358f51f0a"/>
+				<reportElement style="headerPageNumbers" x="310" y="0" width="173" height="32" uuid="70282b61-f34d-40b1-86c5-4a5358f51f0a"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Reporting Period " + DATEFORMAT(DATE(INTEGER_VALUE(MID($P{selectedDate},1,4)),INTEGER_VALUE(MID($P{selectedDate},5,2)),INTEGER_VALUE(MID($P{selectedDate},7,2))),"MMM yyyy")+ " | Page " + $V{MASTER_CURRENT_PAGE} + " of " + $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
 			</textField>
@@ -445,7 +447,7 @@ GROUP BY customer, export_date]]>
 							<textField>
 								<reportElement style="Table-Detail-line" x="0" y="0" width="80" height="20" forecolor="#000000" uuid="a98577ae-76ca-4a79-a637-4e6354895d80"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[$F{users_added}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{users_added} == 0, "-", $F{users_added})]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -462,7 +464,7 @@ GROUP BY customer, export_date]]>
 							<textField>
 								<reportElement style="Table-Detail-line" x="0" y="0" width="80" height="20" forecolor="#000000" uuid="ac903b50-b1b7-48fd-be17-8608799eb460"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[$F{users_removed}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{users_removed} == 0, "-", $F{users_removed})]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -479,7 +481,7 @@ GROUP BY customer, export_date]]>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<stackedBar3DChart>
 				<chart evaluationTime="Report" theme="generic">
-					<reportElement key="" x="0" y="0" width="483" height="260" isRemoveLineWhenBlank="true" uuid="3104dc01-766d-43d5-9007-a32d32df2a91">
+					<reportElement key="" x="0" y="0" width="483" height="260" isRemoveLineWhenBlank="true" uuid="4985ad56-8cfe-4d7c-a352-023eec6f918d">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<chartTitle>
@@ -493,11 +495,11 @@ GROUP BY customer, export_date]]>
 				</chart>
 				<categoryDataset>
 					<dataset>
-						<datasetRun subDataset="EmployeeByType" uuid="30cb35c9-dcfd-4e6f-9059-37cf60208a68">
+						<datasetRun subDataset="EmployeeByType" uuid="0845a2e3-f565-44ac-a05d-7c48ab5bfe96">
 							<datasetParameter name="customer">
 								<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
 							</datasetParameter>
-							<datasetParameter name="periodSelected">
+							<datasetParameter name="selectedDate">
 								<datasetParameterExpression><![CDATA[$P{selectedDate}]]></datasetParameterExpression>
 							</datasetParameter>
 						</datasetRun>

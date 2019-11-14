@@ -525,9 +525,9 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
-							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="160" height="17" uuid="6de6baf6-2fef-4b9b-8c63-eaea236d645c"/>
-								<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{unit} == null, "N/A", $F{unit})]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -599,7 +599,7 @@
 							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="56" height="17" uuid="6401fd4d-d673-4c1b-a76e-48b01b6b290d"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[IF($F{is_external}.equals("1"),"Yes","No")]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{is_external}.equals("1"),"Yes", IF($F{is_external}.equals("0"), "No", "N/A"))]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -722,7 +722,7 @@
 						<jr:detailCell style="Table_TD" height="17">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="165" height="17" uuid="1b31454a-fe0d-40dc-bb39-164a5912b26e"/>
-								<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{unit} == null, "N/A", $F{unit})]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -793,7 +793,7 @@
 							<textField isStretchWithOverflow="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="17" uuid="e106e3c0-77b7-4559-b69c-8c5d7e8a3bf6"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[IF($F{is_external}.equals("1"), "Yes", "No")]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{is_external}.equals("1"),"Yes", IF($F{is_external}.equals("0"), "No", "N/A"))]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -1003,7 +1003,7 @@
 							<textField isStretchWithOverflow="true" isBlankWhenNull="false">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="55" height="17" uuid="c1f714ad-87f0-4a3a-b7d6-643c78b0bc42"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[IF($F{is_external}.equals("1"), "Yes", IF($F{is_external}.equals("0"),"N/A", "N/A"))]]></textFieldExpression>
+								<textFieldExpression><![CDATA[IF($F{is_external}.equals("1"),"Yes", IF($F{is_external}.equals("0"), "No", "N/A"))]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

@@ -39,14 +39,21 @@
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper PRD"/>
 		<parameter name="customer" class="java.lang.String">
-			<defaultValueExpression><![CDATA["sb2"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["bsct"]]></defaultValueExpression>
 		</parameter>
 		<parameter name="selectedDate" class="java.lang.String">
-			<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA["20190901"]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
-			<![CDATA[SELECT extract(year from a.export_date) as period_year,
+			<![CDATA[SELECT result.period_year,
+       result.period_month,  
+	   result.serie,
+	   result.user_type,  
+	   result.yearmonth,
+	   result.nb_users
+from (SELECT extract(year from a.export_date) as period_year,
        extract(month from a.export_date) as period_month,  
+	   '1' as serie,
 	   'Emergency users (High Risk)' as user_type,  
 	   CONCAT(extract(year from a.export_date), ' - ', 
 	   to_char( extract(month from a.export_date), '00') ) as yearmonth,
@@ -64,13 +71,15 @@ from (SELECT DISTINCT temp.export_date as export_date,
 		      AND lower(accountstatus) = 'open'
 		   ) as temp
 	) as a
-GROUP BY period_year, period_month, user_type
+GROUP BY period_year, period_month, serie, user_type
+
 UNION ALL
 SELECT extract(year from a.export_date) as period_year,
        extract(month from a.export_date) as period_month,  
-	   'Sensitive and Export (High Risk)' as user_type,  
+	   '2' as serie,
+       'Sensitive and Export (High Risk)' as user_type,  
 	   CONCAT(extract(year from a.export_date), ' - ', 
-	   to_char( extract(month from a.export_date), '00') ),
+	   to_char( extract(month from a.export_date), '00') ) as yearmonth,
 	   count(a.user_id)
 FROM msr.avq_users as a
   WHERE lower(customer) =  lower($P{customer})
@@ -80,13 +89,14 @@ FROM msr.avq_users as a
   AND is_export = '1'
   AND lower(accountstatus) = 'open'
   AND lower(win_user) NOT LIKE 'e_%'
-  GROUP BY period_year, period_month, user_type
+  GROUP BY period_year, period_month, serie, user_type
 UNION ALL
 SELECT extract(year from a.export_date) as period_year,
        extract(month from a.export_date) as period_month,  
+	   '3' as serie,
 	   'Sensitive only (Medium Risk)' as user_type,  
 	   CONCAT(extract(year from a.export_date), ' - ', 
-	   to_char( extract(month from a.export_date), '00') ),
+	   to_char( extract(month from a.export_date), '00') ) as yearmonth,
 	   count(a.user_id)
 FROM msr.avq_users as a
   WHERE lower(customer) =  lower($P{customer})
@@ -96,13 +106,14 @@ FROM msr.avq_users as a
   AND is_export = '0'
   AND lower(accountstatus) = 'open'
   AND lower(a.win_user) NOT LIKE 'e_%'
-  GROUP BY period_year, period_month, user_type
+  GROUP BY period_year, period_month, serie, user_type
 UNION ALL
 SELECT extract(year from a.export_date) as period_year,
        extract(month from a.export_date) as period_month,  
+	   '4' as serie,
 	   'Export only (Low risk)' as user_type,  
 	   CONCAT(extract(year from a.export_date), ' - ', 
-	   to_char( extract(month from a.export_date), '00') ),
+	   to_char( extract(month from a.export_date), '00') ) as yearmonth,
 	   count(a.user_id)
 FROM msr.avq_users as a
   WHERE lower(customer) =  lower($P{customer})
@@ -112,13 +123,14 @@ FROM msr.avq_users as a
   AND is_sensitive = '0'
   AND lower(a.win_user) NOT LIKE 'e_%'
   AND lower(accountstatus) = 'open'
-  GROUP BY period_year, period_month, user_type
+  GROUP BY period_year, period_month, serie, user_type
 UNION ALL
 SELECT extract(year from a.export_date) as period_year,
        extract(month from a.export_date) as period_month,  
+	   '5' as serie,
 	   'Standard (Low Risk)' as user_type,  
 	   CONCAT(extract(year from a.export_date), ' - ', 
-	   to_char( extract(month from a.export_date), '00') ),
+	   to_char( extract(month from a.export_date), '00') ) as yearmonth,
 	   count(a.user_id)
 FROM msr.avq_users as a
   WHERE lower(customer) =  lower($P{customer})
@@ -128,13 +140,19 @@ FROM msr.avq_users as a
   AND is_export = '0'
   AND lower(accountstatus) = 'open'
   AND lower(a.win_user) NOT LIKE 'e_%'
-  GROUP BY period_year, period_month, user_type]]>
+  GROUP BY period_year, period_month, serie, user_type
+) AS result  
+GROUP BY period_year, period_month, serie, user_type, yearmonth, nb_users
+ORDER BY period_year, period_month, serie, user_type]]>
 		</queryString>
 		<field name="period_year" class="java.lang.Double">
 			<property name="com.jaspersoft.studio.field.label" value="period_year"/>
 		</field>
 		<field name="period_month" class="java.lang.Double">
 			<property name="com.jaspersoft.studio.field.label" value="period_month"/>
+		</field>
+		<field name="serie" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="serie"/>
 		</field>
 		<field name="user_type" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="user_type"/>
@@ -165,25 +183,30 @@ FROM msr.avq_users as a
               FROM msr.avq_users US2
 	          WHERE US2.export_date = US1.export_date
 	          AND lower(US2.customer) = lower(US1.customer)
+	      	  AND lower(US2.accountstatus) = 'open'
 		      AND US2.user_name NOT IN (SELECT US3.user_name
 	                                         FROM msr.avq_users US3 
 				        					  WHERE	US3.export_date = US1.export_date - interval '1 month'
+				        					  AND lower(US3.accountstatus) = 'open'
 	                                          AND lower(US3.customer) = lower(US1.customer))) AS USERS_ADDED,
        (SELECT COUNT(US2.avq_user_id) 
         	           FROM msr.avq_users US2
 	               WHERE US2.export_date = US1.export_date - interval '1 month'
 	                    AND lower(US2.customer) = lower(US1.customer)
+	                    AND lower(US2.accountstatus) = 'open'
 	                	AND US2.user_name NOT IN (SELECT US3.user_name
 	                		                      FROM msr.avq_users US3 
 												  WHERE	US3.export_date = US1.export_date
+												  AND lower(US3.accountstatus) = 'open'
 	                		                      AND lower(US3.customer) = lower(US1.customer))) AS USERS_REMOVED
 FROM msr.avq_users  US1
 WHERE US1.export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
 AND lower(US1.customer) = lower($P{customer})
+AND lower(accountstatus) = 'open'
 GROUP BY customer, export_date
 union all
 SELECT customer,
-	   '   of which with access to sens"itive data' as user_system,
+	   '   of which with access to sensitive data' as user_system,
        export_date, 
 	   COUNT(avq_user_id) AS nb_employees,
    	   0 AS USERS_ADDED,
@@ -191,6 +214,7 @@ SELECT customer,
 FROM msr.avq_users  US1
 WHERE US1.export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
 AND lower(US1.customer) =  $P{customer} 
+AND lower(US1.accountstatus) = 'open'
 AND US1.is_sensitive = '1'
 GROUP BY customer, export_date
 union all
@@ -203,6 +227,7 @@ SELECT customer,
 FROM msr.avq_users  US1
 WHERE US1.export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
 AND lower(US1.customer) = lower($P{customer}) 
+AND lower(US1.accountstatus) = 'open'
 AND US1.is_sensitive = '1'
 AND US1.is_export = '1'
 GROUP BY customer, export_date
@@ -304,7 +329,7 @@ GROUP BY customer, export_date]]>
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
-		<defaultValueExpression><![CDATA["20190901"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["20191001"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select 1]]>
@@ -474,19 +499,19 @@ GROUP BY customer, export_date]]>
 		<band height="22">
 			<staticText>
 				<reportElement style="Header-3" x="1" y="0" width="483" height="20" uuid="7e5b1d11-f067-40d7-9022-358d46cf3c8b"/>
-				<text><![CDATA[Business Access on Avaloq]]></text>
+				<text><![CDATA[ASSL User Accounts on Avaloq]]></text>
 			</staticText>
 		</band>
 		<band height="266">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<stackedBar3DChart>
 				<chart evaluationTime="Report" theme="generic">
-					<reportElement key="" x="0" y="0" width="483" height="260" isRemoveLineWhenBlank="true" uuid="4985ad56-8cfe-4d7c-a352-023eec6f918d">
+					<reportElement key="" x="0" y="0" width="483" height="260" isRemoveLineWhenBlank="true" uuid="42f01432-74bc-41df-a69a-7cde43b71759">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<chartTitle>
 						<font fontName="Arial" size="16"/>
-						<titleExpression><![CDATA["Business Acces by Type"]]></titleExpression>
+						<titleExpression><![CDATA["Avaloq Accounts by Type"]]></titleExpression>
 					</chartTitle>
 					<chartSubtitle/>
 					<chartLegend position="Bottom">
@@ -495,7 +520,7 @@ GROUP BY customer, export_date]]>
 				</chart>
 				<categoryDataset>
 					<dataset>
-						<datasetRun subDataset="EmployeeByType" uuid="0845a2e3-f565-44ac-a05d-7c48ab5bfe96">
+						<datasetRun subDataset="EmployeeByType" uuid="11d78cea-92a3-4a2b-8a23-f124782fdd15">
 							<datasetParameter name="customer">
 								<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
 							</datasetParameter>

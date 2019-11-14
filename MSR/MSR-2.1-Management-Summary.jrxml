@@ -15,10 +15,15 @@
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[SELECT customer, 
+      CASE LOWER(group_id) WHEN '' THEN 'Other'
+                     WHEN 'bsadmins' THEN '1'
+                     WHEN 'dba' THEN '2' 
+                     ELSE '3'
+                 END AS serie , 
        CASE LOWER(group_id) WHEN '' THEN 'Other'
-                     WHEN 'bsadmins' THEN 'Admin accounts'
-                     WHEN 'dba' THEN 'Dba accounts	' 
-                     ELSE 'Standard'
+                     WHEN 'bsadmins' THEN 'Unix Admin Accounts'
+                     WHEN 'dba' THEN 'DBA Accounts	' 
+                     ELSE 'Unix Standard Accounts'
                  END AS user_role , 
        extract(year from export_date) as period_year,
        LPAD(extract(month from export_date)::text, 2, '0') as period_month,
@@ -28,12 +33,15 @@
   WHERE (LOWER(customer) =  $P{customer} )
   AND export_date >= (to_date( $P{periodSelected} , 'YYYYMMDD') - interval '6 months')
   AND export_date <= to_date( $P{periodSelected}  , 'YYYYMMDD')
-  GROUP BY customer, user_role, period_year, period_month
-  ORDER BY customer, user_role, period_year, period_month]]>
+  GROUP BY customer, serie, user_role, period_year, period_month
+  ORDER BY customer, serie, user_role, period_year, period_month]]>
 		</queryString>
 		<field name="customer" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="customer"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="unix_dba_users"/>
+		</field>
+		<field name="serie" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="serie"/>
 		</field>
 		<field name="user_role" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="user_role"/>
@@ -55,7 +63,7 @@
 		<defaultValueExpression><![CDATA["NEWSLETTER TITLE"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="customer" class="java.lang.String">
-		<defaultValueExpression><![CDATA["sb4"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["bsct"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="subsection" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
@@ -67,7 +75,7 @@
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
-		<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["20191001"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select 1]]>
@@ -263,7 +271,7 @@
 						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<staticText>
-						<reportElement style="Table-Detail-line" x="0" y="0" width="150" height="62" uuid="af33ac8d-84ed-41dc-be67-7db080e614e7"/>
+						<reportElement style="Table-Detail-line" x="0" y="0" width="150" height="70" uuid="af33ac8d-84ed-41dc-be67-7db080e614e7"/>
 						<box>
 							<topPen lineWidth="1.0"/>
 							<leftPen lineWidth="1.0"/>
@@ -276,7 +284,7 @@
 						<text><![CDATA[Emergency user: ]]></text>
 					</staticText>
 					<staticText>
-						<reportElement style="Table-Detail-line" x="150" y="0" width="333" height="62" uuid="fed86b49-7a4b-4908-b3cf-8f095100a940"/>
+						<reportElement style="Table-Detail-line" x="150" y="0" width="333" height="70" uuid="fed86b49-7a4b-4908-b3cf-8f095100a940"/>
 						<box>
 							<topPen lineWidth="1.0"/>
 							<leftPen lineWidth="1.0"/>
@@ -317,7 +325,7 @@
 				<textElement>
 					<font fontName="Arial" size="11"/>
 				</textElement>
-				<text><![CDATA[Technical Access ]]></text>
+				<text><![CDATA[ASSL system Accounts]]></text>
 			</staticText>
 		</band>
 		<band height="230">
@@ -329,7 +337,7 @@
 					</reportElement>
 					<chartTitle>
 						<font fontName="Arial" size="16"/>
-						<titleExpression><![CDATA["Unix Accounts by Type"]]></titleExpression>
+						<titleExpression><![CDATA["System Accounts by Type"]]></titleExpression>
 					</chartTitle>
 					<chartSubtitle/>
 					<chartLegend position="Bottom">

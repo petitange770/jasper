@@ -97,7 +97,7 @@
 		<defaultValueExpression><![CDATA["NEWSLETTER TITLE"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="customer" class="java.lang.String">
-		<defaultValueExpression><![CDATA["EDR"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["bsct"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="subsection" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
@@ -109,7 +109,7 @@
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
-		<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["20191001"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[select 1]]>
@@ -154,7 +154,7 @@
 			<frame>
 				<reportElement positionType="Float" x="0" y="0" width="730" height="40" uuid="f9d4fc46-adc0-4ad1-9b2a-acd97a57a8fe"/>
 				<textField bookmarkLevel="1">
-					<reportElement style="Header-3" positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="730" height="20" uuid="65be17bb-0e98-46bb-ac98-5b1715efeb73"/>
+					<reportElement style="Header-2" positionType="Float" stretchType="ContainerHeight" x="0" y="0" width="730" height="20" uuid="65be17bb-0e98-46bb-ac98-5b1715efeb73"/>
 					<textElement>
 						<font fontName="Arial" size="14"/>
 					</textElement>

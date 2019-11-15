@@ -68,6 +68,7 @@
 			<property name="com.jaspersoft.studio.field.label" value="unit"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="unix_dba_users"/>
 		</field>
+		<sortField name="user_name"/>
 	</subDataset>
 	<subDataset name="WindowsAddedUsers" uuid="5dcd9cd5-8f4e-480d-a3c6-4cb1053f75da">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
@@ -84,12 +85,12 @@
        ac.user_id AS user_id,
        ac.unit AS unit
   FROM msr.windows_users ac 
-  WHERE lower(ac.customer) =   $P{customer} 
+  WHERE lower(ac.customer) =  lower($P{customer})
   AND ac.export_date = to_date(  $P{selectedDate}  , 'YYYYMMDD')
-  AND ac.user_id NOT IN (SELECT ac2.user_id  
+  AND lower(ac.user_id) NOT IN (SELECT lower(ac2.user_id)  
 						 FROM msr.windows_users ac2 
-						 WHERE lower(ac2.customer) = lower(ac.customer)
-						 AND ac2.export_date = ac.export_date - interval '1 month' )]]>
+						 WHERE lower(ac2.customer) = lower(ac.customer)  
+						 AND ac2.export_date = ac.export_date - interval '1 month')]]>
 		</queryString>
 		<field name="rownum" class="java.lang.Long">
 			<property name="com.jaspersoft.studio.field.label" value="rownum"/>
@@ -106,6 +107,7 @@
 			<property name="com.jaspersoft.studio.field.label" value="unit"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="unix_dba_users"/>
 		</field>
+		<sortField name="user_name"/>
 	</subDataset>
 	<subDataset name="WindowsDeletedUsers" uuid="33baf5d7-0b14-499d-be10-78def979997c">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
@@ -124,7 +126,7 @@
   FROM msr.windows_users ac 
   WHERE lower(ac.customer) =  lower($P{customer})
   AND ac.export_date = to_date(  $P{selectedDate}  , 'YYYYMMDD') - interval '1 month'
-  AND ac.user_id NOT IN (SELECT ac2.user_id  
+  AND lower(ac.user_id) NOT IN (SELECT lower(ac2.user_id)  
 						 FROM msr.windows_users ac2 
 						 WHERE lower(ac2.customer) = lower(ac.customer)
 						 AND ac2.export_date = ac.export_date + interval '1 month' )]]>
@@ -144,6 +146,7 @@
 			<property name="com.jaspersoft.studio.field.label" value="unit"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="unix_dba_users"/>
 		</field>
+		<sortField name="user_name"/>
 	</subDataset>
 	<parameter name="chapter" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
@@ -161,7 +164,7 @@
 		<defaultValueExpression><![CDATA["Monthly Security Report"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
-		<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["20191001"]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[select 1]]>
@@ -293,7 +296,7 @@
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{rownum}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -359,7 +362,7 @@
 				<text><![CDATA[No Current Windows Accounts to report]]></text>
 			</staticText>
 		</band>
-		<band height="64">
+		<band height="64" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
 				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="482" height="20" uuid="e6d01b76-de87-42d3-bf26-40e8845b10d2"/>
@@ -407,7 +410,7 @@
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{rownum}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -473,7 +476,7 @@
 				<text><![CDATA[No Windows Accounts Added/Enabled to report]]></text>
 			</staticText>
 		</band>
-		<band height="63">
+		<band height="63" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
 				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="483" height="20" uuid="20f8cb1f-4d94-4bc5-9d42-96915e1bee0c"/>
@@ -522,7 +525,7 @@
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{rownum}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

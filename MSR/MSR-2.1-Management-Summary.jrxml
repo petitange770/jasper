@@ -30,7 +30,7 @@
        CONCAT(extract(year from export_date), ' - ', LPAD(extract(month from export_date)::text, 2, '0') ) as yearmonth,
  	   COUNT(LOWER(group_id)) AS nb_users
   FROM msr.unix_dba_users
-  WHERE (LOWER(customer) =  $P{customer} )
+  WHERE LOWER(customer) =  lower($P{customer}) 
   AND export_date >= (to_date( $P{periodSelected} , 'YYYYMMDD') - interval '6 months')
   AND export_date <= to_date( $P{periodSelected}  , 'YYYYMMDD')
   GROUP BY customer, serie, user_role, period_year, period_month

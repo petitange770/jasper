@@ -50,7 +50,7 @@
        user_id AS user_id,
        unit AS unit
   FROM msr.unix_dba_users 
-  WHERE lower(customer) =  $P{customer} 
+  WHERE lower(customer) =  lower($P{customer})
   AND export_date = to_date( $P{selectedDate}  , 'YYYYMMDD')
   AND lower(group_id) = 'dba']]>
 		</queryString>
@@ -86,13 +86,14 @@
        ac.user_id AS user_id,
        ac.unit AS unit
   FROM msr.unix_dba_users ac 
-  WHERE ac.customer =  $P{customer} 
-  AND ac.export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
+  WHERE lower(ac.customer) =  lower($P{customer}) 
+  AND ac.export_date = to_date( $P{selectedDate} , 'YYYYMMDD') 
   AND lower(ac.group_id) = 'dba'
   AND ac.user_id NOT IN (SELECT ac2.user_id  
 						 FROM msr.unix_dba_users ac2 
-						 WHERE ac2.customer = ac.customer 
-						 AND ac2.export_date = ac.export_date - interval '1 month' )]]>
+						 WHERE lower(ac2.customer) = lower(ac.customer) 
+						 AND ac2.export_date = ac.export_date - interval '1 month'
+						 AND lower(ac2.group_id) = 'dba' )]]>
 		</queryString>
 		<field name="rownum" class="java.lang.Long">
 			<property name="com.jaspersoft.studio.field.label" value="rownum"/>
@@ -126,12 +127,12 @@
        ac.user_id AS user_id,
        ac.unit AS unit
   FROM msr.unix_dba_users ac 
-  WHERE ac.customer = $P{customer} 
+  WHERE lower(ac.customer) = lower($P{customer})
   AND ac.export_date = to_date( $P{selectedDate} , 'YYYYMMDD') - interval '1 month'
   AND lower(ac.group_id) = 'dba'
   AND ac.user_id NOT IN (SELECT ac2.user_id  
 						 FROM msr.unix_dba_users ac2 
-						 WHERE ac2.customer = ac.customer 
+						 WHERE lower(ac2.customer) = lower(ac.customer) 
 						 AND ac2.export_date = ac.export_date + interval '1 month' )]]>
 		</queryString>
 		<field name="rownum" class="java.lang.Long">
@@ -161,13 +162,13 @@
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
 	</parameter>
 	<parameter name="customer" class="java.lang.String">
-		<defaultValueExpression><![CDATA["sb4"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["bsct"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="covertTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Monthly Security Report"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
-		<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["20191001"]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[select 1]]>
@@ -232,12 +233,12 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="53" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<frame>
-				<reportElement positionType="Float" x="0" y="0" width="483" height="53" uuid="22a3411d-2442-458c-a154-0c0e05ebf4e3"/>
+				<reportElement positionType="Float" x="0" y="0" width="483" height="26" uuid="22a3411d-2442-458c-a154-0c0e05ebf4e3"/>
 				<textField bookmarkLevel="2">
-					<reportElement style="Header-3" positionType="Float" x="0" y="30" width="483" height="20" uuid="8986a9cf-4100-48f3-83f5-9fd18a963d77"/>
+					<reportElement style="Header-3" positionType="Float" x="0" y="3" width="483" height="20" uuid="8986a9cf-4100-48f3-83f5-9fd18a963d77"/>
 					<textElement>
 						<font fontName="Arial" size="12"/>
 					</textElement>
@@ -246,10 +247,10 @@
 				</textField>
 			</frame>
 		</band>
-		<band height="63">
+		<band height="73">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
-				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="483" height="20" uuid="74dc7a54-075e-41eb-a1d4-ae2fa1ac5dfe"/>
+				<reportElement style="Header-4" positionType="Float" x="-1" y="0" width="483" height="20" uuid="74dc7a54-075e-41eb-a1d4-ae2fa1ac5dfe"/>
 				<textElement verticalAlignment="Middle">
 					<font size="11"/>
 				</textElement>
@@ -294,7 +295,7 @@
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{rownum}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -310,7 +311,7 @@
 						<jr:detailCell style="Table_TD" height="17">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="140" height="17" uuid="63084106-5c23-4a85-88b4-5433fd58cfae"/>
-								<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[org.apache.commons.lang.WordUtils.capitalize($F{user_name})]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -349,7 +350,7 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="30">
+		<band height="40">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<printWhenExpression><![CDATA[$V{nbCurrentAccounts} == null]]></printWhenExpression>
 			<staticText>
@@ -357,10 +358,10 @@
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[No Current Dba Accounts to report]]></text>
+				<text><![CDATA[No Current Database  Accounts to report]]></text>
 			</staticText>
 		</band>
-		<band height="61">
+		<band height="71" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
 				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="482" height="20" uuid="e6d01b76-de87-42d3-bf26-40e8845b10d2"/>
@@ -378,7 +379,7 @@
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="DbaAddedUsers" uuid="cd0b76cf-de5e-4f50-8acb-1a5474b24590">
+					<datasetRun subDataset="DbaAddedUsers" uuid="f9188a31-eb7f-45b0-b06e-a1e792cd53c1">
 						<datasetParameter name="customer">
 							<datasetParameterExpression><![CDATA[$P{customer}]]></datasetParameterExpression>
 						</datasetParameter>
@@ -408,7 +409,7 @@
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{rownum}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -424,7 +425,7 @@
 						<jr:detailCell style="Table_TD" height="17">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="140" height="17" uuid="184b2715-4ea7-45a9-b727-18382d5051a4"/>
-								<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[org.apache.commons.lang.WordUtils.capitalize($F{user_name})]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -463,7 +464,7 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="30">
+		<band height="40">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<printWhenExpression><![CDATA[$V{nbAddedAccounts} == null]]></printWhenExpression>
 			<staticText>
@@ -471,10 +472,10 @@
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[No Dba Accounts Added/Enabled to report]]></text>
+				<text><![CDATA[No Database Accounts Added/Enabled to report]]></text>
 			</staticText>
 		</band>
-		<band height="62">
+		<band height="76" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
 				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="483" height="20" uuid="20f8cb1f-4d94-4bc5-9d42-96915e1bee0c"/>
@@ -521,7 +522,7 @@
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{rownum}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -537,7 +538,7 @@
 						<jr:detailCell style="Table_TD" height="17">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="140" height="17" uuid="89bc4db9-e8b7-412e-8703-a8c4f9e6d9a2"/>
-								<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[org.apache.commons.lang.WordUtils.capitalize($F{user_name})]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -576,7 +577,7 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="30">
+		<band height="36">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<printWhenExpression><![CDATA[$V{nbDeletedAccounts} == null]]></printWhenExpression>
 			<staticText>
@@ -584,7 +585,7 @@
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[No Dba Accounts Removed/Disabled to report]]></text>
+				<text><![CDATA[No Database Accounts Removed/Disabled to report]]></text>
 			</staticText>
 		</band>
 	</detail>

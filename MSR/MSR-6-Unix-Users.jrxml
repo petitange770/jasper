@@ -48,9 +48,10 @@
 			<![CDATA[SELECT ROW_NUMBER() OVER (ORDER BY user_id) AS rownum, 
        user_full_name AS user_name,
        user_id AS user_id,
-       unit AS unit
+       unit AS unit,
+       lower(group_id) as group_id
   FROM msr.unix_dba_users 
-  WHERE LOWER(customer) =  $P{customer} 
+  WHERE LOWER(customer) =  lower($P{customer}) 
   AND export_date = to_date( $P{selectedDate}  , 'YYYYMMDD')
   AND lower(group_id) != 'dba']]>
 		</queryString>
@@ -69,6 +70,9 @@
 			<property name="com.jaspersoft.studio.field.label" value="unit"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="unix_dba_users"/>
 		</field>
+		<field name="group_id" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="group_id"/>
+		</field>
 		<sortField name="user_name"/>
 	</subDataset>
 	<subDataset name="UnixAddedUsers" uuid="5dcd9cd5-8f4e-480d-a3c6-4cb1053f75da">
@@ -84,15 +88,17 @@
 			<![CDATA[SELECT ROW_NUMBER() OVER (ORDER BY ac.user_id) AS rownum, 
        ac.user_full_name AS user_name,
        ac.user_id AS user_id,
-       ac.unit AS unit
-  FROM msr.unix_dba_users ac 
-  WHERE lower(ac.customer) =  $P{customer} 
-  AND ac.export_date = to_date( $P{selectedDate} , 'YYYYMMDD')
+       ac.unit AS unit,
+       lower(ac.group_id) as group_id
+  FROM msr.unix_dba_users ac
+  WHERE LOWER(ac.customer) =  lower($P{customer}) 
+  AND ac.export_date = to_date( $P{selectedDate}  , 'YYYYMMDD') 
   AND lower(ac.group_id) != 'dba'
   AND ac.user_id NOT IN (SELECT ac2.user_id  
 						 FROM msr.unix_dba_users ac2 
 						 WHERE lower(ac2.customer) = lower(ac.customer) 
-						 AND ac2.export_date = ac.export_date - interval '1 month' )]]>
+						 AND ac2.export_date = ac.export_date - interval '1 month'
+						 AND lower(ac.group_id) != 'dba' )]]>
 		</queryString>
 		<field name="rownum" class="java.lang.Long">
 			<property name="com.jaspersoft.studio.field.label" value="rownum"/>
@@ -108,6 +114,9 @@
 		<field name="unit" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="unit"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="unix_dba_users"/>
+		</field>
+		<field name="group_id" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="group_id"/>
 		</field>
 		<sortField name="user_name"/>
 	</subDataset>
@@ -124,15 +133,17 @@
 			<![CDATA[SELECT ROW_NUMBER() OVER (ORDER BY ac.user_id) AS rownum, 
        ac.user_full_name AS user_name,
        ac.user_id AS user_id,
-       ac.unit AS unit
-  FROM msr.unix_dba_users ac 
-  WHERE lower(ac.customer) = $P{customer} 
-  AND ac.export_date = to_date( $P{selectedDate} , 'YYYYMMDD') - interval '1 month'
+       ac.unit AS unit,
+       lower(ac.group_id) as group_id
+  FROM msr.unix_dba_users ac
+  WHERE LOWER(ac.customer) =  lower($P{customer}) 
+  AND ac.export_date = to_date( $P{selectedDate}  , 'YYYYMMDD') - interval '1 month'
   AND lower(ac.group_id) != 'dba'
   AND ac.user_id NOT IN (SELECT ac2.user_id  
 						 FROM msr.unix_dba_users ac2 
 						 WHERE lower(ac2.customer) = lower(ac.customer) 
-						 AND ac2.export_date = ac.export_date + interval '1 month' )]]>
+						 AND ac2.export_date = ac.export_date + interval '1 month'
+						 AND lower(ac.group_id) != 'dba' )]]>
 		</queryString>
 		<field name="rownum" class="java.lang.Long">
 			<property name="com.jaspersoft.studio.field.label" value="rownum"/>
@@ -149,6 +160,9 @@
 			<property name="com.jaspersoft.studio.field.label" value="unit"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="unix_dba_users"/>
 		</field>
+		<field name="group_id" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="group_id"/>
+		</field>
 		<sortField name="user_name"/>
 	</subDataset>
 	<parameter name="chapter" class="java.lang.Integer">
@@ -161,13 +175,13 @@
 		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
 	</parameter>
 	<parameter name="customer" class="java.lang.String">
-		<defaultValueExpression><![CDATA["sb4"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["bsct"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="covertTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Monthly Security Report"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="selectedDate" class="java.lang.String">
-		<defaultValueExpression><![CDATA["20190801"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["20191001"]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[select 1]]>
@@ -235,7 +249,7 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="93" splitType="Stretch">
+		<band height="101" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<frame>
 				<reportElement positionType="Float" x="0" y="0" width="483" height="93" uuid="22a3411d-2442-458c-a154-0c0e05ebf4e3"/>
@@ -264,7 +278,7 @@
 				</staticText>
 			</frame>
 		</band>
-		<band height="62">
+		<band height="71">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
 				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="483" height="20" uuid="74dc7a54-075e-41eb-a1d4-ae2fa1ac5dfe"/>
@@ -293,8 +307,8 @@
 						<returnValue fromVariable="REPORT_COUNT" toVariable="nbCurrentAccounts"/>
 					</datasetRun>
 					<jr:column width="30" uuid="5734beb4-dcda-4437-bfc8-c983abf9e3c1">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
-						<jr:columnHeader style="Table_CH" height="18">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<staticText>
@@ -312,13 +326,13 @@
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{rownum}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="140" uuid="2b3c8ab9-75e3-4319-8778-e2bd8481d9fd">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne2"/>
-						<jr:columnHeader style="Table_CH" height="18">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
 								<reportElement style="Table-Column-Header" x="0" y="0" width="140" height="18" uuid="3fa00f1b-b25a-48d3-8f7b-c0e4d3d82c92"/>
@@ -328,13 +342,13 @@
 						<jr:detailCell style="Table_TD" height="17">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="140" height="17" uuid="94797a5b-ed63-4ce4-a227-d749088c0ce7"/>
-								<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[org.apache.commons.lang.WordUtils.capitalize($F{user_name})]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="100" uuid="1c014c31-1c65-4e0b-b137-d7b749ef4acd">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne3"/>
-						<jr:columnHeader style="Table_CH" height="18">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
 								<reportElement style="Table-Column-Header" x="0" y="0" width="100" height="18" uuid="31255486-3edb-4ad5-aa75-0229706a3837"/>
@@ -348,18 +362,33 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="213" uuid="a56b40ea-173d-47cf-8de9-c036e0948cf2">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne4"/>
-						<jr:columnHeader style="Table_CH" height="18">
+					<jr:column width="60" uuid="9c0ef964-6d8f-414d-ba21-43cdae80a3f1">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
+							<staticText>
+								<reportElement key="" style="Table-Column-Header" x="0" y="0" width="60" height="18" uuid="a123ece9-c20a-411f-92d1-7c21f0295598"/>
+								<text><![CDATA[User Type]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="17">
+							<textField>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="60" height="17" uuid="57ace80a-7d2e-473e-821d-9997a26d055e"/>
+								<textFieldExpression><![CDATA[IF($F{group_id}.equals("bsadmins"), "Admin", "Standard")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="153" uuid="a56b40ea-173d-47cf-8de9-c036e0948cf2">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="213" height="18" uuid="52e97522-f45b-427b-91c4-80489290e771"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="153" height="18" uuid="52e97522-f45b-427b-91c4-80489290e771"/>
 								<text><![CDATA[Unit]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement style="Table-Detail-line" x="0" y="0" width="213" height="17" uuid="d604c6db-80b7-4c1b-860f-f0a8c7dab5fc"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="153" height="17" uuid="d604c6db-80b7-4c1b-860f-f0a8c7dab5fc"/>
 								<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -367,7 +396,7 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="30">
+		<band height="42" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<printWhenExpression><![CDATA[$V{nbCurrentAccounts} == null]]></printWhenExpression>
 			<staticText>
@@ -378,7 +407,7 @@
 				<text><![CDATA[No Current Unix Accounts to report]]></text>
 			</staticText>
 		</band>
-		<band height="60">
+		<band height="70" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
 				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="482" height="20" uuid="e6d01b76-de87-42d3-bf26-40e8845b10d2"/>
@@ -407,8 +436,8 @@
 						<returnValue fromVariable="REPORT_COUNT" toVariable="nbAddedAccounts"/>
 					</datasetRun>
 					<jr:column width="30" uuid="a2ec8ef7-9b54-4725-b604-3c9d5dafc466">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
-						<jr:columnHeader style="Table_CH" height="18">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<staticText>
@@ -426,13 +455,13 @@
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{rownum}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="140" uuid="5a9e605c-e09b-4f15-898f-3e7d4a0b1ac4">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne2"/>
-						<jr:columnHeader style="Table_CH" height="18">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
 								<reportElement style="Table-Column-Header" x="0" y="0" width="140" height="18" uuid="16e06879-ae5c-4dfc-890c-0bb713f00f66"/>
@@ -442,13 +471,13 @@
 						<jr:detailCell style="Table_TD" height="17">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="140" height="17" uuid="7f87dc2f-d959-4ee1-96ba-e71118e995bd"/>
-								<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[org.apache.commons.lang.WordUtils.capitalize($F{user_name})]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="100" uuid="5955ec14-fdda-4a50-b99f-010e863ef690">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne3"/>
-						<jr:columnHeader style="Table_CH" height="18">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
 								<reportElement style="Table-Column-Header" x="0" y="0" width="100" height="18" uuid="b2582a93-4364-4fcb-89c0-73db41010f9d"/>
@@ -462,18 +491,33 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="213" uuid="3e8c648a-2f78-444a-b455-9058ae2cc8eb">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne4"/>
-						<jr:columnHeader style="Table_CH" height="18">
+					<jr:column width="60" uuid="fbfe2882-9c28-4b9a-bcb3-aefc1f0721f8">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
+							<staticText>
+								<reportElement key="" style="Table-Column-Header" x="0" y="0" width="60" height="18" uuid="7dd441ed-76a0-4f1b-9a6b-642e112a61b2"/>
+								<text><![CDATA[User Type]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="17">
+							<textField>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="60" height="17" uuid="6780b8ac-0fd7-4d2c-b37c-64237c69df84"/>
+								<textFieldExpression><![CDATA[IF($F{group_id}.equals("bsadmins"), "Admin", "Standard")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="153" uuid="3e8c648a-2f78-444a-b455-9058ae2cc8eb">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="213" height="18" uuid="b52182fa-885c-414d-8020-157b4f417c54"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="153" height="18" uuid="b52182fa-885c-414d-8020-157b4f417c54"/>
 								<text><![CDATA[Unit]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement style="Table-Detail-line" x="0" y="0" width="213" height="17" uuid="46ec6657-83bc-4d69-922a-63cba2b23abf"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="153" height="17" uuid="46ec6657-83bc-4d69-922a-63cba2b23abf"/>
 								<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -481,7 +525,7 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="30">
+		<band height="37" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<printWhenExpression><![CDATA[$V{nbAddedAccounts} == null]]></printWhenExpression>
 			<staticText>
@@ -492,7 +536,7 @@
 				<text><![CDATA[No Unix Accounts Added/Enabled to report]]></text>
 			</staticText>
 		</band>
-		<band height="62">
+		<band height="79" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
 				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="483" height="20" uuid="20f8cb1f-4d94-4bc5-9d42-96915e1bee0c"/>
@@ -521,8 +565,8 @@
 						<returnValue fromVariable="REPORT_COUNT" toVariable="nbDeletedAccounts"/>
 					</datasetRun>
 					<jr:column width="30" uuid="cbccbde1-bd4d-4f36-a8ac-b6761f8b1eff">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
-						<jr:columnHeader style="Table_CH" height="18">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<staticText>
@@ -540,13 +584,13 @@
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{rownum}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="140" uuid="866b62fb-e6da-4070-959b-08f028b7b9b1">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne2"/>
-						<jr:columnHeader style="Table_CH" height="18">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
 								<reportElement style="Table-Column-Header" x="0" y="0" width="140" height="18" uuid="62e6df02-2595-42c7-b0b8-ff9237ff26bc"/>
@@ -556,13 +600,13 @@
 						<jr:detailCell style="Table_TD" height="17">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="140" height="17" uuid="049fb81b-fc62-474a-9254-851098e9b091"/>
-								<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[org.apache.commons.lang.WordUtils.capitalize($F{user_name})]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="100" uuid="54cd6a91-2a87-4bcb-a613-586a52ba95ab">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne3"/>
-						<jr:columnHeader style="Table_CH" height="18">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
 								<reportElement style="Table-Column-Header" x="0" y="0" width="100" height="18" uuid="7c9f16af-dfe3-4aa2-916a-518d0ae218f9"/>
@@ -576,18 +620,33 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="213" uuid="597d4005-6e93-4932-9743-b58d64f6264b">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne4"/>
-						<jr:columnHeader style="Table_CH" height="18">
+					<jr:column width="60" uuid="c9b7fe8a-8322-49e6-9670-4d328f80cb16">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
+							<staticText>
+								<reportElement key="" style="Table-Column-Header" x="0" y="0" width="60" height="18" uuid="2813ff0d-d06f-441d-be98-6643edc2b149"/>
+								<text><![CDATA[User Type]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="17">
+							<textField>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="60" height="17" uuid="2e30970a-bd40-4b2a-bcf9-c4cc093646ea"/>
+								<textFieldExpression><![CDATA[IF($F{group_id}.equals("bsadmins"), "Admin", "Standard")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="153" uuid="597d4005-6e93-4932-9743-b58d64f6264b">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:columnHeader style="Table_CH" height="18" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="213" height="18" uuid="a47da5cf-bc78-42a8-b7a1-c02d88c03e48"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="153" height="18" uuid="a47da5cf-bc78-42a8-b7a1-c02d88c03e48"/>
 								<text><![CDATA[Unit]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="17">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement style="Table-Detail-line" x="0" y="0" width="213" height="17" uuid="9e170d90-1a5c-4ee2-ac92-9b5c0723431f"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="153" height="17" uuid="9e170d90-1a5c-4ee2-ac92-9b5c0723431f"/>
 								<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -595,7 +654,7 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="30">
+		<band height="41" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<printWhenExpression><![CDATA[$V{nbDeletedAccounts} == null]]></printWhenExpression>
 			<staticText>

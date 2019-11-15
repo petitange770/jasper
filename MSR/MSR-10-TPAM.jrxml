@@ -214,7 +214,7 @@
 	where lower(customer) = lower(  $P{customer}  )
 	and export_date = to_date(  $P{selectedDate} , 'YYYYMMDD')
 	group by to_char(requestdate, 'YYYYMMDD')
-	order by to_char(requestdate, 'YYYYMMDD') ]]>
+	order by to_char(requestdate, 'YYYYMMDD')]]>
 	</queryString>
 	<field name="strdate" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="strdate"/>
@@ -489,7 +489,7 @@
 						<datasetParameter name="strDate">
 							<datasetParameterExpression><![CDATA[$F{strdate}]]></datasetParameterExpression>
 						</datasetParameter>
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION} ]]></connectionExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="25" uuid="50482a9b-2a57-49a2-b3b2-318603249829">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
@@ -571,21 +571,8 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="15" uuid="43d2a713-0618-4fcf-9320-af0007d24095">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
-						<jr:detailCell style="Table 2_TD" height="9">
-							<property name="com.jaspersoft.studio.unit.width" value="px"/>
-							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement style="Table-Detail-line" x="0" y="0" width="15" height="9" uuid="d958dc59-0729-46dc-9687-75bb3c88195e"/>
-								<textElement>
-									<font size="5"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{customer_sub}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
 					<jr:column width="95" uuid="a6fb72e7-0d8b-444a-b621-0e9b64135c6c">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
 						<jr:detailCell style="Table 2_TD" height="9">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
@@ -598,7 +585,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="40" uuid="ae766520-c230-4c66-a209-ddd93c319a60">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
 						<jr:detailCell style="Table 2_TD" height="9">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="40" height="9" uuid="66902133-169c-43c7-93f9-81b11b4159ad"/>
@@ -610,7 +597,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="200" uuid="5fbfc7f4-fd62-4678-b060-59e0087df2de">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
 						<jr:detailCell style="Table 2_TD" height="9">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
@@ -623,7 +610,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="40" uuid="9d494168-2b21-4325-9e0d-46b87d285b89">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column11"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
 						<jr:detailCell style="Table 2_TD" height="9">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
@@ -636,7 +623,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="35" uuid="590062c6-afbd-40c5-bd46-6110cc3fdcac">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column12"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column11"/>
 						<jr:detailCell style="Table 2_TD" height="9">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">

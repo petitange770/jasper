@@ -180,7 +180,7 @@ ORDER BY period_year, period_month, serie, user_type]]>
 	          WHERE US2.export_date = US1.export_date
 	          AND lower(US2.customer) = lower(US1.customer)
 	      	  AND lower(US2.accountstatus) = 'open'
-		      AND US2.user_name NOT IN (SELECT US3.user_name
+		      AND lower(US2.user_name) NOT IN (SELECT lower(US3.user_name)
 	                                         FROM msr.avq_users US3 
 				        					  WHERE	US3.export_date = US1.export_date - interval '1 month'
 				        					  AND lower(US3.accountstatus) = 'open'
@@ -190,7 +190,7 @@ ORDER BY period_year, period_month, serie, user_type]]>
 	               WHERE US2.export_date = US1.export_date - interval '1 month'
 	                    AND lower(US2.customer) = lower(US1.customer)
 	                    AND lower(US2.accountstatus) = 'open'
-	                	AND US2.user_name NOT IN (SELECT US3.user_name
+	                	AND lower(US2.user_name) NOT IN (SELECT lower(US3.user_name)
 	                		                      FROM msr.avq_users US3 
 												  WHERE	US3.export_date = US1.export_date
 												  AND lower(US3.accountstatus) = 'open'
@@ -344,8 +344,7 @@ GROUP BY customer, export_date]]>
 FROM msr.windows_users  US1
 WHERE US1.export_date = to_date(  $P{selectedDate}  , 'YYYYMMDD')
 AND lower(US1.customer) = lower( $P{customer} )
-GROUP BY customer, export_date
-]]>
+GROUP BY customer, export_date]]>
 		</queryString>
 		<field name="customer" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="customer"/>

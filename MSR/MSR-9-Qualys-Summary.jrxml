@@ -348,7 +348,7 @@ group by host, ip, severity_5, severity_4, severity_3, severity_2, severity_1]]>
 		</band>
 		<band height="36">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
-			<printWhenExpression><![CDATA[$V{nbSecureFolders} == null]]></printWhenExpression>
+			<printWhenExpression><![CDATA[$V{nbImpactedAssets} == null]]></printWhenExpression>
 			<staticText>
 				<reportElement style="TitleBlue" x="0" y="0" width="483" height="20" isPrintInFirstWholeBand="true" uuid="ce131b9e-3f9b-4456-86cc-a462299089a8">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>

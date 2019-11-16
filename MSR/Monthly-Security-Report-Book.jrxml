@@ -516,5 +516,34 @@ where company_tag =  $P{customer}]]>
 				<subreportExpression><![CDATA["MSR-9.1-Qualys-Details.jasper"]]></subreportExpression>
 			</p:subreportPart>
 		</part>
+		<part uuid="0f56721f-77cf-418d-9c59-c7d23db3f938">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="REPORT_CONNECTION">
+					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION} ]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="chapter">
+					<subreportParameterExpression><![CDATA[8]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subsection">
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="section">
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="customer">
+					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="coverTitle">
+					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="selectedDate">
+					<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<returnValue subreportVariable="newChapter" toVariable="chapter"/>
+				<returnValue subreportVariable="newSection" toVariable="section"/>
+				<returnValue subreportVariable="newSubsection" toVariable="subsection"/>
+				<subreportExpression><![CDATA["MSR-10-TPAM.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
 	</detail>
 </jasperReport>

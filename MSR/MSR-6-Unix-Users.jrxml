@@ -342,7 +342,7 @@
 						<jr:detailCell style="Table_TD" height="17">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement style="Table-Detail-line" x="0" y="0" width="140" height="17" uuid="94797a5b-ed63-4ce4-a227-d749088c0ce7"/>
-								<textFieldExpression><![CDATA[org.apache.commons.lang.WordUtils.capitalize($F{user_name})]]></textFieldExpression>
+								<textFieldExpression><![CDATA[org.apache.commons.lang.WordUtils.capitalizeFully($F{user_name})]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

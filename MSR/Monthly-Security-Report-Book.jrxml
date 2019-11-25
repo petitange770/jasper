@@ -6,10 +6,10 @@
 	<property name="com.jaspersoft.studio.book.group.cover.header" value="Cover and Table of Contents"/>
 	<property name="com.jaspersoft.studio.book.group.cover.footer" value="Backcover"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="ireport.jasperserver.url" value="https://jasper.mgt.ac.avaloqsourcing.net:8443/jasperserver-pro/"/>
-	<property name="ireport.jasperserver.user" value="jasperadmin"/>
-	<property name="ireport.jasperserver.report.resource" value="/Reports/Monthly_Security_Report_Book_files/main_jrxml"/>
-	<property name="ireport.jasperserver.reportUnit" value="/Reports/Monthly_Security_Report_Book"/>
+	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="palg"/>
+	<property name="ireport.jasperserver.report.resource" value="/Templates/reports/Monthly_Security_Report_Book_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Templates/reports/Monthly_Security_Report_Book"/>
 	<parameter name="customer" class="java.lang.String">
 		<defaultValueExpression><![CDATA["BSCT"]]></defaultValueExpression>
 	</parameter>
@@ -519,7 +519,7 @@ where company_tag =  $P{customer}]]>
 		<part uuid="0f56721f-77cf-418d-9c59-c7d23db3f938">
 			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
 				<subreportParameter name="REPORT_CONNECTION">
-					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION} ]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="chapter">
 					<subreportParameterExpression><![CDATA[8]]></subreportParameterExpression>

@@ -288,7 +288,6 @@
 					<jr:column width="63" uuid="34e30144-ff89-4ac7-8d1b-69b876b47d6b">
 						<jr:columnHeader style="Table 3_CH" height="15">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
-							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
 								<reportElement style="Table-Column-Header" x="0" y="0" width="63" height="15" uuid="d422791d-17be-4920-9fe9-bab2ed6a6e95">
 									<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
@@ -308,7 +307,7 @@ Date]]></text>
 								<textElement>
 									<font size="6"/>
 								</textElement>
-								<textFieldExpression><![CDATA[DATEFORMAT($F{requestdate}, "dd/MM/YYYY hh:mm:ss")]]></textFieldExpression>
+								<textFieldExpression><![CDATA[DATEFORMAT($F{requestdate}, "dd/MM/YYYY hh:mm")]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -331,15 +330,15 @@ Date]]></text>
 								<textElement>
 									<font size="6"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{expiredate}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[MID($F{expiredate},1,LEN( $F{expiredate})-3)]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="30" uuid="51a4a342-cb28-442e-a966-b4dfa3d9dd6e">
+					<jr:column width="35" uuid="51a4a342-cb28-442e-a966-b4dfa3d9dd6e">
 						<jr:columnHeader style="Table 3_CH" height="15">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="30" height="15" uuid="e5feeed9-cf66-4f6d-ba64-4e476cc3ec87"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="35" height="15" uuid="e5feeed9-cf66-4f6d-ba64-4e476cc3ec87"/>
 								<textElement verticalAlignment="Bottom">
 									<font size="6"/>
 									<paragraph spacingAfter="0"/>
@@ -349,8 +348,9 @@ ID]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table 3_TD" height="10">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement style="Table-Detail-line" x="0" y="0" width="30" height="10" uuid="bbf4e8df-45e7-408f-bd9d-312a6db6a66a"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="35" height="10" uuid="bbf4e8df-45e7-408f-bd9d-312a6db6a66a"/>
 								<textElement>
 									<font size="6"/>
 								</textElement>
@@ -492,11 +492,11 @@ Duration]]></text>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="156" uuid="cb9e7a24-6002-427e-9e2b-2e037164ee97">
+					<jr:column width="151" uuid="cb9e7a24-6002-427e-9e2b-2e037164ee97">
 						<jr:columnHeader style="Table 3_CH" height="15">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement style="Table-Column-Header" x="0" y="0" width="156" height="15" uuid="cabeff3f-1f30-473b-843b-2ccfa8b888eb"/>
+								<reportElement style="Table-Column-Header" x="0" y="0" width="151" height="15" uuid="cabeff3f-1f30-473b-843b-2ccfa8b888eb"/>
 								<textElement verticalAlignment="Bottom">
 									<font size="6"/>
 									<paragraph spacingAfter="0"/>
@@ -507,7 +507,7 @@ Duration]]></text>
 						<jr:detailCell style="Table 3_TD" height="10">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement style="Table-Detail-line" x="0" y="0" width="156" height="10" uuid="d3ea1fc6-6dfa-4843-b90e-9219fa79518e"/>
+								<reportElement style="Table-Detail-line" x="0" y="0" width="151" height="10" uuid="d3ea1fc6-6dfa-4843-b90e-9219fa79518e"/>
 								<textElement>
 									<font size="6"/>
 								</textElement>

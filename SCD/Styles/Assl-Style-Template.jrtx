@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio -->
+<jasperTemplate xmlns="http://jasperreports.sourceforge.net/jasperreports/template" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/template http://jasperreports.sourceforge.net/xsd/jaspertemplate.xsd">
+	<style name="NormalText" isDefault="true" fontName="Arial" fontSize="10">
+		<paragraph lineSpacing="Single" leftIndent="2"/>
+	</style>
+	<style name="coverTitleStyle" vTextAlign="Middle" fontName="Arial" fontSize="30" isBold="true">
+		<paragraph leftIndent="2"/>
+	</style>
+	<style name="coverCustomer" fontName="Arial" fontSize="16" isBold="true"/>
+	<style name="coverPrintingDate" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="headerDocumentTitle" vTextAlign="Bottom" markup="styled" fontName="Arial" fontSize="8">
+		<paragraph leftIndent="2"/>
+	</style>
+	<style name="headerPageNumbers" vTextAlign="Bottom" fontName="Arial" fontSize="8">
+		<paragraph leftIndent="2"/>
+	</style>
+	<style name="TitleBlue" forecolor="#004893" vTextAlign="Bottom" fontName="Arial" fontSize="14" isBold="true">
+		<paragraph leftIndent="2"/>
+	</style>
+	<style name="disclaimer" forecolor="#757575" vTextAlign="Bottom" fontName="Arial" fontSize="8" isItalic="true">
+		<paragraph leftIndent="2"/>
+	</style>
+	<style name="TOC-Title-Table-Of-Content" forecolor="#0097DB" fontName="Arial" fontSize="16" isBold="true"/>
+	<style name="TOC-Title1" forecolor="#000000" fontName="Arial" fontSize="11" isBold="true"/>
+	<style name="Header-1" forecolor="#0097DB" fontName="Arial" fontSize="24" isBold="true"/>
+	<style name="Header-2" forecolor="#004893" fontName="Arial" fontSize="14" isBold="true"/>
+	<style name="Header-3" forecolor="#000000" fontName="Arial" fontSize="12" isBold="true" isItalic="false"/>
+	<style name="Header-4" forecolor="#000000" fontName="Arial" fontSize="10" isBold="true" isItalic="true"/>
+	<style name="Header-5" forecolor="#7E746A" fontName="Arial" fontSize="8" isBold="true" isItalic="true"/>
+	<style name="Table-Column-Header" style="NormalText" forecolor="#000000" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="11" isBold="true">
+		<paragraph lineSpacing="Single" leftIndent="2"/>
+	</style>
+	<style name="Table-Table-Name" forecolor="#FFFFFF" hTextAlign="Left" vTextAlign="Middle" fontName="Arial" fontSize="14" isBold="true">
+		<paragraph leftIndent="2"/>
+	</style>
+	<style name="Table-Detail-line" forecolor="#000000" vTextAlign="Middle" fontName="Arial" fontSize="10">
+		<paragraph leftIndent="2"/>
+	</style>
+</jasperTemplate>

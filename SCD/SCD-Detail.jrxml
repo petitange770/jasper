@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SCD-Detail" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="730" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" isFloatColumnFooter="true" uuid="97992052-f653-465d-8e5f-1a6335ddfe06">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper SCD PRD"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
+	<subDataset name="IsoCardsASSL" uuid="cb3a19c3-835f-4892-8c72-397021b5cb95">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper SCD PRD"/>
+		<parameter name="iso_id" class="java.lang.String">
+			<defaultValueExpression><![CDATA["A.5.1.1"]]></defaultValueExpression>
+		</parameter>
+		<queryString language="SQL">
+			<![CDATA[select * from scd.scd_content
+where iso_id =  $P{iso_id} 
+order by iso_id,]]>
+		</queryString>
+		<field name="scd_id" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="scd_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="iso_category" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="iso_category"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="iso_group" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="iso_group"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="iso_id" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="iso_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="iso_ctrl_title_and_desc" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="iso_ctrl_title_and_desc"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_objective" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_objective"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="avq_key_ctrl_audit" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="avq_key_ctrl_audit"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_scd_id" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_scd_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="ibm_csd_id" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ibm_csd_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="ibm_csd_ctrl_desc" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ibm_csd_ctrl_desc"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_scd_ctrl_title" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_scd_ctrl_title"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_scd_ctrl_desc" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_scd_ctrl_desc"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="ibm_recommended_csd_value" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ibm_recommended_csd_value"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="ibm_avq_csd_requirement" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ibm_avq_csd_requirement"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="ibm_csd_special_consideration" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ibm_csd_special_consideration"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_scd_ctrl_parm_and_default" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_scd_ctrl_parm_and_default"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_scd_periodic_ctrl" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_scd_periodic_ctrl"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="change_assl_scd" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="change_assl_scd"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_policy_standard" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_policy_standard"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="raci_ibm" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="raci_ibm"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="raci_assl" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="raci_assl"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="raci_client" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="raci_client"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="roles_and_resp_description" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="roles_and_resp_description"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_scd_id_comments" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_scd_id_comments"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<sortField name="iso_id"/>
+	</subDataset>
+	<subDataset name="IsoCardsIBM" uuid="c82a5b78-4c38-46c8-a91b-c5c5c88ab596">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper SCD PRD"/>
+		<parameter name="iso_id" class="java.lang.String">
+			<defaultValueExpression><![CDATA["A.5.1.1"]]></defaultValueExpression>
+		</parameter>
+		<queryString language="SQL">
+			<![CDATA[select * from scd.scd_content
+where iso_id =  $P{iso_id} 
+order by iso_id,]]>
+		</queryString>
+		<field name="scd_id" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="scd_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="iso_category" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="iso_category"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="iso_group" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="iso_group"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="iso_id" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="iso_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="iso_ctrl_title_and_desc" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="iso_ctrl_title_and_desc"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_objective" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_objective"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="avq_key_ctrl_audit" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="avq_key_ctrl_audit"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_scd_id" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_scd_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="ibm_csd_id" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ibm_csd_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="ibm_csd_ctrl_desc" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ibm_csd_ctrl_desc"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_scd_ctrl_title" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_scd_ctrl_title"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_scd_ctrl_desc" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_scd_ctrl_desc"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="ibm_recommended_csd_value" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ibm_recommended_csd_value"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="ibm_avq_csd_requirement" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ibm_avq_csd_requirement"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="ibm_csd_special_consideration" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ibm_csd_special_consideration"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_scd_ctrl_parm_and_default" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_scd_ctrl_parm_and_default"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_scd_periodic_ctrl" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_scd_periodic_ctrl"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="change_assl_scd" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="change_assl_scd"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_policy_standard" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_policy_standard"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="raci_ibm" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="raci_ibm"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="raci_assl" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="raci_assl"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="raci_client" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="raci_client"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="roles_and_resp_description" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="roles_and_resp_description"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<field name="assl_scd_id_comments" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="assl_scd_id_comments"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+		</field>
+		<sortField name="iso_id"/>
+	</subDataset>
+	<parameter name="chapter" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="subsection" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="section" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="customer" class="java.lang.String">
+		<defaultValueExpression><![CDATA["bsct"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="coverTitle" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Security Control Document"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="selectedDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["20191001"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[select * from scd.scd_content]]>
+	</queryString>
+	<field name="scd_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="scd_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="iso_category" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="iso_category"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="iso_group" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="iso_group"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="iso_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="iso_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="iso_ctrl_title_and_desc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="iso_ctrl_title_and_desc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="assl_objective" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="assl_objective"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="avq_key_ctrl_audit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="avq_key_ctrl_audit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="assl_scd_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="assl_scd_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="ibm_csd_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ibm_csd_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="ibm_csd_ctrl_desc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ibm_csd_ctrl_desc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="assl_scd_ctrl_title" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="assl_scd_ctrl_title"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="assl_scd_ctrl_desc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="assl_scd_ctrl_desc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="ibm_recommended_csd_value" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ibm_recommended_csd_value"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="ibm_avq_csd_requirement" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ibm_avq_csd_requirement"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="ibm_csd_special_consideration" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ibm_csd_special_consideration"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="assl_scd_ctrl_parm_and_default" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="assl_scd_ctrl_parm_and_default"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="assl_scd_periodic_ctrl" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="assl_scd_periodic_ctrl"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="change_assl_scd" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="change_assl_scd"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="assl_policy_standard" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="assl_policy_standard"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="raci_ibm" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="raci_ibm"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="raci_assl" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="raci_assl"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="raci_client" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="raci_client"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="roles_and_resp_description" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="roles_and_resp_description"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<field name="assl_scd_id_comments" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="assl_scd_id_comments"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="scd_content"/>
+	</field>
+	<sortField name="iso_category"/>
+	<sortField name="iso_group"/>
+	<sortField name="iso_id"/>
+	<sortField name="scd_id"/>
+	<variable name="printID" class="java.lang.String" resetType="Group" resetGroup="iso_group" incrementType="Group" incrementGroup="iso_id">
+		<variableExpression><![CDATA[$V{newCategory} + "." + $V{newGroup} + "." + $V{newId}]]></variableExpression>
+	</variable>
+	<variable name="newId" class="java.lang.Integer" resetType="Group" resetGroup="iso_group" incrementType="Group" incrementGroup="iso_id">
+		<variableExpression><![CDATA[IF($V{iso_id_COUNT} == 1, $V{newId} + 1,$V{newId}  )]]></variableExpression>
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<variable name="newGroup" class="java.lang.Integer" resetType="Group" resetGroup="iso_category" incrementType="Group" incrementGroup="iso_group">
+		<variableExpression><![CDATA[IF($V{iso_group_COUNT} == 1, $V{newGroup} + 1, $V{newGroup})]]></variableExpression>
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<variable name="newCategory" class="java.lang.Integer" incrementType="Group" incrementGroup="iso_category">
+		<variableExpression><![CDATA[IF($V{iso_category_COUNT} == 1, $V{newCategory} + 1, $V{newCategory})]]></variableExpression>
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<group name="iso_category" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{iso_category}]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField hyperlinkType="LocalAnchor" bookmarkLevel="1">
+					<reportElement style="Header-2" x="0" y="0" width="730" height="25" uuid="c614115e-6a8e-4d4a-ada3-d1d4ac60d12f"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{iso_category}]]></textFieldExpression>
+					<anchorNameExpression><![CDATA[$F{iso_category}]]></anchorNameExpression>
+					<hyperlinkAnchorExpression><![CDATA[$F{iso_category}]]></hyperlinkAnchorExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="iso_group" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{iso_group}]]></groupExpression>
+		<groupHeader>
+			<band height="24">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField hyperlinkType="LocalAnchor" bookmarkLevel="2">
+					<reportElement style="Header-3" x="0" y="0" width="730" height="22" uuid="08143902-5921-4d3b-9da4-2f5895a8574b"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{iso_group}]]></textFieldExpression>
+					<anchorNameExpression><![CDATA[$F{iso_group}]]></anchorNameExpression>
+					<hyperlinkReferenceExpression><![CDATA[$V{newCategory} + "." + $V{newGroup} + " " + $F{iso_group}]]></hyperlinkReferenceExpression>
+					<hyperlinkAnchorExpression><![CDATA[$F{iso_group}]]></hyperlinkAnchorExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="iso_id" isStartNewPage="true" keepTogether="true">
+		<groupExpression><![CDATA[$F{iso_id}]]></groupExpression>
+		<groupHeader>
+			<band height="21">
+				<textField hyperlinkType="LocalAnchor" bookmarkLevel="3">
+					<reportElement style="Header-4" x="0" y="0" width="730" height="21" uuid="bbad45f5-406c-4dfe-b855-7543a70ba9e0"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{iso_id} + " " + MID ($F{iso_ctrl_title_and_desc},1, FIND($F{iso_ctrl_title_and_desc},"\n",1))]]></textFieldExpression>
+					<anchorNameExpression><![CDATA[$F{iso_id} + " " + MID ($F{iso_ctrl_title_and_desc},1, FIND($F{iso_ctrl_title_and_desc},"\n",1))]]></anchorNameExpression>
+					<hyperlinkAnchorExpression><![CDATA[$F{iso_id} + " " + MID ($F{iso_ctrl_title_and_desc},1, FIND($F{iso_ctrl_title_and_desc},"\n",1))]]></hyperlinkAnchorExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="7">
+				<break>
+					<reportElement x="0" y="5" width="100" height="1" uuid="e54b0fcc-f17a-486d-830a-486bbca98069"/>
+				</break>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="68" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement style="headerDocumentTitle" x="0" y="10" width="290" height="21" uuid="df195e67-a48f-44b7-b38e-859145f4aa91"/>
+				<textFieldExpression><![CDATA[$P{coverTitle}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="32" width="730" height="1" uuid="43a182e6-86b5-4b25-bf0f-7131f810472b"/>
+			</line>
+			<textField evaluationTime="Master">
+				<reportElement style="headerPageNumbers" x="560" y="0" width="170" height="32" uuid="4b8985e3-d862-441b-b19f-0059a06422aa"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Reporting Period " + DATEFORMAT(DATE(INTEGER_VALUE(MID($P{selectedDate},1,4)),INTEGER_VALUE(MID($P{selectedDate},5,2)),INTEGER_VALUE(MID($P{selectedDate},7,2))),"MMM yyyy")+ " | Page " + $V{MASTER_CURRENT_PAGE} + " of " + $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="303" splitType="Prevent">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<frame>
+				<reportElement positionType="Float" x="0" y="0" width="730" height="20" uuid="880fb3a6-84c3-4502-8358-18984d84be0a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<staticText>
+					<reportElement style="Table-Column-Header" stretchType="ContainerHeight" x="0" y="0" width="150" height="20" uuid="ba75794a-f22d-4581-9a04-bb5e0dbedb30"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[ISO/IEC 27001:2013]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" x="150" y="0" width="580" height="20" uuid="4b26e16d-478f-4a45-8c95-d8262273f56e">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0"/>
+					</textElement>
+					<textFieldExpression><![CDATA[MID($F{iso_ctrl_title_and_desc}, FIND($F{iso_ctrl_title_and_desc},"\n",1)+2, LEN( $F{iso_ctrl_title_and_desc})- FIND($F{iso_ctrl_title_and_desc},"\n",1)-2)]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="40" width="730" height="20" uuid="40f864ca-cd69-4057-b327-7d0bb0b21362"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" mode="Opaque" x="150" y="0" width="580" height="20" backcolor="#F2F2F2" uuid="9e308015-bb82-4717-b707-456301b1d171">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0" spacingBefore="2" spacingAfter="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{assl_objective}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Table-Column-Header" stretchType="ContainerHeight" mode="Opaque" x="0" y="0" width="150" height="20" backcolor="#F2F2F2" uuid="d835897f-140f-4589-9380-a0097f57d320"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[Objective]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="20" width="730" height="20" uuid="18eb15cf-448e-4cd1-9b92-444cacceccaf"/>
+				<staticText>
+					<reportElement style="Table-Detail-line" positionType="Float" x="0" y="0" width="730" height="20" uuid="4d1883fe-f2a6-474b-b4fe-8e816637ef37"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Control - ASSL]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="80" width="730" height="20" uuid="c0931b84-ab4b-48d2-853c-6fbd35f51834"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" mode="Opaque" x="150" y="0" width="580" height="20" backcolor="#F2F2F2" uuid="9beb92c9-16d2-42fe-b867-ad0cf5c7eba6">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0" spacingBefore="2" spacingAfter="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{assl_scd_ctrl_desc}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Table-Column-Header" stretchType="ContainerHeight" mode="Opaque" x="0" y="0" width="150" height="20" backcolor="#F2F2F2" uuid="3d754fa9-e376-4f69-89c9-e121f6766bbc">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[ASSL control description]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="60" width="730" height="20" uuid="8c09023a-c439-4697-8b97-0155ba67dfcf"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" mode="Opaque" x="150" y="0" width="580" height="20" backcolor="#F2F2F2" uuid="0e8d4dff-ec55-48f9-a811-4c400be8ca70">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0" spacingBefore="2" spacingAfter="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[MID($F{iso_ctrl_title_and_desc},1, FIND($F{iso_ctrl_title_and_desc},"\n",1))]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Table-Column-Header" stretchType="ContainerHeight" mode="Opaque" x="0" y="0" width="150" height="20" backcolor="#F2F2F2" uuid="81762439-daed-4976-873e-e4987693f463">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[ASSL control title]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="100" width="730" height="20" uuid="29d14249-9196-4efb-a0ac-193051c631d7"/>
+				<staticText>
+					<reportElement style="Table-Column-Header" stretchType="ContainerHeight" mode="Opaque" x="0" y="0" width="150" height="20" backcolor="#F2F2F2" uuid="e9ea6340-f930-4866-872e-d73d6ea1c380"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[ASSL control value]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" mode="Opaque" x="150" y="0" width="580" height="20" backcolor="#F2F2F2" uuid="274fea37-226f-4190-8866-e2d91d3f7fdf">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0" spacingBefore="2" spacingAfter="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{assl_scd_ctrl_parm_and_default}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="120" width="730" height="20" uuid="882fc5e9-b119-4531-a310-7ee8c5808587"/>
+				<staticText>
+					<reportElement style="Table-Column-Header" stretchType="ContainerHeight" mode="Opaque" x="0" y="0" width="150" height="20" backcolor="#F2F2F2" uuid="3414347e-6f9e-45ab-bec5-27cc1b37901b"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[ASSL control attachement]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" mode="Opaque" x="150" y="0" width="580" height="20" backcolor="#F2F2F2" uuid="e24b151c-8462-49ad-a8f9-d19c1e9960f8">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0" spacingBefore="2" spacingAfter="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{assl_policy_standard}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="140" width="730" height="20" uuid="db0117d1-893f-4262-811a-8d94a2b0bd32"/>
+				<staticText>
+					<reportElement style="Table-Column-Header" stretchType="ContainerHeight" mode="Opaque" x="0" y="0" width="150" height="20" backcolor="#F2F2F2" uuid="6c13bbb6-3473-47ad-87a5-bdbeb023ed0f"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[ISAE Control]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" mode="Opaque" x="150" y="0" width="580" height="20" backcolor="#F2F2F2" uuid="6d6717ca-9f88-45d8-8c5a-4c8ef3c75439">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0" spacingBefore="2" spacingAfter="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{avq_key_ctrl_audit}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="160" width="730" height="20" uuid="3affcb6a-db3e-457d-8402-5676eadfed09"/>
+				<staticText>
+					<reportElement style="Table-Column-Header" stretchType="ContainerHeight" x="0" y="0" width="150" height="20" uuid="e898710d-aa0f-48c4-8919-d9c4137ca674"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[Periodic review]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" x="150" y="0" width="580" height="20" uuid="2378437d-4a6a-4883-9517-fad034876b22">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
+						<property name="com.jaspersoft.studio.unit.spacingAfter" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0" spacingBefore="2" spacingAfter="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{assl_scd_periodic_ctrl}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="180" width="730" height="40" uuid="5a431c4b-b16f-407d-a055-7c4c756f9366"/>
+				<staticText>
+					<reportElement style="Table-Column-Header" stretchType="ContainerHeight" mode="Opaque" x="0" y="0" width="150" height="40" backcolor="#F5F5F5" uuid="abff32ae-cd47-4856-aa61-975ff4f1482f"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[Agreed scope]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" x="150" y="20" width="290" height="20" uuid="6c98ca4f-3ce8-483a-83d1-becc09b2c33b">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0"/>
+					</textElement>
+					<textFieldExpression><![CDATA["ASSL’s information security governance framework"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" x="440" y="20" width="290" height="20" uuid="48a0a527-ae15-44f0-84ce-9594347054b1">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0"/>
+					</textElement>
+					<textFieldExpression><![CDATA["to map"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Table-Detail-line" mode="Opaque" x="150" y="0" width="290" height="20" backcolor="#F5F5F5" uuid="13b7c3d7-6c8e-4c45-9591-c1418bc52064"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[In scope]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Table-Detail-line" mode="Opaque" x="440" y="0" width="290" height="20" backcolor="#F5F5F5" uuid="8ad9660e-608c-474d-acb6-5af964213f76"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Out of scope]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="220" width="730" height="20" uuid="2606e53c-6e6f-4fe2-8f3f-b9d7737a2cc5"/>
+				<staticText>
+					<reportElement style="Table-Column-Header" stretchType="ContainerHeight" mode="Opaque" x="0" y="0" width="150" height="20" backcolor="#F2F2F2" uuid="a7f219da-3843-4100-8e59-07e9472db17f"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[Roles and responsibilities]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Table-Column-Header" positionType="Float" stretchType="ContainerHeight" mode="Opaque" x="150" y="0" width="190" height="20" backcolor="#F2F2F2" uuid="41945028-a0c0-49c0-99ac-faba678aa7c6">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0"/>
+					</textElement>
+					<textFieldExpression><![CDATA["RACI"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Table-Column-Header" positionType="Float" stretchType="ContainerHeight" mode="Opaque" x="340" y="0" width="390" height="20" backcolor="#F2F2F2" uuid="09d5def3-1be2-4f55-ae8a-1112f300aec3">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Description"]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="240" width="730" height="20" uuid="10827ccd-4724-46c1-91b0-0c53729e804f"/>
+				<staticText>
+					<reportElement style="Table-Column-Header" stretchType="ContainerHeight" x="0" y="0" width="150" height="20" uuid="645d5ef4-7b72-4c1c-b902-6027de2c6a06"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[Client]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" x="150" y="0" width="190" height="20" uuid="e3e45094-a8b6-4faf-acc7-cd03cd7ef9b2">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{raci_client}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" x="340" y="0" width="390" height="20" uuid="182b6c1e-b15c-4603-bd6c-570bbfc85c71">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{roles_and_resp_description}
+]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="260" width="730" height="20" uuid="8aef68ff-9dee-401c-964c-63da77bdf31e"/>
+				<staticText>
+					<reportElement style="Table-Column-Header" stretchType="ContainerHeight" x="0" y="0" width="150" height="20" uuid="474d0699-0782-4f21-947c-57afe9b0ee38"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[ASSL]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" x="150" y="0" width="190" height="20" uuid="40354134-5936-4eae-81ad-8de1c005e1c6">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{raci_assl}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" x="340" y="0" width="390" height="20" uuid="e9f0d711-ab15-4092-97be-10c0f2b19617">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{roles_and_resp_description}
+]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="280" width="730" height="20" uuid="f5beea24-2fd5-41aa-baa9-1b73b4774ccd"/>
+				<staticText>
+					<reportElement style="Table-Column-Header" stretchType="ContainerHeight" x="0" y="0" width="150" height="20" uuid="d88dc1aa-d3ba-4df1-ad30-892ea30d1c6f"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[IBM]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" x="150" y="0" width="190" height="20" uuid="6dbc8162-0034-478c-b2ce-11261aae953b">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{raci_ibm}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="NormalText" positionType="Float" stretchType="ContainerHeight" x="340" y="0" width="390" height="20" uuid="0a7c83e0-7b74-4a6c-a4d5-a5e0ba052663">
+						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					</reportElement>
+					<box leftPadding="0">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph firstLineIndent="0"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{roles_and_resp_description}
+]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<image>
+				<reportElement x="650" y="8" width="80" height="21" uuid="bd485fe0-3881-4a41-afe7-7505ccfa632b"/>
+				<imageExpression><![CDATA["Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="19" width="153" height="10" uuid="fc1cc8de-1cf6-4889-99a6-27f8a9ecc257"/>
+				<imageExpression><![CDATA["Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>

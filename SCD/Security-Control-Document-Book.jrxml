@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Security-Control-Document-Book" pageWidth="595" pageHeight="842" sectionType="Part" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="d2716064-8ae4-40cf-a575-33afba400e3a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper PRD"/>
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="true"/>
+	<property name="com.jaspersoft.studio.book.group.cover.header" value="Cover and Table of Contents"/>
+	<property name="com.jaspersoft.studio.book.group.cover.footer" value="Backcover"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="palg"/>
+	<property name="ireport.jasperserver.report.resource" value="/Templates/reports/Monthly_Security_Report_Book_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Templates/reports/Monthly_Security_Report_Book"/>
+	<parameter name="customer" class="java.lang.String">
+		<defaultValueExpression><![CDATA["BSCT"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="coverTitle" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Security Control Document"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="reportDate" class="java.sql.Date">
+		<defaultValueExpression><![CDATA[DATE(2019,10,01)]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[select bk.bank_id, 
+bk.company, 
+bk.company_mesi,
+bk.company_parent, 
+bk.company_tag,
+bk.siem_client, 
+case
+   WHEN lower(company_tag) = 'bsct' THEN 'bsct'
+   WHEN lower(company_tag) = 'axion' THEN 'bsct'
+   WHEN lower(company_tag) = lower(company_mesi) THEN lower(company_mesi)
+   ELSE lower(company_mesi)
+END as customer,
+(select count(WU.user_id) 
+	 from msr.windows_users AS WU 
+	 where  lower(WU.customer) = lower(bk.company_tag)
+         and concat(extract(year from WU.export_date)             , extract(month from WU.export_date)) = 
+         concat(extract(year from  $P{reportDate}::date ), extract(month from  $P{reportDate}::date )))  as nb_win_users
+from msr.banks AS bk
+where company_tag =  $P{customer}]]>
+	</queryString>
+	<field name="bank_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="bank_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="banks"/>
+	</field>
+	<field name="company" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="company"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="banks"/>
+	</field>
+	<field name="company_mesi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="company_mesi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="banks"/>
+	</field>
+	<field name="company_parent" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="company_parent"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="banks"/>
+	</field>
+	<field name="company_tag" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="company_tag"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="banks"/>
+	</field>
+	<field name="siem_client" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="siem_client"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="banks"/>
+	</field>
+	<field name="customer" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="customer"/>
+	</field>
+	<field name="nb_win_users" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="nb_win_users"/>
+	</field>
+	<variable name="chapter" class="java.lang.Integer"/>
+	<variable name="section" class="java.lang.Integer"/>
+	<variable name="subsection" class="java.lang.Integer"/>
+	<variable name="selectedDate" class="java.lang.String">
+		<variableExpression><![CDATA[String.format("%04d", YEAR($P{reportDate}))+String.format("%02d", MONTH($P{reportDate}) )+"01"]]></variableExpression>
+	</variable>
+	<variable name="SUBREPORT_CONNECTION" class="java.sql.Connection">
+		<variableExpression><![CDATA[java.sql.DriverManager.getConnection("jdbc:postgresql://cloudit-eprocess:5432/SCD","jasper","jasper")]]></variableExpression>
+	</variable>
+	<group name="cover">
+		<groupHeader>
+			<part uuid="1bc90f66-8eef-4457-870b-766e22b034da">
+				<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+					<subreportParameter name="REPORT_CONNECTION">
+						<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="coverTitle">
+						<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="customer">
+						<subreportParameterExpression><![CDATA[$F{company}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="selectedDate">
+						<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportExpression><![CDATA["ReportCoverTemplate.jasper"]]></subreportExpression>
+				</p:subreportPart>
+			</part>
+			<part evaluationTime="Report" uuid="56ab525c-754f-4f48-a52c-7cc23934be3d">
+				<property name="net.sf.jasperreports.bookmarks.data.source.parameter" value="REPORT_DATA_SOURCE"/>
+				<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+					<subreportParameter name="coverTitle">
+						<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="selectedDate">
+						<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportExpression><![CDATA["SCD-Book_toc.jasper"]]></subreportExpression>
+				</p:subreportPart>
+			</part>
+		</groupHeader>
+	</group>
+	<detail>
+		<part uuid="dbda47d7-cb90-42fc-9ec2-2621868acc86">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="REPORT_CONNECTION">
+					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="chapter">
+					<subreportParameterExpression><![CDATA[1]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="coverTitle">
+					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="section">
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subsection">
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="selectedDate">
+					<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<returnValue subreportVariable="newChapter" toVariable="chapter"/>
+				<returnValue subreportVariable="newSection" toVariable="section"/>
+				<returnValue subreportVariable="newSubsection" toVariable="subsection"/>
+				<subreportExpression><![CDATA["SCD-Introduction.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="955af14b-6fea-438f-a5a7-fab8fe4dabfb">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="REPORT_CONNECTION">
+					<subreportParameterExpression><![CDATA[$V{SUBREPORT_CONNECTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="chapter">
+					<subreportParameterExpression><![CDATA[$V{chapter}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subsection">
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="section">
+					<subreportParameterExpression><![CDATA[0]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="customer">
+					<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="coverTitle">
+					<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="selectedDate">
+					<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["SCD-Detail.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+	</detail>
+</jasperReport>

@@ -613,7 +613,7 @@ GROUP BY customer, export_date]]>
 		</band>
 		<band height="22">
 			<staticText>
-				<reportElement style="Header-3" x="1" y="0" width="483" height="20" uuid="7e5b1d11-f067-40d7-9022-358d46cf3c8b"/>
+				<reportElement style="Header-3" x="0" y="0" width="483" height="20" uuid="7e5b1d11-f067-40d7-9022-358d46cf3c8b"/>
 				<text><![CDATA[ASSL User Accounts on Avaloq]]></text>
 			</staticText>
 		</band>

@@ -637,7 +637,7 @@ and severity>0]]>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Header-4" positionType="Float" x="1" y="0" width="481" height="21" uuid="310ccb7b-64ee-4936-b2d9-b38ff786a009">
+					<reportElement style="Header-4" positionType="Float" x="0" y="0" width="482" height="21" uuid="310ccb7b-64ee-4936-b2d9-b38ff786a009">
 						<property name="com.jaspersoft.studio.unit.firstLineIndent" value="px"/>
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
 						<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -660,7 +660,7 @@ and severity>0]]>
 			<frame>
 				<reportElement positionType="Float" x="0" y="250" width="484" height="20" uuid="2af95677-cc6e-4734-99cf-b0ad673f8cf6"/>
 				<staticText>
-					<reportElement style="Header-3" positionType="Float" x="1" y="0" width="483" height="20" uuid="817ec68f-3bdf-4e6b-b6e7-be126e92fd7d">
+					<reportElement style="Header-3" positionType="Float" x="0" y="0" width="484" height="20" uuid="817ec68f-3bdf-4e6b-b6e7-be126e92fd7d">
 						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					</reportElement>
 					<textElement>

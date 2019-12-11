@@ -252,7 +252,7 @@
 		<band height="73">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
-				<reportElement style="Header-4" positionType="Float" x="-1" y="0" width="483" height="20" uuid="74dc7a54-075e-41eb-a1d4-ae2fa1ac5dfe"/>
+				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="483" height="20" uuid="74dc7a54-075e-41eb-a1d4-ae2fa1ac5dfe"/>
 				<textElement verticalAlignment="Middle">
 					<font size="11"/>
 				</textElement>
@@ -366,7 +366,7 @@
 		<band height="71" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
-				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="482" height="20" uuid="e6d01b76-de87-42d3-bf26-40e8845b10d2"/>
+				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="483" height="20" uuid="e6d01b76-de87-42d3-bf26-40e8845b10d2"/>
 				<textElement verticalAlignment="Middle">
 					<font size="11"/>
 				</textElement>

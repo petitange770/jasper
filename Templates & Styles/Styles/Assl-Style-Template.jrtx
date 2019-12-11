@@ -24,9 +24,9 @@
 	<style name="TOC-Title-Table-Of-Content" forecolor="#00B0F0" fontName="Arial" fontSize="16" isBold="true"/>
 	<style name="TOC-Title1" forecolor="#000000" fontName="Arial" fontSize="11" isBold="true"/>
 	<style name="Header-1" forecolor="#00B0F0" fontName="Arial" fontSize="24" isBold="true"/>
-	<style name="Header-2" mode="Opaque" forecolor="#004893" backcolor="#FF0015" fontName="Arial" fontSize="14" isBold="true"/>
-	<style name="Header-3" mode="Opaque" forecolor="#000000" backcolor="#0525F7" fontName="Arial" fontSize="12" isBold="true" isItalic="false"/>
-	<style name="Header-4" mode="Opaque" forecolor="#000000" backcolor="#067300" fontName="Arial" fontSize="10" isBold="true" isItalic="true"/>
+	<style name="Header-2" mode="Transparent" forecolor="#004893" backcolor="#FF0015" fontName="Arial" fontSize="14" isBold="true"/>
+	<style name="Header-3" mode="Transparent" forecolor="#000000" backcolor="#0525F7" fontName="Arial" fontSize="12" isBold="true" isItalic="false"/>
+	<style name="Header-4" mode="Transparent" forecolor="#000000" backcolor="#067300" fontName="Arial" fontSize="10" isBold="true" isItalic="true"/>
 	<style name="Header-5" forecolor="#545454" fontName="Arial" fontSize="8" isBold="true" isItalic="true"/>
 	<style name="Table-Column-Header" style="NormalText" forecolor="#000000" vTextAlign="Middle" vImageAlign="Middle" fontName="Arial" fontSize="11" isBold="true">
 		<paragraph lineSpacing="Single" leftIndent="2"/>

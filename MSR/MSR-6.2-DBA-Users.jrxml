@@ -3,7 +3,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MSR-6-Dba-Users" pageWidth="595" pageHeight="842" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" uuid="97992052-f653-465d-8e5f-1a6335ddfe06">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper PRD"/>
-	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
+	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="palg"/>
+	<template><![CDATA["repo:/Templates/Styles/Assl_Style_Template.jrtx"]]></template>
 	<style name="Table_TH" mode="Opaque" backcolor="#004893">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -596,12 +598,12 @@
 		<band height="30" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
-				<reportElement x="403" y="9" width="80" height="21" uuid="0ebbb6da-ea80-40af-b7d9-f07269bad163"/>
-				<imageExpression><![CDATA["Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
+				<reportElement x="0" y="20" width="153" height="10" uuid="8802ab31-6472-4b67-a102-aadd5945053a"/>
+				<imageExpression><![CDATA["repo:/Templates/Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="0" y="19" width="153" height="10" uuid="dc88d0eb-0ff7-42ed-9fcf-f88b430b004e"/>
-				<imageExpression><![CDATA["Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
+				<reportElement x="403" y="9" width="80" height="21" uuid="267720d4-aee4-47b8-9c6a-71be936e2568"/>
+				<imageExpression><![CDATA["repo:/Templates/Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageFooter>

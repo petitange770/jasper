@@ -78,7 +78,7 @@ where company_tag =  $P{customer}]]>
 	</variable>
 	<group name="cover">
 		<groupHeader>
-			<part uuid="1bc90f66-8eef-4457-870b-766e22b034da">
+			<part uuid="52726636-7279-477a-9a50-ae99be035e8e">
 				<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
 					<subreportParameter name="REPORT_CONNECTION">
 						<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
@@ -87,12 +87,12 @@ where company_tag =  $P{customer}]]>
 						<subreportParameterExpression><![CDATA[$P{coverTitle}]]></subreportParameterExpression>
 					</subreportParameter>
 					<subreportParameter name="customer">
-						<subreportParameterExpression><![CDATA[$F{company}]]></subreportParameterExpression>
+						<subreportParameterExpression><![CDATA[$P{customer}]]></subreportParameterExpression>
 					</subreportParameter>
 					<subreportParameter name="selectedDate">
 						<subreportParameterExpression><![CDATA[$V{selectedDate}]]></subreportParameterExpression>
 					</subreportParameter>
-					<subreportExpression><![CDATA["ReportCoverTemplate.jasper"]]></subreportExpression>
+					<subreportExpression><![CDATA["ReportCover.jrxml"]]></subreportExpression>
 				</p:subreportPart>
 			</part>
 			<part evaluationTime="Report" uuid="56ab525c-754f-4f48-a52c-7cc23934be3d">

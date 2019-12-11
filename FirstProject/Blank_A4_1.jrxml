@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.3.1.final using JasperReports Library version 6.8.1-3d4b87119c827be13776e451fb3738062f84a87d  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="411d707c-77dd-4cb6-94b0-56c820c64fef">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper PRD"/>
+	<queryString language="SQL">
+		<![CDATA[select * from msr.avq_users]]>
+	</queryString>
+	<field name="avq_user_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="avq_user_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="customer" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="customer"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="user_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="user_full_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="user_full_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="user_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="user_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="win_user" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="win_user"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="unit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="unit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="last_login" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="last_login"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="is_export" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="is_export"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="is_sensitive" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="is_sensitive"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="is_external" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="is_external"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="nda" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="export_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="export_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="upsert_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="upsert_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<field name="accountstatus" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="accountstatus"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="avq_users"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

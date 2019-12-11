@@ -12,7 +12,9 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
+	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="palg"/>
+	<template><![CDATA["repo:/Templates/Styles/Assl_Style_Template.jrtx"]]></template>
 	<style name="Table 2_TH" mode="Opaque" backcolor="#F0F8FF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -621,7 +623,7 @@ and severity>0]]>
 					<text><![CDATA[Published]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="NormalText" positionType="Float" x="109" y="0" width="373" height="18" uuid="fceba322-f6c6-465a-a99e-730a4322de46"/>
+					<reportElement style="NormalText" positionType="Float" x="109" y="0" width="373" height="20" uuid="fceba322-f6c6-465a-a99e-730a4322de46"/>
 					<box leftPadding="0"/>
 					<textElement verticalAlignment="Middle">
 						<paragraph firstLineIndent="0"/>
@@ -682,12 +684,12 @@ and severity>0]]>
 	<pageFooter>
 		<band height="33">
 			<image>
-				<reportElement x="0" y="19" width="153" height="10" uuid="ea8a9a99-1c6e-4e89-8530-0eea7062e320"/>
-				<imageExpression><![CDATA["Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
+				<reportElement x="0" y="20" width="153" height="10" uuid="2c5c908a-dba9-4c49-9ad9-db1814ed709d"/>
+				<imageExpression><![CDATA["repo:/Templates/Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="403" y="9" width="80" height="21" uuid="cb3a0e81-1e82-4b43-a618-1a4326262cf7"/>
-				<imageExpression><![CDATA["Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
+				<reportElement x="403" y="9" width="80" height="21" uuid="6ace9ed0-a79d-4e36-a6b9-52edc0d5b969"/>
+				<imageExpression><![CDATA["repo:/Templates/Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageFooter>

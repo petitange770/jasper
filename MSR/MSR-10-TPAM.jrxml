@@ -12,7 +12,9 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
+	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="palg"/>
+	<template><![CDATA["repo:/Templates/Styles/Assl_Style_Template.jrtx"]]></template>
 	<style name="Crosstab_CH" mode="Opaque" backcolor="#F0F8FF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -566,6 +568,19 @@ Duration]]></text>
 	<columnFooter>
 		<band splitType="Stretch"/>
 	</columnFooter>
+	<pageFooter>
+		<band height="33">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<image>
+				<reportElement x="0" y="23" width="153" height="10" uuid="fc27dbfb-4f19-45f2-b1c4-39a78bf3d556"/>
+				<imageExpression><![CDATA["repo:/Templates/Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="650" y="12" width="80" height="21" uuid="53b1bb17-16ac-4143-899a-e21002474956"/>
+				<imageExpression><![CDATA["repo:/Templates/Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
 	<summary>
 		<band splitType="Stretch"/>
 	</summary>

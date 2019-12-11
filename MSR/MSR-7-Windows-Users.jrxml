@@ -3,7 +3,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MSR-7-Windows-Users" pageWidth="595" pageHeight="842" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" uuid="97992052-f653-465d-8e5f-1a6335ddfe06">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper PRD"/>
-	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
+	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="palg"/>
+	<template><![CDATA["repo:/Templates/Styles/Assl_Style_Template.jrtx"]]></template>
 	<style name="Table_TH" mode="Opaque" backcolor="#004893">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -365,7 +367,7 @@
 		<band height="64" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField bookmarkLevel="3">
-				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="482" height="20" uuid="e6d01b76-de87-42d3-bf26-40e8845b10d2"/>
+				<reportElement style="Header-4" positionType="Float" x="0" y="0" width="483" height="20" uuid="e6d01b76-de87-42d3-bf26-40e8845b10d2"/>
 				<textElement verticalAlignment="Middle">
 					<font size="11"/>
 				</textElement>
@@ -599,12 +601,12 @@
 		<band height="30" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
-				<reportElement x="403" y="9" width="80" height="21" uuid="fbfee8b8-0be8-4169-9979-84405406cc32"/>
-				<imageExpression><![CDATA["Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
+				<reportElement x="0" y="20" width="153" height="10" uuid="3be39b20-080d-4f8a-988e-f07d43c5154c"/>
+				<imageExpression><![CDATA["repo:/Templates/Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="0" y="19" width="153" height="10" uuid="eb3dc108-1770-4925-ab46-2101f0c88ae4"/>
-				<imageExpression><![CDATA["Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
+				<reportElement x="403" y="9" width="80" height="21" uuid="ed1ce3cb-eecf-4cfa-b3aa-2f0cd5d8ce00"/>
+				<imageExpression><![CDATA["repo:/Templates/Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageFooter>

@@ -15,7 +15,7 @@
 	<property name="ireport.jasperserver.url" value="http://cloudit-eprocess:8083/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="palg"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Jasper PRD"/>
-	<template><![CDATA["/Styles/Assl-Style-Template.jrtx"]]></template>
+	<template><![CDATA["repo:/Templates/Styles/Assl_Style_Template.jrtx"]]></template>
 	<style name="Table_TH" mode="Opaque" backcolor="#004893">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -160,12 +160,12 @@
 		<band height="30" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<image>
-				<reportElement x="0" y="19" width="153" height="10" uuid="0e03300e-547b-49bc-8fba-b3589a5c6e51"/>
-				<imageExpression><![CDATA["Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
+				<reportElement x="0" y="20" width="153" height="10" uuid="bcf5da5a-d9fc-40f5-8796-82b6010bc262"/>
+				<imageExpression><![CDATA["repo:/Templates/Images/Avaloq/AVA_claim_100_rgb_black.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="650" y="8" width="80" height="21" uuid="0e9cfb83-cd7f-448d-b90d-98ed7c55829a"/>
-				<imageExpression><![CDATA["Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
+				<reportElement x="650" y="9" width="80" height="21" uuid="9476a055-4b4c-41fe-b22e-fc70681ae609"/>
+				<imageExpression><![CDATA["repo:/Templates/Images/Avaloq/AVA_logo_100_rgb.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageFooter>

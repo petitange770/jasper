@@ -79,7 +79,12 @@
 		<band height="61" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="125" splitType="Stretch">
+			<image>
+				<reportElement x="202" y="74" width="50" height="50" uuid="974f3fb4-e275-43b5-acd5-68bc2d6e8b4e"/>
+				<imageExpression><![CDATA["C:\\Users\\Gabriel\\jasper\\Templates & Styles\\Images\\Avaloq\\AVA_claim_100_rgb_black.png"]]></imageExpression>
+			</image>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
